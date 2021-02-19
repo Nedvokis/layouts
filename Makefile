@@ -16,7 +16,7 @@ migrateup:  ## Dropdown db
 migratedown:  ## Dropdown db
 	migrate -path db/migration -database "postgresql://root:WEBdeveloepr1452@localhost:5432/layouts?sslmode=disable" -verbose down
 
-sqlc:
+sqlc: ## sqlc generates type-safe code from SQL
 	sqlc generate
 
 .PHONY: postgresimage postgres createdb dropdb migrateup migratedown sqlc
