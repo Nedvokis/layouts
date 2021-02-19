@@ -1,3 +1,6 @@
+postgresimage: ## add postgres image to docker
+	docker pull postgres:13-alpine
+
 postgres: ## setup postgres container
 	docker run --name layouts-postgres -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=WEBdeveloepr1452 -d postgres:13-alpine
 
@@ -16,4 +19,4 @@ migratedown:  ## Dropdown db
 sqlc:
 	sqlc generate
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc
+.PHONY: postgresimage postgres createdb dropdb migrateup migratedown sqlc
