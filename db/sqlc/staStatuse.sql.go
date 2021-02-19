@@ -9,19 +9,19 @@ import (
 )
 
 const createStaStatuse = `-- name: CreateStaStatuse :one
-INSERT INTO sta_statuses ("bitrix_id", "type")
+INSERT INTO sta_statuses ("bitrix_id", "type_name")
 VALUES ($1, $2)
-RETURNING id, bitrix_id, type
+RETURNING id, bitrix_id, type_name
 `
 
 type CreateStaStatuseParams struct {
 	BitrixID int64          `json:"bitrix_id"`
-	Type     sql.NullString `json:"type"`
+	TypeName sql.NullString `json:"type_name"`
 }
 
 func (q *Queries) CreateStaStatuse(ctx context.Context, arg CreateStaStatuseParams) (StaStatus, error) {
-	row := q.db.QueryRowContext(ctx, createStaStatuse, arg.BitrixID, arg.Type)
+	row := q.db.QueryRowContext(ctx, createStaStatuse, arg.BitrixID, arg.TypeName)
 	var i StaStatus
-	err := row.Scan(&i.ID, &i.BitrixID, &i.Type)
+	err := row.Scan(&i.ID, &i.BitrixID, &i.TypeName)
 	return i, err
 }

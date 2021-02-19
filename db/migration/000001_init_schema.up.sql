@@ -1,17 +1,17 @@
 CREATE TABLE "sta_room" (
 	"id" bigserial PRIMARY KEY,
 	"bitrix_id" bigint UNIQUE NOT NULL,
-	"type" varchar
+	"type_name" varchar
 );
 CREATE TABLE "sta_statuses" (
 	"id" bigserial PRIMARY KEY,
 	"bitrix_id" bigint UNIQUE NOT NULL,
-	"type" varchar
+	"type_name" varchar
 );
 CREATE TABLE "sta_types" (
 	"id" bigserial PRIMARY KEY,
 	"bitrix_id" bigint UNIQUE NOT NULL,
-	"type" varchar
+	"type_name" varchar
 );
 CREATE TABLE "complexes" (
 	"id" bigserial PRIMARY KEY,
@@ -39,7 +39,7 @@ CREATE TABLE "layouts" (
 	"status" int,
 	"type" int,
 	"room" int,
-	"svg_path" TEXT
+	"svg_path" text
 );
 ALTER TABLE "litters"
 ADD FOREIGN KEY ("parent") REFERENCES "complexes" ("bitrix_id");

@@ -40,17 +40,17 @@ type Litter struct {
 type StaRoom struct {
 	ID       int64          `json:"id"`
 	BitrixID int64          `json:"bitrix_id"`
-	Type     sql.NullString `json:"type"`
+	TypeName sql.NullString `json:"type_name"`
 }
 
 type StaStatus struct {
 	ID       int64          `json:"id"`
 	BitrixID int64          `json:"bitrix_id"`
-	Type     sql.NullString `json:"type"`
+	TypeName sql.NullString `json:"type_name"`
 }
 
 type StaType struct {
 	ID       int64          `json:"id"`
 	BitrixID int64          `json:"bitrix_id"`
-	Type     sql.NullString `json:"type"`
+	TypeName sql.NullString `json:"type_name"`
 }
