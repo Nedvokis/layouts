@@ -34,7 +34,7 @@ CREATE TABLE "layouts" (
 	"bitrix_id" int,
 	"layout_id" int,
 	"living_area" float,
-	"num" int,
+	"num" varchar,
 	"price" int,
 	"status" int,
 	"type" int,

@@ -22,7 +22,7 @@ type Layout struct {
 	BitrixID    sql.NullInt32   `json:"bitrix_id"`
 	LayoutID    sql.NullInt32   `json:"layout_id"`
 	LivingArea  sql.NullFloat64 `json:"living_area"`
-	Num         sql.NullInt32   `json:"num"`
+	Num         sql.NullString  `json:"num"`
 	Price       sql.NullInt32   `json:"price"`
 	Status      sql.NullInt32   `json:"status"`
 	Type        sql.NullInt32   `json:"type"`

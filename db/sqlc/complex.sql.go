@@ -25,3 +25,52 @@ func (q *Queries) CreateComplex(ctx context.Context, arg CreateComplexParams) (C
 	err := row.Scan(&i.ID, &i.BitrixID, &i.Name)
 	return i, err
 }
+
+const getComplex = `-- name: GetComplex :one
+SELECT id, bitrix_id, name
+FROM complexes
+WHERE id = $1
+LIMIT 1
+`
+
+func (q *Queries) GetComplex(ctx context.Context, id int64) (Complex, error) {
+	row := q.db.QueryRowContext(ctx, getComplex, id)
+	var i Complex
+	err := row.Scan(&i.ID, &i.BitrixID, &i.Name)
+	return i, err
+}
+
+const listComplex = `-- name: ListComplex :many
+SELECT id, bitrix_id, name
+FROM complexes
+ORDER BY name
+LIMIT $1 OFFSET $2
+`
+
+type ListComplexParams struct {
+	Limit  int32 `json:"limit"`
+	Offset int32 `json:"offset"`
+}
+
+func (q *Queries) ListComplex(ctx context.Context, arg ListComplexParams) ([]Complex, error) {
+	rows, err := q.db.QueryContext(ctx, listComplex, arg.Limit, arg.Offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Complex
+	for rows.Next() {
+		var i Complex
+		if err := rows.Scan(&i.ID, &i.BitrixID, &i.Name); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
