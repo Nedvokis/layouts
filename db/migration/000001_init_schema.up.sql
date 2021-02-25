@@ -39,6 +39,7 @@ CREATE TABLE "layouts" (
 	"status" int,
 	"type" int,
 	"room" int,
+	"layouts_url" varchar,
 	"svg_path" text
 );
 ALTER TABLE "litters"

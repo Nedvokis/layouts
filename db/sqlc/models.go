@@ -27,6 +27,7 @@ type Layout struct {
 	Status      sql.NullInt32   `json:"status"`
 	Type        sql.NullInt32   `json:"type"`
 	Room        sql.NullInt32   `json:"room"`
+	LayoutsUrl  sql.NullString  `json:"layouts_url"`
 	SvgPath     sql.NullString  `json:"svg_path"`
 }
 

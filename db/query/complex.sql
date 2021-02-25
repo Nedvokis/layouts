@@ -7,7 +7,7 @@ SELECT *
 FROM complexes
 WHERE id = $1
 LIMIT 1;
--- name: ListComplex :many
+-- name: GetListComplex :many
 SELECT *
 FROM complexes
 ORDER BY name

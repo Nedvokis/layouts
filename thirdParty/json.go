@@ -36,6 +36,7 @@ type Layout struct {
 	Room        int32   `json:"ROOM,string"`
 	Status      int32   `json:"STATUS,string"`
 	Type        int32   `json:"TYPE,string"`
+	LayoutsURL  string  `json:"LAYOUTS_URL"`
 	SvgPath     string  `json:"-"`
 }
 
@@ -50,8 +51,8 @@ type itemsStatuses struct {
 }
 
 type Data struct {
-	// Builds        []Build  `json:"BUILDS"`
-	// Litters       []Litter `json:"LITERS"`
+	Builds        []Build  `json:"BUILDS"`
+	Litters       []Litter `json:"LITERS"`
 	Layouts       []Layout `json:"OBJECTS"`
 	itemsStatuses `json:"VALUES"`
 }
@@ -72,6 +73,24 @@ func GetLayouts() {
 	if err != nil {
 		log.Fatal("cannot  connect to db: ", err)
 	}
+
+	litters, err := store.GetListAllLitters(context.Background())
+	staStatuse, err := store.GetListAllStaStatuse(context.Background())
+	staRoom, err := store.GetListAllStaRoom(context.Background())
+	staType, err := store.GetListAllStaType(context.Background())
+
+	// for i := 0; i < len(litters); i++ {
+	// 	fmt.Printf("Литер: %v \n", litters[i])
+	// }
+	// for i := 0; i < len(staRoom); i++ {
+	// 	fmt.Printf("Литер: %v \n", staRoom[i])
+	// }
+	// for i := 0; i < len(staStatuse); i++ {
+	// 	fmt.Printf("Литер: %v \n", staStatuse[i])
+	// }
+	// for i := 0; i < len(staType); i++ {
+	// 	fmt.Printf("Литер: %v \n", staType[i])
+	// }
 
 	resp, err := http.Get("https://bitrix.1dogma.ru/shahmatki/json.php")
 	if err != nil {
@@ -101,8 +120,7 @@ func GetLayouts() {
 	// 	}
 	// 	store.CreateStaRoom(context.Background(), arg)
 
-	// 	fmt.Printf("key: %v, value: %v \n", i, v)
-
+	// 	// fmt.Printf("key: %v, value: %v \n", i, v)
 	// }
 	// for i, v := range prod.StaStatuses {
 	// 	key, err := strconv.Atoi(i)
@@ -118,8 +136,7 @@ func GetLayouts() {
 	// 	}
 	// 	store.CreateStaStatuse(context.Background(), arg)
 
-	// 	fmt.Printf("key: %v, value: %v \n", i, v)
-
+	// 	// fmt.Printf("key: %v, value: %v \n", i, v)
 	// }
 	// for i, v := range prod.StaTypes {
 	// 	arg := db.CreateStaTypeParams{
@@ -131,11 +148,9 @@ func GetLayouts() {
 	// 	}
 	// 	store.CreateStaType(context.Background(), arg)
 
-	// 	fmt.Printf("key: %v, value: %v \n", i, v)
-
+	// 	// fmt.Printf("key: %v, value: %v \n", i, v)
 	// }
 
-	// fmt.Printf("WTF -----: %v \n", prod.Layouts[9612])
 	// for i := 0; i < len(prod.Builds); i++ {
 	// 	arg := db.CreateComplexParams{
 	// 		BitrixID: prod.Builds[i].BitrixID,
@@ -159,6 +174,31 @@ func GetLayouts() {
 	// }
 
 	for i := 0; i < len(prod.Layouts); i++ {
+		litterExist := false
+		for litterKey := 0; litterKey < len(litters); litterKey++ {
+			if litters[litterKey].BitrixID == prod.Layouts[i].Parent {
+				litterExist = true
+			}
+		}
+		staStatuseExist := false
+		for k := 0; k < len(staStatuse); k++ {
+			if staStatuse[k].BitrixID == int64(prod.Layouts[i].Status) {
+				staStatuseExist = true
+			}
+		}
+		staRoomExist := false
+		for k := 0; k < len(staRoom); k++ {
+			if staRoom[k].BitrixID == int64(prod.Layouts[i].Room) {
+				staRoomExist = true
+			}
+		}
+		staTypeExist := false
+		for k := 0; k < len(staType); k++ {
+			if staType[k].BitrixID == int64(prod.Layouts[i].Type) {
+				staTypeExist = true
+			}
+		}
+
 		arg := db.CreateLayoutParams{
 			Parent: prod.Layouts[i].Parent,
 			Area: sql.NullFloat64{
@@ -205,6 +245,10 @@ func GetLayouts() {
 				Int32: prod.Layouts[i].Status,
 				Valid: true,
 			},
+			LayoutsUrl: sql.NullString{
+				String: prod.Layouts[i].LayoutsURL,
+				Valid:  true,
+			},
 			SvgPath: sql.NullString{
 				String: prod.Layouts[i].SvgPath,
 				Valid:  false,
@@ -213,6 +257,11 @@ func GetLayouts() {
 				Int32: prod.Layouts[i].Type,
 				Valid: true,
 			},
+		}
+
+		// fmt.Printf("WaT:%v, %v, %v, %v", !litterExist, !staStatuseExist, !staRoomExist, !staTypeExist)
+		if !litterExist || !staStatuseExist || !staRoomExist || !staTypeExist {
+			continue
 		}
 
 		complex, err := store.CreateLayout(context.Background(), arg)
@@ -225,5 +274,12 @@ func GetLayouts() {
 	}
 	// fmt.Printf("Success %v \n", prod.itemsStatuses.StaRooms)
 	// fmt.Printf("Success %v \n", prod.itemsStatuses.StaStatuses)
-	// fmt.Printf("Success %v \n", prod)
+
+	// for i := 0; i < len(prod.Litters); i++ {
+	// 	fmt.Printf("Success %v \n", prod.Litters[i])
+	// }
+
+	// fmt.Printf("Success %v \n", prod.Layouts[18569])
+	// fmt.Printf("Success %v \n", prod.Layouts[13841])
+	// fmt.Printf("Success %v \n", prod.Layouts[13842])
 }

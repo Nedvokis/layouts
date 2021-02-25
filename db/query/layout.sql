@@ -12,6 +12,7 @@ INSERT INTO layouts (
 		"price",
 		"room",
 		"status",
+		"layouts_url",
 		"svg_path",
 		"type"
 	)
@@ -29,7 +30,8 @@ VALUES (
 		$11,
 		$12,
 		$13,
-		$14
+		$14,
+		$15
 	)
 RETURNING *;
 -- name: GetLayout :one
@@ -37,11 +39,14 @@ SELECT *
 FROM layouts
 WHERE id = $1
 LIMIT 1;
--- name: ListLayouts :many
+-- name: GetListLayouts :many
 SELECT *
 FROM layouts
 ORDER BY name
 LIMIT $1 OFFSET $2;
+-- name: GetAllListLayouts :many
+SELECT *
+FROM layouts;
 -- name: UpdateSvgPath :exec
 UPDATE layouts
 SET svg_path = $2

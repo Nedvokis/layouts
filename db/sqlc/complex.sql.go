@@ -40,20 +40,20 @@ func (q *Queries) GetComplex(ctx context.Context, id int64) (Complex, error) {
 	return i, err
 }
 
-const listComplex = `-- name: ListComplex :many
+const getListComplex = `-- name: GetListComplex :many
 SELECT id, bitrix_id, name
 FROM complexes
 ORDER BY name
 LIMIT $1 OFFSET $2
 `
 
-type ListComplexParams struct {
+type GetListComplexParams struct {
 	Limit  int32 `json:"limit"`
 	Offset int32 `json:"offset"`
 }
 
-func (q *Queries) ListComplex(ctx context.Context, arg ListComplexParams) ([]Complex, error) {
-	rows, err := q.db.QueryContext(ctx, listComplex, arg.Limit, arg.Offset)
+func (q *Queries) GetListComplex(ctx context.Context, arg GetListComplexParams) ([]Complex, error) {
+	rows, err := q.db.QueryContext(ctx, getListComplex, arg.Limit, arg.Offset)
 	if err != nil {
 		return nil, err
 	}

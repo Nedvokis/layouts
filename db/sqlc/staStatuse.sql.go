@@ -25,3 +25,32 @@ func (q *Queries) CreateStaStatuse(ctx context.Context, arg CreateStaStatusePara
 	err := row.Scan(&i.ID, &i.BitrixID, &i.TypeName)
 	return i, err
 }
+
+const getListAllStaStatuse = `-- name: GetListAllStaStatuse :many
+SELECT id, bitrix_id, type_name
+FROM sta_statuses
+ORDER BY id
+`
+
+func (q *Queries) GetListAllStaStatuse(ctx context.Context) ([]StaStatus, error) {
+	rows, err := q.db.QueryContext(ctx, getListAllStaStatuse)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []StaStatus
+	for rows.Next() {
+		var i StaStatus
+		if err := rows.Scan(&i.ID, &i.BitrixID, &i.TypeName); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}

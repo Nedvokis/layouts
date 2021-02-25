@@ -25,3 +25,32 @@ func (q *Queries) CreateStaRoom(ctx context.Context, arg CreateStaRoomParams) (S
 	err := row.Scan(&i.ID, &i.BitrixID, &i.TypeName)
 	return i, err
 }
+
+const getListAllStaRoom = `-- name: GetListAllStaRoom :many
+SELECT id, bitrix_id, type_name
+FROM sta_room
+ORDER BY id
+`
+
+func (q *Queries) GetListAllStaRoom(ctx context.Context) ([]StaRoom, error) {
+	rows, err := q.db.QueryContext(ctx, getListAllStaRoom)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []StaRoom
+	for rows.Next() {
+		var i StaRoom
+		if err := rows.Scan(&i.ID, &i.BitrixID, &i.TypeName); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}

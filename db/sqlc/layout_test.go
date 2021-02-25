@@ -18,7 +18,7 @@ func TestCreateLayout(t *testing.T) {
 		BitrixID:    sql.NullInt32{Int32: 1, Valid: true},
 		LayoutID:    sql.NullInt32{Int32: 1, Valid: true},
 		LivingArea:  sql.NullFloat64{Float64: 3.69, Valid: true},
-		Num:         sql.NullInt32{Int32: 1, Valid: true},
+		Num:         sql.NullString{String: "1", Valid: true},
 		Price:       sql.NullInt32{Int32: 3500, Valid: true},
 		Room:        sql.NullInt32{Int32: 2, Valid: true},
 		Status:      sql.NullInt32{Int32: 4, Valid: true},

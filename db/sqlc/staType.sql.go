@@ -25,3 +25,32 @@ func (q *Queries) CreateStaType(ctx context.Context, arg CreateStaTypeParams) (S
 	err := row.Scan(&i.ID, &i.BitrixID, &i.TypeName)
 	return i, err
 }
+
+const getListAllStaType = `-- name: GetListAllStaType :many
+SELECT id, bitrix_id, type_name
+FROM sta_types
+ORDER BY id
+`
+
+func (q *Queries) GetListAllStaType(ctx context.Context) ([]StaType, error) {
+	rows, err := q.db.QueryContext(ctx, getListAllStaType)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []StaType
+	for rows.Next() {
+		var i StaType
+		if err := rows.Scan(&i.ID, &i.BitrixID, &i.TypeName); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}

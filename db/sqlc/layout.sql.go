@@ -22,6 +22,7 @@ INSERT INTO layouts (
 		"price",
 		"room",
 		"status",
+		"layouts_url",
 		"svg_path",
 		"type"
 	)
@@ -39,9 +40,10 @@ VALUES (
 		$11,
 		$12,
 		$13,
-		$14
+		$14,
+		$15
 	)
-RETURNING id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, svg_path
+RETURNING id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 `
 
 type CreateLayoutParams struct {
@@ -57,6 +59,7 @@ type CreateLayoutParams struct {
 	Price       sql.NullInt32   `json:"price"`
 	Room        sql.NullInt32   `json:"room"`
 	Status      sql.NullInt32   `json:"status"`
+	LayoutsUrl  sql.NullString  `json:"layouts_url"`
 	SvgPath     sql.NullString  `json:"svg_path"`
 	Type        sql.NullInt32   `json:"type"`
 }
@@ -75,6 +78,7 @@ func (q *Queries) CreateLayout(ctx context.Context, arg CreateLayoutParams) (Lay
 		arg.Price,
 		arg.Room,
 		arg.Status,
+		arg.LayoutsUrl,
 		arg.SvgPath,
 		arg.Type,
 	)
@@ -94,13 +98,59 @@ func (q *Queries) CreateLayout(ctx context.Context, arg CreateLayoutParams) (Lay
 		&i.Status,
 		&i.Type,
 		&i.Room,
+		&i.LayoutsUrl,
 		&i.SvgPath,
 	)
 	return i, err
 }
 
+const getAllListLayouts = `-- name: GetAllListLayouts :many
+SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
+FROM layouts
+`
+
+func (q *Queries) GetAllListLayouts(ctx context.Context) ([]Layout, error) {
+	rows, err := q.db.QueryContext(ctx, getAllListLayouts)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Layout
+	for rows.Next() {
+		var i Layout
+		if err := rows.Scan(
+			&i.ID,
+			&i.Parent,
+			&i.Area,
+			&i.CitchenArea,
+			&i.Door,
+			&i.Floor,
+			&i.BitrixID,
+			&i.LayoutID,
+			&i.LivingArea,
+			&i.Num,
+			&i.Price,
+			&i.Status,
+			&i.Type,
+			&i.Room,
+			&i.LayoutsUrl,
+			&i.SvgPath,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getLayout = `-- name: GetLayout :one
-SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, svg_path
+SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 FROM layouts
 WHERE id = $1
 LIMIT 1
@@ -124,25 +174,26 @@ func (q *Queries) GetLayout(ctx context.Context, id int64) (Layout, error) {
 		&i.Status,
 		&i.Type,
 		&i.Room,
+		&i.LayoutsUrl,
 		&i.SvgPath,
 	)
 	return i, err
 }
 
-const listLayouts = `-- name: ListLayouts :many
-SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, svg_path
+const getListLayouts = `-- name: GetListLayouts :many
+SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 FROM layouts
 ORDER BY name
 LIMIT $1 OFFSET $2
 `
 
-type ListLayoutsParams struct {
+type GetListLayoutsParams struct {
 	Limit  int32 `json:"limit"`
 	Offset int32 `json:"offset"`
 }
 
-func (q *Queries) ListLayouts(ctx context.Context, arg ListLayoutsParams) ([]Layout, error) {
-	rows, err := q.db.QueryContext(ctx, listLayouts, arg.Limit, arg.Offset)
+func (q *Queries) GetListLayouts(ctx context.Context, arg GetListLayoutsParams) ([]Layout, error) {
+	rows, err := q.db.QueryContext(ctx, getListLayouts, arg.Limit, arg.Offset)
 	if err != nil {
 		return nil, err
 	}
@@ -165,6 +216,7 @@ func (q *Queries) ListLayouts(ctx context.Context, arg ListLayoutsParams) ([]Lay
 			&i.Status,
 			&i.Type,
 			&i.Room,
+			&i.LayoutsUrl,
 			&i.SvgPath,
 		); err != nil {
 			return nil, err
