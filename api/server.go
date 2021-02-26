@@ -18,6 +18,7 @@ func NewServer(store *db.Store) *Server {
 
 	// add routes to router
 	router.GET("/layouts", server.GetLayoutsList)
+	router.GET("/layouts/:id", server.GetLayout)
 
 	server.router = router
 	return server

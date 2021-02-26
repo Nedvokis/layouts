@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strconv"
 
 	_ "github.com/jackc/pgx/v4/stdlib"
 	db "github.com/layouts/db/sqlc"
@@ -16,8 +17,8 @@ import (
 type JSONData []JSONLitter
 
 type JSONLitter struct {
-	ID       int     `json:"id"`
-	Entrance int     `json:"entrance"`
+	ID       int64   `json:"id"`
+	Entrance int32   `json:"entrance"`
 	Floors   []Floor `json:"floors"`
 }
 
@@ -46,10 +47,6 @@ func AddPathAndCreateSvgData() {
 		log.Fatal("cannot  connect to db: ", err)
 	}
 
-	dbLayouts, err := store.GetAllListLayouts(context.Background())
-
-	fmt.Printf("lol: %v \n", dbLayouts[0])
-
 	// Open our jsonFile
 	jsonFile, err := os.Open("src/json/floors_svg.json")
 	// if we os.Open returns an error then handle it
@@ -72,10 +69,42 @@ func AddPathAndCreateSvgData() {
 	}
 
 	for i := 0; i < len(litters); i++ {
+		arg := db.GetLayoutByLitterParams{
+			Parent: litters[i].ID,
+			Door: sql.NullInt32{
+				Int32: litters[i].Entrance,
+				Valid: true,
+			},
+		}
+
+		dbLayouts, err := store.GetLayoutByLitter(context.Background(), arg)
+		if err != nil {
+			fmt.Printf("Error ocured: %v", err)
+		}
+		fmt.Printf("Length of layouts array: %v \n", len(dbLayouts))
+
 		for fK := 0; fK < len(litters[i].Floors); fK++ {
-			fmt.Printf("Litter: %v \n", litters[i].ID)
-			fmt.Printf("What: %v \n", litters[i].Floors[fK].FloorNumber[1])
+			for floorItt := litters[i].Floors[fK].FloorNumber[0]; floorItt <= litters[i].Floors[fK].FloorNumber[len(litters[i].Floors[fK].FloorNumber)-1]; floorItt++ {
+				for appartmentItt := 0; appartmentItt < len(litters[i].Floors[fK].Appartments); appartmentItt++ {
+					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number < litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
+						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
+							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
+								arr := db.UpdateSvgPathParams{
+									ID: dbLayouts[dbLayoutItt].ID,
+									SvgPath: sql.NullString{
+										String: litters[i].Floors[fK].Appartments[appartmentItt].Path,
+										Valid:  true,
+									},
+								}
+								err = store.UpdateSvgPath(context.Background(), arr)
+								if err != nil {
+									fmt.Printf("Error ocured: %v", err)
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
-
 }

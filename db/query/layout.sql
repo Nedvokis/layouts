@@ -39,6 +39,11 @@ SELECT *
 FROM layouts
 WHERE id = $1
 LIMIT 1;
+-- name: GetLayoutByLitter :many
+SELECT *
+FROM layouts
+WHERE parent = $1
+	AND door = $2;
 -- name: GetListLayouts :many
 SELECT *
 FROM layouts
