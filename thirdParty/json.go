@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strconv"
 
 	_ "github.com/jackc/pgx/v4/stdlib"
 	db "github.com/layouts/db/sqlc"
@@ -106,72 +107,72 @@ func GetLayouts() {
 		return
 	}
 
-	// for i, v := range prod.StaRooms {
-	// 	key, err := strconv.Atoi(i)
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	arg := db.CreateStaRoomParams{
-	// 		BitrixID: int64(key),
-	// 		TypeName: sql.NullString{
-	// 			String: v.(string),
-	// 			Valid:  true,
-	// 		},
-	// 	}
-	// 	store.CreateStaRoom(context.Background(), arg)
+	for i, v := range prod.StaRooms {
+		key, err := strconv.Atoi(i)
+		if err != nil {
+			panic(err)
+		}
+		arg := db.CreateStaRoomParams{
+			BitrixID: int64(key),
+			TypeName: sql.NullString{
+				String: v.(string),
+				Valid:  true,
+			},
+		}
+		store.CreateStaRoom(context.Background(), arg)
 
-	// 	// fmt.Printf("key: %v, value: %v \n", i, v)
-	// }
-	// for i, v := range prod.StaStatuses {
-	// 	key, err := strconv.Atoi(i)
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	arg := db.CreateStaStatuseParams{
-	// 		BitrixID: int64(key),
-	// 		TypeName: sql.NullString{
-	// 			String: v.(string),
-	// 			Valid:  true,
-	// 		},
-	// 	}
-	// 	store.CreateStaStatuse(context.Background(), arg)
+		// fmt.Printf("key: %v, value: %v \n", i, v)
+	}
+	for i, v := range prod.StaStatuses {
+		key, err := strconv.Atoi(i)
+		if err != nil {
+			panic(err)
+		}
+		arg := db.CreateStaStatuseParams{
+			BitrixID: int64(key),
+			TypeName: sql.NullString{
+				String: v.(string),
+				Valid:  true,
+			},
+		}
+		store.CreateStaStatuse(context.Background(), arg)
 
-	// 	// fmt.Printf("key: %v, value: %v \n", i, v)
-	// }
-	// for i, v := range prod.StaTypes {
-	// 	arg := db.CreateStaTypeParams{
-	// 		BitrixID: int64(i),
-	// 		TypeName: sql.NullString{
-	// 			String: v,
-	// 			Valid:  true,
-	// 		},
-	// 	}
-	// 	store.CreateStaType(context.Background(), arg)
+		// fmt.Printf("key: %v, value: %v \n", i, v)
+	}
+	for i, v := range prod.StaTypes {
+		arg := db.CreateStaTypeParams{
+			BitrixID: int64(i),
+			TypeName: sql.NullString{
+				String: v,
+				Valid:  true,
+			},
+		}
+		store.CreateStaType(context.Background(), arg)
 
-	// 	// fmt.Printf("key: %v, value: %v \n", i, v)
-	// }
+		// fmt.Printf("key: %v, value: %v \n", i, v)
+	}
 
-	// for i := 0; i < len(prod.Builds); i++ {
-	// 	arg := db.CreateComplexParams{
-	// 		BitrixID: prod.Builds[i].BitrixID,
-	// 		Name: sql.NullString{
-	// 			String: prod.Builds[i].Name,
-	// 			Valid:  true,
-	// 		},
-	// 	}
-	// 	store.CreateComplex(context.Background(), arg)
-	// }
-	// for i := 0; i < len(prod.Litters); i++ {
-	// 	arg := db.CreateLitterParams{
-	// 		BitrixID: prod.Litters[i].BitrixID,
-	// 		Name: sql.NullString{
-	// 			String: prod.Litters[i].Name,
-	// 			Valid:  true,
-	// 		},
-	// 		Parent: prod.Litters[i].Parent,
-	// 	}
-	// 	store.CreateLitter(context.Background(), arg)
-	// }
+	for i := 0; i < len(prod.Builds); i++ {
+		arg := db.CreateComplexParams{
+			BitrixID: prod.Builds[i].BitrixID,
+			Name: sql.NullString{
+				String: prod.Builds[i].Name,
+				Valid:  true,
+			},
+		}
+		store.CreateComplex(context.Background(), arg)
+	}
+	for i := 0; i < len(prod.Litters); i++ {
+		arg := db.CreateLitterParams{
+			BitrixID: prod.Litters[i].BitrixID,
+			Name: sql.NullString{
+				String: prod.Litters[i].Name,
+				Valid:  true,
+			},
+			Parent: prod.Litters[i].Parent,
+		}
+		store.CreateLitter(context.Background(), arg)
+	}
 
 	for i := 0; i < len(prod.Layouts); i++ {
 		litterExist := false
