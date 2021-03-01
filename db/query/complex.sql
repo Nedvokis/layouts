@@ -12,3 +12,6 @@ SELECT *
 FROM complexes
 ORDER BY name
 LIMIT $1 OFFSET $2;
+-- name: GetListAllComplex :many
+SELECT *
+FROM complexes;

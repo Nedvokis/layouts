@@ -14,5 +14,9 @@ ORDER BY name
 LIMIT $1 OFFSET $2;
 -- name: GetListAllLitters :many
 SELECT *
+FROM litters;
+-- name: GetListLittersByParent :many
+SELECT *
 FROM litters
-ORDER BY name;
+WHERE parent = $1
+ORDER BY id;
