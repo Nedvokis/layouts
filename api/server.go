@@ -17,14 +17,14 @@ func NewServer(store *db.Store) *Server {
 	router := gin.Default()
 
 	// add routes to router
-	router.GET("/complexes", server.GetComplexesList)
-	router.GET("/complexes/:id", server.GetComplex)
-	router.GET("/litters", server.GetLittersList)
-	router.GET("/litters/:id", server.GetLitter)
-	router.GET("/layouts", server.GetLayoutsList)
-	router.GET("/layouts/:id", server.GetLayout)
-	router.GET("/setDb", server.SetDb)
-	router.GET("/setSvg", server.SetSvg)
+	router.GET("/api2/complexes", server.GetComplexesList)
+	router.GET("/api2/complexes/:id", server.GetComplex)
+	router.GET("/api2/litters", server.GetLittersList)
+	router.GET("/api2/litters/:id", server.GetLitter)
+	router.GET("/api2/layouts", server.GetLayoutsList)
+	router.GET("/api2/layouts/:id", server.GetLayout)
+	router.GET("/api2/setDb", server.SetDb)
+	router.GET("/api2/setSvg", server.SetSvg)
 
 	server.router = router
 	return server
