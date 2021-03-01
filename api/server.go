@@ -1,9 +1,10 @@
 package api
 
 import (
-	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
+	cors "github.com/itsjamie/gin-cors"
 	db "github.com/layouts/db/sqlc"
 )
 
@@ -18,27 +19,28 @@ func NewServer(store *db.Store) *Server {
 	server := &Server{store: store}
 	router := gin.Default()
 
+	router.Use(cors.Middleware(cors.Config{
+		Origins:         "*",
+		Methods:         "GET, PUT, POST, DELETE",
+		RequestHeaders:  "Origin, Authorization, Content-Type",
+		ExposedHeaders:  "",
+		MaxAge:          50 * time.Second,
+		Credentials:     true,
+		ValidateHeaders: false,
+	}))
+
 	// add routes to router
 	router.GET("/api2/complexes", server.GetComplexesList)
 	router.GET("/api2/complexes/:id", server.GetComplex)
-	router.OPTIONS("/api2/complexes", preflight)
 	router.GET("/api2/litters", server.GetLittersList)
 	router.GET("/api2/litters/:id", server.GetLitter)
-	router.OPTIONS("/api2/litters", preflight)
 	router.GET("/api2/layouts", server.GetLayoutsList)
 	router.GET("/api2/layouts/:id", server.GetLayout)
-	router.OPTIONS("/api2/layouts", preflight)
 	router.GET("/api2/setDb", server.SetDb)
 	router.GET("/api2/setSvg", server.SetSvg)
 
 	server.router = router
 	return server
-}
-
-func preflight(c *gin.Context) {
-	c.Header("Access-Control-Allow-Origin", "*")
-	c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
-	c.JSON(http.StatusOK, struct{}{})
 }
 
 // Start runs the HTTP server on a specific addres.
