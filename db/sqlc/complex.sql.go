@@ -40,6 +40,34 @@ func (q *Queries) GetComplex(ctx context.Context, id int64) (Complex, error) {
 	return i, err
 }
 
+const getListAllComplexes = `-- name: GetListAllComplexes :many
+SELECT id, bitrix_id, name
+FROM complexes
+`
+
+func (q *Queries) GetListAllComplexes(ctx context.Context) ([]Complex, error) {
+	rows, err := q.db.QueryContext(ctx, getListAllComplexes)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Complex
+	for rows.Next() {
+		var i Complex
+		if err := rows.Scan(&i.ID, &i.BitrixID, &i.Name); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getListComplex = `-- name: GetListComplex :many
 SELECT id, bitrix_id, name
 FROM complexes

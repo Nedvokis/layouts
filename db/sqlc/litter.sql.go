@@ -35,7 +35,6 @@ func (q *Queries) CreateLitter(ctx context.Context, arg CreateLitterParams) (Lit
 const getListAllLitters = `-- name: GetListAllLitters :many
 SELECT id, parent, bitrix_id, name
 FROM litters
-ORDER BY name
 `
 
 func (q *Queries) GetListAllLitters(ctx context.Context) ([]Litter, error) {
@@ -69,17 +68,11 @@ func (q *Queries) GetListAllLitters(ctx context.Context) ([]Litter, error) {
 const getListLitters = `-- name: GetListLitters :many
 SELECT id, parent, bitrix_id, name
 FROM litters
-ORDER BY name
-LIMIT $1 OFFSET $2
+ORDER BY id
 `
 
-type GetListLittersParams struct {
-	Limit  int32 `json:"limit"`
-	Offset int32 `json:"offset"`
-}
-
-func (q *Queries) GetListLitters(ctx context.Context, arg GetListLittersParams) ([]Litter, error) {
-	rows, err := q.db.QueryContext(ctx, getListLitters, arg.Limit, arg.Offset)
+func (q *Queries) GetListLitters(ctx context.Context) ([]Litter, error) {
+	rows, err := q.db.QueryContext(ctx, getListLitters)
 	if err != nil {
 		return nil, err
 	}
@@ -106,15 +99,50 @@ func (q *Queries) GetListLitters(ctx context.Context, arg GetListLittersParams) 
 	return items, nil
 }
 
-const getLitters = `-- name: GetLitters :one
+const getListLittersByParent = `-- name: GetListLittersByParent :many
+SELECT id, parent, bitrix_id, name
+FROM litters
+WHERE parent = $1
+ORDER BY id
+`
+
+func (q *Queries) GetListLittersByParent(ctx context.Context, parent int64) ([]Litter, error) {
+	rows, err := q.db.QueryContext(ctx, getListLittersByParent, parent)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Litter
+	for rows.Next() {
+		var i Litter
+		if err := rows.Scan(
+			&i.ID,
+			&i.Parent,
+			&i.BitrixID,
+			&i.Name,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getLitter = `-- name: GetLitter :one
 SELECT id, parent, bitrix_id, name
 FROM litters
 WHERE id = $1
 LIMIT 1
 `
 
-func (q *Queries) GetLitters(ctx context.Context, id int64) (Litter, error) {
-	row := q.db.QueryRowContext(ctx, getLitters, id)
+func (q *Queries) GetLitter(ctx context.Context, id int64) (Litter, error) {
+	row := q.db.QueryRowContext(ctx, getLitter, id)
 	var i Litter
 	err := row.Scan(
 		&i.ID,
