@@ -2,7 +2,9 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
+	"os"
 
 	_ "github.com/jackc/pgx/v4/stdlib"
 	"github.com/layouts/api"
@@ -11,12 +13,20 @@ import (
 
 const (
 	dbDriver     = "pgx"
-	dbSource     = "postgresql://root:WEBdeveloepr1452@localhost:5432/layouts?sslmode=disable"
 	serverAdress = "0.0.0.0:8100"
+	HOST         = "database"
+	PORT         = 5432
 )
 
 func main() {
-	conn, err := sql.Open(dbDriver, dbSource)
+	dbUser, dbPassword, dbName :=
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"),
+		os.Getenv("POSTGRES_DB")
+	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		HOST, PORT, dbUser, dbPassword, dbName)
+
+	conn, err := sql.Open(dbDriver, dsn)
 	if err != nil {
 		log.Fatal("cannot connect to db: ", err)
 	}
