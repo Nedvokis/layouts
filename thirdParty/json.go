@@ -4,9 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"encoding/json"
-	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"strconv"
 
@@ -68,11 +66,11 @@ const (
 	dbSource = "postgresql://root:WEBdeveloepr1452@localhost:5432/layouts?sslmode=disable"
 )
 
-func GetLayouts() {
+func GetLayouts() error {
 	conn, err := sql.Open(dbDriver, dbSource)
 	store := db.NewStore(conn)
 	if err != nil {
-		log.Fatal("cannot  connect to db: ", err)
+		return err
 	}
 
 	litters, err := store.GetListAllLitters(context.Background())
@@ -95,22 +93,20 @@ func GetLayouts() {
 
 	resp, err := http.Get("https://bitrix.1dogma.ru/shahmatki/json.php")
 	if err != nil {
-		fmt.Printf("Error %v", err)
-		return
+		return err
 	}
 	defer resp.Body.Close()
 
 	prod := &Data{}
 	err = prod.FromJSON(resp.Body)
 	if err != nil {
-		fmt.Printf("Error %v", err)
-		return
+		return err
 	}
 
 	for i, v := range prod.StaRooms {
 		key, err := strconv.Atoi(i)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		arg := db.CreateStaRoomParams{
 			BitrixID: int64(key),
@@ -126,7 +122,7 @@ func GetLayouts() {
 	for i, v := range prod.StaStatuses {
 		key, err := strconv.Atoi(i)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		arg := db.CreateStaStatuseParams{
 			BitrixID: int64(key),
@@ -265,22 +261,11 @@ func GetLayouts() {
 			continue
 		}
 
-		complex, err := store.CreateLayout(context.Background(), arg)
+		_, err := store.CreateLayout(context.Background(), arg)
 		if err != nil {
-			fmt.Printf("Error %v \n", err)
-			fmt.Printf("Blah: %v \n", prod.Layouts[i])
-			return
+			return err
 		}
-		fmt.Printf("Success %v \n", complex)
+		// fmt.Printf("Success %v \n", complex)
 	}
-	// fmt.Printf("Success %v \n", prod.itemsStatuses.StaRooms)
-	// fmt.Printf("Success %v \n", prod.itemsStatuses.StaStatuses)
-
-	// for i := 0; i < len(prod.Litters); i++ {
-	// 	fmt.Printf("Success %v \n", prod.Litters[i])
-	// }
-
-	// fmt.Printf("Success %v \n", prod.Layouts[18569])
-	// fmt.Printf("Success %v \n", prod.Layouts[13841])
-	// fmt.Printf("Success %v \n", prod.Layouts[13842])
+	return nil
 }

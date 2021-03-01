@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 	"strconv"
 
@@ -40,19 +39,18 @@ type Numbers struct {
 	Step        int `json:"step"`
 }
 
-func AddPathAndCreateSvgData() {
+func AddPathAndCreateSvgData() error {
 	conn, err := sql.Open(dbDriver, dbSource)
 	store := db.NewStore(conn)
 	if err != nil {
-		log.Fatal("cannot  connect to db: ", err)
+		return err
 	}
 
 	// Open our jsonFile
 	jsonFile, err := os.Open("src/json/floors_svg.json")
 	// if we os.Open returns an error then handle it
 	if err != nil {
-		fmt.Println(err)
-		return
+		return err
 	}
 
 	// defer the closing of our jsonFile so that we can parse it later on
@@ -65,7 +63,7 @@ func AddPathAndCreateSvgData() {
 	err = json.Unmarshal(byteValue, &litters)
 
 	if err != nil {
-		fmt.Printf("Error ocured: %v", err)
+		return err
 	}
 
 	for i := 0; i < len(litters); i++ {
@@ -79,7 +77,7 @@ func AddPathAndCreateSvgData() {
 
 		dbLayouts, err := store.GetLayoutByLitter(context.Background(), arg)
 		if err != nil {
-			fmt.Printf("Error ocured: %v", err)
+			return err
 		}
 		fmt.Printf("Length of layouts array: %v \n", len(dbLayouts))
 
@@ -107,4 +105,6 @@ func AddPathAndCreateSvgData() {
 			}
 		}
 	}
+
+	return nil
 }
