@@ -16,8 +16,6 @@ const (
 )
 
 func main() {
-	// thirdparty.GetLayouts()
-	// thirdparty.AddPathAndCreateSvgData()
 	conn, err := sql.Open(dbDriver, dbSource)
 	if err != nil {
 		log.Fatal("cannot connect to db: ", err)
