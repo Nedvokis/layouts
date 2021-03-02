@@ -9,7 +9,7 @@ import (
 )
 
 type GetLayoutsRequest struct {
-	Parent int64 `form:"parent" binding:"min=1"`
+	Parent int64 `form:"parent" binding:"min=1,gtfield=Door"`
 	Door   int32 `form:"door" binding:"min=1"`
 }
 
