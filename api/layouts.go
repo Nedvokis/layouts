@@ -5,26 +5,17 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	db "github.com/layouts/db/sqlc"
 )
 
 type GetLayoutsRequest struct {
 	Parent int64 `form:"parent" binding:"min=1"`
-	Door   int32 `form:"door" binding:"min=1"`
 }
 
 func (server *Server) GetLayoutsList(ctx *gin.Context) {
 	var req GetLayoutsRequest
 	err := ctx.BindQuery(&req)
 	if err == nil {
-		arr := db.GetLayoutByLitterParams{
-			Parent: req.Parent,
-			Door: sql.NullInt32{
-				Int32: req.Door,
-				Valid: true,
-			},
-		}
-		layouts, err := server.store.GetLayoutByLitter(ctx, arr)
+		layouts, err := server.store.GetLayoutByLitter(ctx, req.Parent)
 		if err != nil {
 			ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 			return

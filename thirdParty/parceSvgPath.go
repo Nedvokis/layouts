@@ -67,7 +67,7 @@ func AddPathAndCreateSvgData() error {
 	}
 
 	for i := 0; i < len(litters); i++ {
-		arg := db.GetLayoutByLitterParams{
+		arg := db.GetLayoutByLitterAndDoorParams{
 			Parent: litters[i].ID,
 			Door: sql.NullInt32{
 				Int32: litters[i].Entrance,
@@ -75,7 +75,7 @@ func AddPathAndCreateSvgData() error {
 			},
 		}
 
-		dbLayouts, err := store.GetLayoutByLitter(context.Background(), arg)
+		dbLayouts, err := store.GetLayoutByLitterAndDoor(context.Background(), arg)
 		if err != nil {
 			return err
 		}

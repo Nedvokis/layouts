@@ -184,16 +184,62 @@ const getLayoutByLitter = `-- name: GetLayoutByLitter :many
 SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 FROM layouts
 WHERE parent = $1
+`
+
+func (q *Queries) GetLayoutByLitter(ctx context.Context, parent int64) ([]Layout, error) {
+	rows, err := q.db.QueryContext(ctx, getLayoutByLitter, parent)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Layout
+	for rows.Next() {
+		var i Layout
+		if err := rows.Scan(
+			&i.ID,
+			&i.Parent,
+			&i.Area,
+			&i.CitchenArea,
+			&i.Door,
+			&i.Floor,
+			&i.BitrixID,
+			&i.LayoutID,
+			&i.LivingArea,
+			&i.Num,
+			&i.Price,
+			&i.Status,
+			&i.Type,
+			&i.Room,
+			&i.LayoutsUrl,
+			&i.SvgPath,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const getLayoutByLitterAndDoor = `-- name: GetLayoutByLitterAndDoor :many
+SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
+FROM layouts
+WHERE parent = $1
 	AND door = $2
 `
 
-type GetLayoutByLitterParams struct {
+type GetLayoutByLitterAndDoorParams struct {
 	Parent int64         `json:"parent"`
 	Door   sql.NullInt32 `json:"door"`
 }
 
-func (q *Queries) GetLayoutByLitter(ctx context.Context, arg GetLayoutByLitterParams) ([]Layout, error) {
-	rows, err := q.db.QueryContext(ctx, getLayoutByLitter, arg.Parent, arg.Door)
+func (q *Queries) GetLayoutByLitterAndDoor(ctx context.Context, arg GetLayoutByLitterAndDoorParams) ([]Layout, error) {
+	rows, err := q.db.QueryContext(ctx, getLayoutByLitterAndDoor, arg.Parent, arg.Door)
 	if err != nil {
 		return nil, err
 	}
