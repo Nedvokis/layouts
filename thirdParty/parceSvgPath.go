@@ -95,7 +95,7 @@ func AddPathAndCreateSvgData() error {
 		}
 		// fmt.Printf("Length of layouts array: %v \n", litters[i].ID)
 		if litters[i].ID == 30 {
-			fmt.Printf("here am I: %v \n", dbLayouts)
+			fmt.Printf("this is litter: %v \n", litters[i].ID)
 		}
 
 		for fK := 0; fK < len(litters[i].Floors); fK++ {
