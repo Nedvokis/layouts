@@ -39,7 +39,21 @@ type Numbers struct {
 	Step        int `json:"step"`
 }
 
+const (
+	dbDriver     = "pgx"
+	serverAdress = "0.0.0.0:8100"
+	HOST         = "database"
+	PORT         = 5432
+)
+
 func AddPathAndCreateSvgData() error {
+	dbUser, dbPassword, dbName :=
+	os.Getenv("POSTGRES_USER"),
+	os.Getenv("POSTGRES_PASSWORD"),
+	os.Getenv("POSTGRES_DB")
+	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		HOST, PORT, dbUser, dbPassword, dbName)
+
 	conn, err := sql.Open(dbDriver, dbSource)
 	store := db.NewStore(conn)
 	if err != nil {
