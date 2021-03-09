@@ -110,7 +110,7 @@ func AddPathAndCreateSvgData() error {
 					if litters[i].ID == 30 {
 						fmt.Println("here am I:  3")
 					}
-					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number < litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
+					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number <= litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
 						if litters[i].ID == 30 {
 							fmt.Println("here am I:  4")
 						}
