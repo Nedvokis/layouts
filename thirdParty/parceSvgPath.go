@@ -31,6 +31,7 @@ type Floor struct {
 type Appartment struct {
 	Path    string  `json:"path"`
 	Numbers Numbers `json:"numbers"`
+	Number  int     `json:"number"`
 }
 
 type Numbers struct {
@@ -94,31 +95,30 @@ func AddPathAndCreateSvgData() error {
 			return err
 		}
 		// fmt.Printf("Length of layouts array: %v \n", litters[i].ID)
-		if litters[i].ID == 30 {
-			fmt.Printf("this is litter: %v \n", litters[i].ID)
-		}
-
 		for fK := 0; fK < len(litters[i].Floors); fK++ {
-			if litters[i].ID == 30 {
-				fmt.Println("here am I:  1")
-			}
 			for floorItt := litters[i].Floors[fK].FloorNumber[0]; floorItt <= litters[i].Floors[fK].FloorNumber[len(litters[i].Floors[fK].FloorNumber)-1]; floorItt++ {
-				if litters[i].ID == 30 {
-					fmt.Println("here am I:  2")
-				}
 				for appartmentItt := 0; appartmentItt < len(litters[i].Floors[fK].Appartments); appartmentItt++ {
-					if litters[i].ID == 30 {
-						fmt.Println("here am I:  3")
+					if litters[i].ID == 30 && litters[i].Floors[fK].Appartments[appartmentItt].Number != 0 {
+						number := litters[i].Floors[fK].Appartments[appartmentItt].Number
+						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
+							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
+								arr := db.UpdateSvgPathParams{
+									ID: dbLayouts[dbLayoutItt].ID,
+									SvgPath: sql.NullString{
+										String: litters[i].Floors[fK].Appartments[appartmentItt].Path,
+										Valid:  true,
+									},
+								}
+								err = store.UpdateSvgPath(context.Background(), arr)
+								if err != nil {
+									fmt.Printf("Error ocured: %v", err)
+								}
+							}
+						}
+						continue
 					}
 					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number <= litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
-						if litters[i].ID == 30 {
-							fmt.Println("here am I:  4")
-						}
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
-							if litters[i].ID == 30 {
-								fmt.Println("here am I:  5")
-								fmt.Printf("layout id: %v \n", dbLayouts[dbLayoutItt].ID)
-							}
 							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
 								arr := db.UpdateSvgPathParams{
 									ID: dbLayouts[dbLayoutItt].ID,
