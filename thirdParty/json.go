@@ -61,13 +61,15 @@ func (d *Data) FromJSON(r io.Reader) error {
 	return e.Decode(d)
 }
 
-const (
-	dbDriver = "pgx"
-	dbSource = "postgresql://root:WEBdeveloepr1452@localhost:5432/layouts?sslmode=disable"
-)
-
 func GetLayouts() error {
-	conn, err := sql.Open(dbDriver, dbSource)
+	dbUser, dbPassword, dbName :=
+	os.Getenv("POSTGRES_USER"),
+	os.Getenv("POSTGRES_PASSWORD"),
+	os.Getenv("POSTGRES_DB")
+	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		HOST, PORT, dbUser, dbPassword, dbName)
+
+	conn, err := sql.Open(dbDriver, dsn)
 	store := db.NewStore(conn)
 	if err != nil {
 		return err
