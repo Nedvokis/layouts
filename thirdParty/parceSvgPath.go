@@ -54,7 +54,7 @@ func AddPathAndCreateSvgData() error {
 	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		HOST, PORT, dbUser, dbPassword, dbName)
 
-	conn, err := sql.Open(dbDriver, dbSource)
+	conn, err := sql.Open(dbDriver, dsn)
 	store := db.NewStore(conn)
 	if err != nil {
 		return err
