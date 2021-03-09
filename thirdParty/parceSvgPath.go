@@ -48,9 +48,9 @@ const (
 
 func AddPathAndCreateSvgData() error {
 	dbUser, dbPassword, dbName :=
-	os.Getenv("POSTGRES_USER"),
-	os.Getenv("POSTGRES_PASSWORD"),
-	os.Getenv("POSTGRES_DB")
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"),
+		os.Getenv("POSTGRES_DB")
 	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		HOST, PORT, dbUser, dbPassword, dbName)
 
@@ -93,13 +93,16 @@ func AddPathAndCreateSvgData() error {
 		if err != nil {
 			return err
 		}
-		fmt.Printf("Length of layouts array: %v \n", litters[i].ID)
+		// fmt.Printf("Length of layouts array: %v \n", litters[i].ID)
 
 		for fK := 0; fK < len(litters[i].Floors); fK++ {
 			for floorItt := litters[i].Floors[fK].FloorNumber[0]; floorItt <= litters[i].Floors[fK].FloorNumber[len(litters[i].Floors[fK].FloorNumber)-1]; floorItt++ {
 				for appartmentItt := 0; appartmentItt < len(litters[i].Floors[fK].Appartments); appartmentItt++ {
 					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number < litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
+							if litters[i].ID == 30 {
+								fmt.Printf("Length of layouts array: %v \n", dbLayouts[dbLayoutItt].ID)
+							}
 							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
 								arr := db.UpdateSvgPathParams{
 									ID: dbLayouts[dbLayoutItt].ID,
