@@ -93,7 +93,7 @@ func AddPathAndCreateSvgData() error {
 		if err != nil {
 			return err
 		}
-		fmt.Printf("Length of layouts array: %v \n", len(dbLayouts))
+		fmt.Printf("Length of layouts array: %v \n", litters[i].ID)
 
 		for fK := 0; fK < len(litters[i].Floors); fK++ {
 			for floorItt := litters[i].Floors[fK].FloorNumber[0]; floorItt <= litters[i].Floors[fK].FloorNumber[len(litters[i].Floors[fK].FloorNumber)-1]; floorItt++ {
