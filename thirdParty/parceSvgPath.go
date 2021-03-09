@@ -99,6 +99,7 @@ func AddPathAndCreateSvgData() error {
 			for floorItt := litters[i].Floors[fK].FloorNumber[0]; floorItt <= litters[i].Floors[fK].FloorNumber[len(litters[i].Floors[fK].FloorNumber)-1]; floorItt++ {
 				for appartmentItt := 0; appartmentItt < len(litters[i].Floors[fK].Appartments); appartmentItt++ {
 					if litters[i].ID == 30 && litters[i].Floors[fK].Appartments[appartmentItt].Number != 0 {
+						fmt.Printf("one number: %v \n", litters[i].Floors[fK].Appartments[appartmentItt].Number)
 						number := litters[i].Floors[fK].Appartments[appartmentItt].Number
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
 							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
@@ -117,7 +118,8 @@ func AddPathAndCreateSvgData() error {
 						}
 						continue
 					}
-					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number <= litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
+					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number < litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
+						fmt.Printf("with step number: %v \n", litters[i].Floors[fK].Appartments[appartmentItt].Number)
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
 							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
 								arr := db.UpdateSvgPathParams{
