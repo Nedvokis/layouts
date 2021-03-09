@@ -103,6 +103,7 @@ func AddPathAndCreateSvgData() error {
 						number := litters[i].Floors[fK].Appartments[appartmentItt].Number
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
 							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
+								fmt.Printf("dbLayoutsID: %v \n", dbLayouts[dbLayoutItt].ID)
 								arr := db.UpdateSvgPathParams{
 									ID: dbLayouts[dbLayoutItt].ID,
 									SvgPath: sql.NullString{
@@ -119,7 +120,6 @@ func AddPathAndCreateSvgData() error {
 						continue
 					}
 					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number < litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
-						fmt.Printf("with step number: %v \n", litters[i].Floors[fK].Appartments[appartmentItt].Number)
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
 							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
 								arr := db.UpdateSvgPathParams{
