@@ -7,6 +7,8 @@ import (
 	"io"
 	"net/http"
 	"strconv"
+	"fmt"
+	"os"
 
 	_ "github.com/jackc/pgx/v4/stdlib"
 	db "github.com/layouts/db/sqlc"
