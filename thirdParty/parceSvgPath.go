@@ -98,7 +98,7 @@ func AddPathAndCreateSvgData() error {
 		for fK := 0; fK < len(litters[i].Floors); fK++ {
 			for floorItt := litters[i].Floors[fK].FloorNumber[0]; floorItt <= litters[i].Floors[fK].FloorNumber[len(litters[i].Floors[fK].FloorNumber)-1]; floorItt++ {
 				for appartmentItt := 0; appartmentItt < len(litters[i].Floors[fK].Appartments); appartmentItt++ {
-					if litters[i].ID == 30 && litters[i].Floors[fK].Appartments[appartmentItt].Number != 0 {
+					if (litters[i].ID == 65 || litters[i].ID == 67 || litters[i].ID == 68 || litters[i].ID == 69 || litters[i].ID == 70) && litters[i].Floors[fK].Appartments[appartmentItt].Number != 0 {
 						fmt.Printf("one number: %v \n", litters[i].Floors[fK].Appartments[appartmentItt].Number)
 						number := litters[i].Floors[fK].Appartments[appartmentItt].Number
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
