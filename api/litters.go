@@ -2,7 +2,6 @@ package api
 
 import (
 	"database/sql"
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +13,7 @@ type GetLittersRequest struct {
 
 func (server *Server) GetLittersList(ctx *gin.Context) {
 	var req GetLittersRequest
-	err := ctx.BindQuery(&req)
+	err := ctx.ShouldBindQuery(&req)
 	if err != nil {
 		litters, err := server.store.GetListAllLitters(ctx)
 		if err != nil {
@@ -25,8 +24,6 @@ func (server *Server) GetLittersList(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, litters)
 		return
 	}
-
-	log.Println(req)
 
 	litters, err := server.store.GetListLittersByParent(ctx, req.Parent)
 	if err != nil {
