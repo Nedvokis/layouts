@@ -149,6 +149,139 @@ func (q *Queries) GetAllListLayouts(ctx context.Context) ([]Layout, error) {
 	return items, nil
 }
 
+const getFilteredLayouts = `-- name: GetFilteredLayouts :many
+SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
+FROM layouts
+WHERE type = 1
+	AND status = 2
+	AND (
+		CASE
+			WHEN parent = $1::int THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN area >= $2::float
+			AND area <= $3::float THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN living_area >= $4::float
+			AND living_area <= $5::float THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN citchen_area >= $6::float
+			AND citchen_area <= $7::float THEN true
+		END
+	)
+ORDER BY (
+		CASE
+			WHEN $8::bool THEN citchen_area
+		END
+	) desc,
+	(
+		CASE
+			WHEN $9::bool THEN citchen_area
+		END
+	) asc,
+	(
+		CASE
+			WHEN $10::bool THEN living_area
+		END
+	) desc,
+	(
+		CASE
+			WHEN $11::bool THEN living_area
+		END
+	) asc,
+	(
+		CASE
+			WHEN $12::bool THEN area
+		END
+	) desc,
+	(
+		CASE
+			WHEN $13::bool THEN area
+		END
+	) asc OFFSET $14::int
+LIMIT 12
+`
+
+type GetFilteredLayoutsParams struct {
+	Parent          int32   `json:"parent"`
+	AreaMin         float64 `json:"area_min"`
+	AreaMax         float64 `json:"area_max"`
+	LivingAreaMin   float64 `json:"living_area_min"`
+	LivingAreaMax   float64 `json:"living_area_max"`
+	CitchenAreaMin  float64 `json:"citchen_area_min"`
+	CitchenAreaMax  float64 `json:"citchen_area_max"`
+	CitchenAreaDesc bool    `json:"citchen_area_desc"`
+	CitchenAreaAsc  bool    `json:"citchen_area_asc"`
+	LivingAreaDesc  bool    `json:"living_area_desc"`
+	LivingAreaAsc   bool    `json:"living_area_asc"`
+	AreaDesc        bool    `json:"area_desc"`
+	AreaAsc         bool    `json:"area_asc"`
+	OffSet          int32   `json:"off_set"`
+}
+
+func (q *Queries) GetFilteredLayouts(ctx context.Context, arg GetFilteredLayoutsParams) ([]Layout, error) {
+	rows, err := q.db.QueryContext(ctx, getFilteredLayouts,
+		arg.Parent,
+		arg.AreaMin,
+		arg.AreaMax,
+		arg.LivingAreaMin,
+		arg.LivingAreaMax,
+		arg.CitchenAreaMin,
+		arg.CitchenAreaMax,
+		arg.CitchenAreaDesc,
+		arg.CitchenAreaAsc,
+		arg.LivingAreaDesc,
+		arg.LivingAreaAsc,
+		arg.AreaDesc,
+		arg.AreaAsc,
+		arg.OffSet,
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Layout
+	for rows.Next() {
+		var i Layout
+		if err := rows.Scan(
+			&i.ID,
+			&i.Parent,
+			&i.Area,
+			&i.CitchenArea,
+			&i.Door,
+			&i.Floor,
+			&i.BitrixID,
+			&i.LayoutID,
+			&i.LivingArea,
+			&i.Num,
+			&i.Price,
+			&i.Status,
+			&i.Type,
+			&i.Room,
+			&i.LayoutsUrl,
+			&i.SvgPath,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getLayout = `-- name: GetLayout :one
 SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 FROM layouts
@@ -186,6 +319,7 @@ FROM layouts
 WHERE parent = $1
 	AND type = 1
 	AND status = 2
+LIMIT 12
 `
 
 func (q *Queries) GetLayoutByLitter(ctx context.Context, parent int64) ([]Layout, error) {

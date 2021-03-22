@@ -44,7 +44,8 @@ SELECT *
 FROM layouts
 WHERE parent = $1
 	AND type = 1
-	AND status = 2;
+	AND status = 2
+LIMIT 12;
 -- name: GetLayoutByLitterAndDoor :many
 SELECT *
 FROM layouts
@@ -64,3 +65,62 @@ FROM layouts;
 UPDATE layouts
 SET svg_path = $2
 WHERE id = $1;
+-- name: GetFilteredLayouts :many
+SELECT *
+FROM layouts
+WHERE type = 1
+	AND status = 2
+	AND (
+		CASE
+			WHEN parent = @parent::int THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN area >= @area_min::float
+			AND area <= @area_max::float THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN living_area >= @living_area_min::float
+			AND living_area <= @living_area_max::float THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN citchen_area >= @citchen_area_min::float
+			AND citchen_area <= @citchen_area_max::float THEN true
+		END
+	)
+ORDER BY (
+		CASE
+			WHEN @citchen_area_desc::bool THEN citchen_area
+		END
+	) desc,
+	(
+		CASE
+			WHEN @citchen_area_asc::bool THEN citchen_area
+		END
+	) asc,
+	(
+		CASE
+			WHEN @living_area_desc::bool THEN living_area
+		END
+	) desc,
+	(
+		CASE
+			WHEN @living_area_asc::bool THEN living_area
+		END
+	) asc,
+	(
+		CASE
+			WHEN @area_desc::bool THEN area
+		END
+	) desc,
+	(
+		CASE
+			WHEN @area_asc::bool THEN area
+		END
+	) asc OFFSET @off_set::int
+LIMIT 12;
