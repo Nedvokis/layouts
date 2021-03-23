@@ -156,61 +156,69 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN parent = $1::int THEN true
+			WHEN room = $1::int
+			OR 0 = $1::int THEN true
 		END
 	)
 	AND (
 		CASE
-			WHEN area >= $2::float
-			AND area <= $3::float THEN true
+			WHEN parent = $2::int
+			OR 0 = $2::int THEN true
 		END
 	)
 	AND (
 		CASE
-			WHEN living_area >= $4::float
-			AND living_area <= $5::float THEN true
+			WHEN area >= $3::float
+			AND area <= $4::float THEN true
 		END
 	)
 	AND (
 		CASE
-			WHEN citchen_area >= $6::float
-			AND citchen_area <= $7::float THEN true
+			WHEN living_area >= $5::float
+			AND living_area <= $6::float THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN citchen_area >= $7::float
+			AND citchen_area <= $8::float THEN true
 		END
 	)
 ORDER BY (
 		CASE
-			WHEN $8::bool THEN citchen_area
-		END
-	) desc,
-	(
-		CASE
 			WHEN $9::bool THEN citchen_area
 		END
-	) asc,
+	) desc,
 	(
 		CASE
-			WHEN $10::bool THEN living_area
+			WHEN $10::bool THEN citchen_area
 		END
-	) desc,
+	) asc,
 	(
 		CASE
 			WHEN $11::bool THEN living_area
 		END
-	) asc,
+	) desc,
 	(
 		CASE
-			WHEN $12::bool THEN area
+			WHEN $12::bool THEN living_area
 		END
-	) desc,
+	) asc,
 	(
 		CASE
 			WHEN $13::bool THEN area
 		END
-	) asc OFFSET $14::int
+	) desc,
+	(
+		CASE
+			WHEN $14::bool THEN area
+		END
+	) asc OFFSET $15::int
 LIMIT 12
 `
 
 type GetFilteredLayoutsParams struct {
+	Room            int32   `json:"room"`
 	Parent          int32   `json:"parent"`
 	AreaMin         float64 `json:"area_min"`
 	AreaMax         float64 `json:"area_max"`
@@ -229,6 +237,7 @@ type GetFilteredLayoutsParams struct {
 
 func (q *Queries) GetFilteredLayouts(ctx context.Context, arg GetFilteredLayoutsParams) ([]Layout, error) {
 	rows, err := q.db.QueryContext(ctx, getFilteredLayouts,
+		arg.Room,
 		arg.Parent,
 		arg.AreaMin,
 		arg.AreaMax,

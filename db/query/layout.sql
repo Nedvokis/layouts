@@ -72,7 +72,14 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN parent = @parent::int THEN true
+			WHEN room = @room::int
+			OR 0 = @room::int THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN parent = @parent::int
+			OR 0 = @parent::int THEN true
 		END
 	)
 	AND (

@@ -8,6 +8,10 @@ import (
 	db "github.com/layouts/db/sqlc"
 )
 
+const (
+	MAX_VALUE = 99999
+)
+
 type GetLayoutsRequest struct {
 	AreaMin         float32 `form:"area_min"`
 	AreaMax         float32 `form:"area_max"`
@@ -23,6 +27,7 @@ type GetLayoutsRequest struct {
 	AreaAsc         bool    `form:"area_asc"`
 	OffSet          float32 `form:"off_set"`
 	Parent          int64   `form:"parent"`
+	Room            int64   `form:"room"`
 }
 
 type GetLayoutRequest struct {
@@ -39,24 +44,18 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 	}
 
 	arg := db.GetFilteredLayoutsParams{
-		OffSet:          1,
-		Parent:          1,
-		AreaMax:         6969,
-		LivingAreaMax:   6969,
-		CitchenAreaMax:  6969,
+		AreaMax:         MAX_VALUE,
+		LivingAreaMax:   MAX_VALUE,
+		CitchenAreaMax:  MAX_VALUE,
+		OffSet:          int32(req.OffSet),
+		Room:            int32(req.Room),
+		Parent:          int32(req.Parent),
 		CitchenAreaDesc: req.CitchenAreaDesc,
 		CitchenAreaAsc:  req.CitchenAreaAsc,
 		LivingAreaDesc:  req.LivingAreaDesc,
 		LivingAreaAsc:   req.LivingAreaAsc,
 		AreaDesc:        req.AreaDesc,
 		AreaAsc:         req.AreaAsc,
-	}
-
-	if req.Parent != 0 {
-		arg.Parent = int32(req.Parent)
-	}
-	if req.OffSet != 0 {
-		arg.OffSet = int32(req.OffSet)
 	}
 
 	if req.AreaMin >= 0 && req.AreaMax > 0 && req.AreaMin < req.AreaMax {
@@ -68,6 +67,7 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		arg.LivingAreaMin = float64(req.LivingAreaMin)
 		arg.LivingAreaMax = float64(req.LivingAreaMax)
 	}
+
 	if req.CitchenAreaMin >= 0 && req.CitchenAreaMax > 0 && req.CitchenAreaMin < req.CitchenAreaMax {
 		arg.CitchenAreaMin = float64(req.CitchenAreaMin)
 		arg.CitchenAreaMax = float64(req.CitchenAreaMax)
