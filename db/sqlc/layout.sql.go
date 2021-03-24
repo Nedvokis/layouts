@@ -291,6 +291,145 @@ func (q *Queries) GetFilteredLayouts(ctx context.Context, arg GetFilteredLayouts
 	return items, nil
 }
 
+const getFilteredLayoutsLength = `-- name: GetFilteredLayoutsLength :many
+SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
+FROM layouts
+WHERE type = 1
+	AND status = 2
+	AND (
+		CASE
+			WHEN room = $1::int
+			OR 0 = $1::int THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN parent = $2::int
+			OR 0 = $2::int THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN area >= $3::float
+			AND area <= $4::float THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN living_area >= $5::float
+			AND living_area <= $6::float THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN citchen_area >= $7::float
+			AND citchen_area <= $8::float THEN true
+		END
+	)
+ORDER BY (
+		CASE
+			WHEN $9::bool THEN citchen_area
+		END
+	) desc,
+	(
+		CASE
+			WHEN $10::bool THEN citchen_area
+		END
+	) asc,
+	(
+		CASE
+			WHEN $11::bool THEN living_area
+		END
+	) desc,
+	(
+		CASE
+			WHEN $12::bool THEN living_area
+		END
+	) asc,
+	(
+		CASE
+			WHEN $13::bool THEN area
+		END
+	) desc,
+	(
+		CASE
+			WHEN $14::bool THEN area
+		END
+	) asc
+`
+
+type GetFilteredLayoutsLengthParams struct {
+	Room            int32   `json:"room"`
+	Parent          int32   `json:"parent"`
+	AreaMin         float64 `json:"area_min"`
+	AreaMax         float64 `json:"area_max"`
+	LivingAreaMin   float64 `json:"living_area_min"`
+	LivingAreaMax   float64 `json:"living_area_max"`
+	CitchenAreaMin  float64 `json:"citchen_area_min"`
+	CitchenAreaMax  float64 `json:"citchen_area_max"`
+	CitchenAreaDesc bool    `json:"citchen_area_desc"`
+	CitchenAreaAsc  bool    `json:"citchen_area_asc"`
+	LivingAreaDesc  bool    `json:"living_area_desc"`
+	LivingAreaAsc   bool    `json:"living_area_asc"`
+	AreaDesc        bool    `json:"area_desc"`
+	AreaAsc         bool    `json:"area_asc"`
+}
+
+func (q *Queries) GetFilteredLayoutsLength(ctx context.Context, arg GetFilteredLayoutsLengthParams) ([]Layout, error) {
+	rows, err := q.db.QueryContext(ctx, getFilteredLayoutsLength,
+		arg.Room,
+		arg.Parent,
+		arg.AreaMin,
+		arg.AreaMax,
+		arg.LivingAreaMin,
+		arg.LivingAreaMax,
+		arg.CitchenAreaMin,
+		arg.CitchenAreaMax,
+		arg.CitchenAreaDesc,
+		arg.CitchenAreaAsc,
+		arg.LivingAreaDesc,
+		arg.LivingAreaAsc,
+		arg.AreaDesc,
+		arg.AreaAsc,
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Layout
+	for rows.Next() {
+		var i Layout
+		if err := rows.Scan(
+			&i.ID,
+			&i.Parent,
+			&i.Area,
+			&i.CitchenArea,
+			&i.Door,
+			&i.Floor,
+			&i.BitrixID,
+			&i.LayoutID,
+			&i.LivingArea,
+			&i.Num,
+			&i.Price,
+			&i.Status,
+			&i.Type,
+			&i.Room,
+			&i.LayoutsUrl,
+			&i.SvgPath,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getLayout = `-- name: GetLayout :one
 SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 FROM layouts

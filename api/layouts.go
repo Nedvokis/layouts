@@ -34,6 +34,11 @@ type GetLayoutRequest struct {
 	ID int64 `uri:"id" binding:"required,min=1`
 }
 
+type LayoutData struct {
+	Layouts []db.Layout `json:"layouts"`
+	Length  int         `json:"length"`
+}
+
 func (server *Server) GetLayoutsList(ctx *gin.Context) {
 	var req GetLayoutsRequest
 	err := ctx.ShouldBindQuery(&req)
@@ -73,12 +78,48 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		arg.CitchenAreaMax = float64(req.CitchenAreaMax)
 	}
 
+	argLength := db.GetFilteredLayoutsLengthParams{
+		AreaMax:         MAX_VALUE,
+		LivingAreaMax:   MAX_VALUE,
+		CitchenAreaMax:  MAX_VALUE,
+		Room:            int32(req.Room),
+		Parent:          int32(req.Parent),
+		CitchenAreaDesc: req.CitchenAreaDesc,
+		CitchenAreaAsc:  req.CitchenAreaAsc,
+		LivingAreaDesc:  req.LivingAreaDesc,
+		LivingAreaAsc:   req.LivingAreaAsc,
+		AreaDesc:        req.AreaDesc,
+		AreaAsc:         req.AreaAsc,
+	}
+
+	if req.AreaMin >= 0 && req.AreaMax > 0 && req.AreaMin < req.AreaMax {
+		argLength.AreaMin = float64(req.AreaMin)
+		argLength.AreaMax = float64(req.AreaMax)
+	}
+
+	if req.LivingAreaMin >= 0 && req.LivingAreaMax > 0 && req.LivingAreaMin < req.LivingAreaMax {
+		argLength.LivingAreaMin = float64(req.LivingAreaMin)
+		argLength.LivingAreaMax = float64(req.LivingAreaMax)
+	}
+
+	if req.CitchenAreaMin >= 0 && req.CitchenAreaMax > 0 && req.CitchenAreaMin < req.CitchenAreaMax {
+		argLength.CitchenAreaMin = float64(req.CitchenAreaMin)
+		argLength.CitchenAreaMax = float64(req.CitchenAreaMax)
+	}
+
 	layouts, err := server.store.GetFilteredLayouts(ctx, arg)
+	allLayouts, err := server.store.GetFilteredLayoutsLength(ctx, argLength)
+	length := len(allLayouts)
+
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
-	ctx.JSON(http.StatusOK, layouts)
+
+	ctx.JSON(http.StatusOK, LayoutData{
+		Layouts: layouts,
+		Length:  length,
+	})
 	return
 }
 
