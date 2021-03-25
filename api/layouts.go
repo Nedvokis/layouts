@@ -28,6 +28,7 @@ type GetLayoutsRequest struct {
 	OffSet          float32 `form:"off_set"`
 	Parent          int64   `form:"parent"`
 	Room            int64   `form:"room"`
+	GetAll          bool    `form:"room"`
 }
 
 type GetLayoutRequest struct {
@@ -91,7 +92,6 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		AreaDesc:        req.AreaDesc,
 		AreaAsc:         req.AreaAsc,
 	}
-
 	if req.AreaMin >= 0 && req.AreaMax > 0 && req.AreaMin < req.AreaMax {
 		argLength.AreaMin = float64(req.AreaMin)
 		argLength.AreaMax = float64(req.AreaMax)
@@ -107,9 +107,22 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		argLength.CitchenAreaMax = float64(req.CitchenAreaMax)
 	}
 
-	layouts, err := server.store.GetFilteredLayouts(ctx, arg)
 	allLayouts, err := server.store.GetFilteredLayoutsLength(ctx, argLength)
 	length := len(allLayouts)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	if req.GetAll == true {
+		ctx.JSON(http.StatusOK, LayoutData{
+			Layouts: allLayouts,
+			Length:  length,
+		})
+		return
+	}
+
+	layouts, err := server.store.GetFilteredLayouts(ctx, arg)
 
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
