@@ -28,7 +28,7 @@ type GetLayoutsRequest struct {
 	OffSet          float32 `form:"off_set"`
 	Parent          int64   `form:"parent"`
 	Room            int64   `form:"room"`
-	GetAll          bool    `form:"room"`
+	GetAll          bool    `form:"get_all"`
 }
 
 type GetLayoutRequest struct {
