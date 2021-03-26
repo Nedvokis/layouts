@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -27,7 +28,7 @@ type GetLayoutsRequest struct {
 	AreaAsc         bool    `form:"area_asc"`
 	OffSet          float32 `form:"off_set"`
 	Parent          []int32 `form:"parent"`
-	Room            []int32 `form:"room"`
+	Room            int32   `form:"room"`
 	GetAll          bool    `form:"get_all"`
 }
 
@@ -83,6 +84,8 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		AreaAsc:         req.AreaAsc,
 	}
 
+	log.Println(req.Parent)
+
 	if req.AreaMin >= 0 && req.AreaMax > 0 && req.AreaMin < req.AreaMax {
 		arg.AreaMin = float64(req.AreaMin)
 		arg.AreaMax = float64(req.AreaMax)
@@ -102,8 +105,8 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		AreaMax:         MAX_VALUE,
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
-		Room:            req.Room[0],
-		Parent:          req.Parent[0],
+		Room:            req.Room,
+		Parent:          req.Parent,
 		CitchenAreaDesc: req.CitchenAreaDesc,
 		CitchenAreaAsc:  req.CitchenAreaAsc,
 		LivingAreaDesc:  req.LivingAreaDesc,

@@ -158,14 +158,14 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN room = ANY($1::int [])
+			WHEN room = $1::int
 			OR 0 = $1::int THEN true
 		END
 	)
 	AND (
 		CASE
 			WHEN parent = ANY($2::int [])
-			OR 0 = $2::int THEN true
+			OR 0 = ANY($2::int [0]) THEN true
 		END
 	)
 	AND (
@@ -220,7 +220,7 @@ LIMIT 12
 `
 
 type GetFilteredLayoutsParams struct {
-	Room            []int32 `json:"room"`
+	Room            int32   `json:"room"`
 	Parent          []int32 `json:"parent"`
 	AreaMin         float64 `json:"area_min"`
 	AreaMax         float64 `json:"area_max"`
@@ -239,7 +239,7 @@ type GetFilteredLayoutsParams struct {
 
 func (q *Queries) GetFilteredLayouts(ctx context.Context, arg GetFilteredLayoutsParams) ([]Layout, error) {
 	rows, err := q.db.QueryContext(ctx, getFilteredLayouts,
-		pq.Array(arg.Room),
+		arg.Room,
 		pq.Array(arg.Parent),
 		arg.AreaMin,
 		arg.AreaMax,
@@ -306,8 +306,8 @@ WHERE type = 1
 	)
 	AND (
 		CASE
-			WHEN parent = $2::int
-			OR 0 = $2::int THEN true
+			WHEN parent = ANY($2::int[])
+			OR 0 = ANY($2::int[]) THEN true
 		END
 	)
 	AND (
@@ -362,7 +362,7 @@ ORDER BY (
 
 type GetFilteredLayoutsLengthParams struct {
 	Room            int32   `json:"room"`
-	Parent          int32   `json:"parent"`
+	Parent          []int32 `json:"parent"`
 	AreaMin         float64 `json:"area_min"`
 	AreaMax         float64 `json:"area_max"`
 	LivingAreaMin   float64 `json:"living_area_min"`
@@ -380,7 +380,7 @@ type GetFilteredLayoutsLengthParams struct {
 func (q *Queries) GetFilteredLayoutsLength(ctx context.Context, arg GetFilteredLayoutsLengthParams) ([]Layout, error) {
 	rows, err := q.db.QueryContext(ctx, getFilteredLayoutsLength,
 		arg.Room,
-		arg.Parent,
+		pq.Array(arg.Parent),
 		arg.AreaMin,
 		arg.AreaMax,
 		arg.LivingAreaMin,

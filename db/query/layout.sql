@@ -72,14 +72,14 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN room = ANY(@room::int [])
+			WHEN room = @room::int
 			OR 0 = @room::int THEN true
 		END
 	)
 	AND (
 		CASE
 			WHEN parent = ANY(@parent::int [])
-			OR 0 = @parent::int THEN true
+			OR 0 = ANY(@parent::int [0]) THEN true
 		END
 	)
 	AND (
@@ -144,8 +144,8 @@ WHERE type = 1
 	)
 	AND (
 		CASE
-			WHEN parent = @parent::int
-			OR 0 = @parent::int THEN true
+			WHEN parent = ANY(@parent::int [])
+			OR 0 = ANY(@parent::int []) THEN true
 		END
 	)
 	AND (
