@@ -31,13 +31,32 @@ type GetLayoutsRequest struct {
 	GetAll          bool    `form:"get_all"`
 }
 
+type Layout struct {
+	ID          int64   `json:"id"`
+	Parent      int64   `json:"parent"`
+	Area        float64 `json:"area"`
+	CitchenArea float64 `json:"citchen_area"`
+	Door        int32   `json:"door"`
+	Floor       int32   `json:"floor"`
+	BitrixID    int32   `json:"bitrix_id"`
+	LayoutID    int32   `json:"layout_id"`
+	LivingArea  float64 `json:"living_area"`
+	Num         string  `json:"num"`
+	Price       int32   `json:"price"`
+	Status      int32   `json:"status"`
+	Type        int32   `json:"type"`
+	Room        int32   `json:"room"`
+	LayoutsUrl  string  `json:"layouts_url"`
+	SvgPath     string  `json:"svg_path"`
+}
+
 type GetLayoutRequest struct {
 	ID int64 `uri:"id" binding:"required,min=1`
 }
 
 type LayoutData struct {
-	Layouts []db.Layout `json:"layouts"`
-	Length  int         `json:"length"`
+	Layouts []Layout `json:"layouts"`
+	Length  int      `json:"length"`
 }
 
 func (server *Server) GetLayoutsList(ctx *gin.Context) {
@@ -114,9 +133,31 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		return
 	}
 
+	refactoredAllLayouts := []Layout{}
+	for _, s := range allLayouts {
+		refactoredAllLayouts = append(refactoredAllLayouts, Layout{
+			ID:          s.ID,
+			Parent:      s.Parent,
+			Area:        s.Area.Float64,
+			CitchenArea: s.CitchenArea.Float64,
+			Door:        s.Door.Int32,
+			Floor:       s.Floor.Int32,
+			BitrixID:    s.BitrixID.Int32,
+			LayoutID:    s.LayoutID.Int32,
+			LivingArea:  s.LivingArea.Float64,
+			Num:         s.Num.String,
+			Price:       s.Price.Int32,
+			Status:      s.Status.Int32,
+			Type:        s.Type.Int32,
+			Room:        s.Room.Int32,
+			LayoutsUrl:  s.LayoutsUrl.String,
+			SvgPath:     s.SvgPath.String,
+		})
+	}
+
 	if req.GetAll == true {
 		ctx.JSON(http.StatusOK, LayoutData{
-			Layouts: allLayouts,
+			Layouts: refactoredAllLayouts,
 			Length:  length,
 		})
 		return
@@ -129,10 +170,34 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, LayoutData{
-		Layouts: layouts,
+	refactoredLayouts := []Layout{}
+	for _, s := range layouts {
+		refactoredLayouts = append(refactoredLayouts, Layout{
+			ID:          s.ID,
+			Parent:      s.Parent,
+			Area:        s.Area.Float64,
+			CitchenArea: s.CitchenArea.Float64,
+			Door:        s.Door.Int32,
+			Floor:       s.Floor.Int32,
+			BitrixID:    s.BitrixID.Int32,
+			LayoutID:    s.LayoutID.Int32,
+			LivingArea:  s.LivingArea.Float64,
+			Num:         s.Num.String,
+			Price:       s.Price.Int32,
+			Status:      s.Status.Int32,
+			Type:        s.Type.Int32,
+			Room:        s.Room.Int32,
+			LayoutsUrl:  s.LayoutsUrl.String,
+			SvgPath:     s.SvgPath.String,
+		})
+	}
+
+	data := LayoutData{
+		Layouts: refactoredLayouts,
 		Length:  length,
-	})
+	}
+
+	ctx.JSON(http.StatusOK, data)
 	return
 }
 
@@ -150,6 +215,24 @@ func (server *Server) GetLayout(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
+	data := Layout{
+		ID:          layout.ID,
+		Parent:      layout.Parent,
+		Area:        layout.Area.Float64,
+		CitchenArea: layout.CitchenArea.Float64,
+		Door:        layout.Door.Int32,
+		Floor:       layout.Floor.Int32,
+		BitrixID:    layout.BitrixID.Int32,
+		LayoutID:    layout.LayoutID.Int32,
+		LivingArea:  layout.LivingArea.Float64,
+		Num:         layout.Num.String,
+		Price:       layout.Price.Int32,
+		Status:      layout.Status.Int32,
+		Type:        layout.Type.Int32,
+		Room:        layout.Room.Int32,
+		LayoutsUrl:  layout.LayoutsUrl.String,
+		SvgPath:     layout.SvgPath.String,
+	}
 
-	ctx.JSON(http.StatusOK, layout)
+	ctx.JSON(http.StatusOK, data)
 }
