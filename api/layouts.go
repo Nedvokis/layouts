@@ -26,8 +26,8 @@ type GetLayoutsRequest struct {
 	AreaDesc        bool    `form:"area_desc"`
 	AreaAsc         bool    `form:"area_asc"`
 	OffSet          float32 `form:"off_set"`
-	Parent          int64   `form:"parent"`
-	Room            int64   `form:"room"`
+	Parent          []int32 `form:"parent"`
+	Room            []int32 `form:"room"`
 	GetAll          bool    `form:"get_all"`
 }
 
@@ -73,8 +73,8 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
 		OffSet:          int32(req.OffSet),
-		Room:            int32(req.Room),
-		Parent:          int32(req.Parent),
+		Room:            req.Room,
+		Parent:          req.Parent,
 		CitchenAreaDesc: req.CitchenAreaDesc,
 		CitchenAreaAsc:  req.CitchenAreaAsc,
 		LivingAreaDesc:  req.LivingAreaDesc,
@@ -102,8 +102,8 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		AreaMax:         MAX_VALUE,
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
-		Room:            int32(req.Room),
-		Parent:          int32(req.Parent),
+		Room:            req.Room[0],
+		Parent:          req.Parent[0],
 		CitchenAreaDesc: req.CitchenAreaDesc,
 		CitchenAreaAsc:  req.CitchenAreaAsc,
 		LivingAreaDesc:  req.LivingAreaDesc,

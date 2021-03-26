@@ -6,6 +6,8 @@ package db
 import (
 	"context"
 	"database/sql"
+
+	"github.com/lib/pq"
 )
 
 const createLayout = `-- name: CreateLayout :one
@@ -156,13 +158,13 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN room = $1::int
+			WHEN room = ANY($1::int [])
 			OR 0 = $1::int THEN true
 		END
 	)
 	AND (
 		CASE
-			WHEN parent = $2::int
+			WHEN parent = ANY($2::int [])
 			OR 0 = $2::int THEN true
 		END
 	)
@@ -218,8 +220,8 @@ LIMIT 12
 `
 
 type GetFilteredLayoutsParams struct {
-	Room            int32   `json:"room"`
-	Parent          int32   `json:"parent"`
+	Room            []int32 `json:"room"`
+	Parent          []int32 `json:"parent"`
 	AreaMin         float64 `json:"area_min"`
 	AreaMax         float64 `json:"area_max"`
 	LivingAreaMin   float64 `json:"living_area_min"`
@@ -237,8 +239,8 @@ type GetFilteredLayoutsParams struct {
 
 func (q *Queries) GetFilteredLayouts(ctx context.Context, arg GetFilteredLayoutsParams) ([]Layout, error) {
 	rows, err := q.db.QueryContext(ctx, getFilteredLayouts,
-		arg.Room,
-		arg.Parent,
+		pq.Array(arg.Room),
+		pq.Array(arg.Parent),
 		arg.AreaMin,
 		arg.AreaMax,
 		arg.LivingAreaMin,
