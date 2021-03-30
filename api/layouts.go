@@ -2,7 +2,6 @@ package api
 
 import (
 	"database/sql"
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -26,9 +25,9 @@ type GetLayoutsRequest struct {
 	LivingAreaAsc   bool    `form:"living_area_asc"`
 	AreaDesc        bool    `form:"area_desc"`
 	AreaAsc         bool    `form:"area_asc"`
-	OffSet          float32 `form:"off_set"`
+	OffSet          float64 `form:"off_set"`
 	Parent          []int32 `form:"parent"`
-	Room            int32   `form:"room"`
+	Room            []int32 `form:"room"`
 	GetAll          bool    `form:"get_all"`
 }
 
@@ -73,7 +72,7 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		AreaMax:         MAX_VALUE,
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
-		OffSet:          int32(req.OffSet),
+		OffSet:          req.OffSet,
 		Room:            req.Room,
 		Parent:          req.Parent,
 		CitchenAreaDesc: req.CitchenAreaDesc,
@@ -83,8 +82,6 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		AreaDesc:        req.AreaDesc,
 		AreaAsc:         req.AreaAsc,
 	}
-
-	log.Println(req.Parent)
 
 	if req.AreaMin >= 0 && req.AreaMax > 0 && req.AreaMin < req.AreaMax {
 		arg.AreaMin = float64(req.AreaMin)
@@ -113,6 +110,14 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		LivingAreaAsc:   req.LivingAreaAsc,
 		AreaDesc:        req.AreaDesc,
 		AreaAsc:         req.AreaAsc,
+	}
+	if len(req.Room) == 0 {
+		arg.Room = append(arg.Room, 0)
+		argLength.Room = append(argLength.Room, 0)
+	}
+	if len(req.Parent) == 0 {
+		arg.Parent = append(arg.Parent, 0)
+		argLength.Parent = append(argLength.Parent, 0)
 	}
 	if req.AreaMin >= 0 && req.AreaMax > 0 && req.AreaMin < req.AreaMax {
 		argLength.AreaMin = float64(req.AreaMin)

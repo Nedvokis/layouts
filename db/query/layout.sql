@@ -72,14 +72,14 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN room = @room::int
-			OR 0 = @room::int THEN true
+			WHEN room = ANY(@room::int [])
+			OR 0 = ANY(@room::int [1]) THEN true
 		END
 	)
 	AND (
 		CASE
 			WHEN parent = ANY(@parent::int [])
-			OR 0 = ANY(@parent::int [0]) THEN true
+			OR 0 = ANY(@parent::int [1]) THEN true
 		END
 	)
 	AND (
@@ -129,7 +129,7 @@ ORDER BY (
 		CASE
 			WHEN @area_asc::bool THEN area
 		END
-	) asc OFFSET @off_set::int
+	) asc OFFSET @off_set::float
 LIMIT 12;
 -- name: GetFilteredLayoutsLength :many
 SELECT *
@@ -138,14 +138,14 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN room = @room::int
-			OR 0 = @room::int THEN true
+			WHEN room = ANY(@room::int [])
+			OR 0 = ANY(@room::int [1]) THEN true
 		END
 	)
 	AND (
 		CASE
 			WHEN parent = ANY(@parent::int [])
-			OR 0 = ANY(@parent::int []) THEN true
+			OR 0 = ANY(@parent::int [1]) THEN true
 		END
 	)
 	AND (

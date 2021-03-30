@@ -158,14 +158,14 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN room = $1::int
-			OR 0 = $1::int THEN true
+			WHEN room = ANY($1::int [])
+			OR 0 = ANY($1::int [1]) THEN true
 		END
 	)
 	AND (
 		CASE
 			WHEN parent = ANY($2::int [])
-			OR 0 = ANY($2::int [0]) THEN true
+			OR 0 = ANY($2::int [1]) THEN true
 		END
 	)
 	AND (
@@ -215,12 +215,12 @@ ORDER BY (
 		CASE
 			WHEN $14::bool THEN area
 		END
-	) asc OFFSET $15::int
+	) asc OFFSET $15::float
 LIMIT 12
 `
 
 type GetFilteredLayoutsParams struct {
-	Room            int32   `json:"room"`
+	Room            []int32 `json:"room"`
 	Parent          []int32 `json:"parent"`
 	AreaMin         float64 `json:"area_min"`
 	AreaMax         float64 `json:"area_max"`
@@ -234,12 +234,12 @@ type GetFilteredLayoutsParams struct {
 	LivingAreaAsc   bool    `json:"living_area_asc"`
 	AreaDesc        bool    `json:"area_desc"`
 	AreaAsc         bool    `json:"area_asc"`
-	OffSet          int32   `json:"off_set"`
+	OffSet          float64 `json:"off_set"`
 }
 
 func (q *Queries) GetFilteredLayouts(ctx context.Context, arg GetFilteredLayoutsParams) ([]Layout, error) {
 	rows, err := q.db.QueryContext(ctx, getFilteredLayouts,
-		arg.Room,
+		pq.Array(arg.Room),
 		pq.Array(arg.Parent),
 		arg.AreaMin,
 		arg.AreaMax,
@@ -300,14 +300,14 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
-			WHEN room = $1::int
-			OR 0 = $1::int THEN true
+			WHEN room = ANY($1::int [])
+			OR 0 = ANY($1::int [1]) THEN true
 		END
 	)
 	AND (
 		CASE
-			WHEN parent = ANY($2::int[])
-			OR 0 = ANY($2::int[]) THEN true
+			WHEN parent = ANY($2::int [])
+			OR 0 = ANY($2::int [1]) THEN true
 		END
 	)
 	AND (
@@ -361,7 +361,7 @@ ORDER BY (
 `
 
 type GetFilteredLayoutsLengthParams struct {
-	Room            int32   `json:"room"`
+	Room            []int32 `json:"room"`
 	Parent          []int32 `json:"parent"`
 	AreaMin         float64 `json:"area_min"`
 	AreaMax         float64 `json:"area_max"`
@@ -379,7 +379,7 @@ type GetFilteredLayoutsLengthParams struct {
 
 func (q *Queries) GetFilteredLayoutsLength(ctx context.Context, arg GetFilteredLayoutsLengthParams) ([]Layout, error) {
 	rows, err := q.db.QueryContext(ctx, getFilteredLayoutsLength,
-		arg.Room,
+		pq.Array(arg.Room),
 		pq.Array(arg.Parent),
 		arg.AreaMin,
 		arg.AreaMax,
