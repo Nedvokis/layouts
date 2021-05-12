@@ -618,6 +618,75 @@ func (q *Queries) GetListLayouts(ctx context.Context, arg GetListLayoutsParams) 
 	return items, nil
 }
 
+const updateLayout = `-- name: UpdateLayout :one
+UPDATE layouts
+SET area = $1,
+	citchen_area = $2,
+	door = $3,
+	floor = $4,
+	living_area = $5,
+	num = $6,
+	price = $7,
+	room = $8,
+	status = $9,
+	layouts_url = $10,
+	type = $11
+WHERE bitrix_id = $12
+RETURNING id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
+`
+
+type UpdateLayoutParams struct {
+	Area        sql.NullFloat64 `json:"area"`
+	CitchenArea sql.NullFloat64 `json:"citchen_area"`
+	Door        sql.NullInt32   `json:"door"`
+	Floor       sql.NullInt32   `json:"floor"`
+	LivingArea  sql.NullFloat64 `json:"living_area"`
+	Num         sql.NullString  `json:"num"`
+	Price       sql.NullInt32   `json:"price"`
+	Room        sql.NullInt32   `json:"room"`
+	Status      sql.NullInt32   `json:"status"`
+	LayoutsUrl  sql.NullString  `json:"layouts_url"`
+	Type        sql.NullInt32   `json:"type"`
+	BitrixID    sql.NullInt32   `json:"bitrix_id"`
+}
+
+func (q *Queries) UpdateLayout(ctx context.Context, arg UpdateLayoutParams) (Layout, error) {
+	row := q.db.QueryRowContext(ctx, updateLayout,
+		arg.Area,
+		arg.CitchenArea,
+		arg.Door,
+		arg.Floor,
+		arg.LivingArea,
+		arg.Num,
+		arg.Price,
+		arg.Room,
+		arg.Status,
+		arg.LayoutsUrl,
+		arg.Type,
+		arg.BitrixID,
+	)
+	var i Layout
+	err := row.Scan(
+		&i.ID,
+		&i.Parent,
+		&i.Area,
+		&i.CitchenArea,
+		&i.Door,
+		&i.Floor,
+		&i.BitrixID,
+		&i.LayoutID,
+		&i.LivingArea,
+		&i.Num,
+		&i.Price,
+		&i.Status,
+		&i.Type,
+		&i.Room,
+		&i.LayoutsUrl,
+		&i.SvgPath,
+	)
+	return i, err
+}
+
 const updateSvgPath = `-- name: UpdateSvgPath :exec
 UPDATE layouts
 SET svg_path = $2

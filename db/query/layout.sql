@@ -196,3 +196,18 @@ ORDER BY (
 			WHEN @area_asc::bool THEN area
 		END
 	) asc;
+-- name: UpdateLayout :one
+UPDATE layouts
+SET area = @area,
+	citchen_area = @citchen_area,
+	door = @door,
+	floor = @floor,
+	living_area = @living_area,
+	num = @num,
+	price = @price,
+	room = @room,
+	status = @status,
+	layouts_url = @layouts_url,
+	type = @type
+WHERE bitrix_id = @bitrix_id
+RETURNING *;
