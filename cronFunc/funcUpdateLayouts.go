@@ -1,6 +1,7 @@
-package utils
+package cronFunc
 
 import (
+	"context"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -45,7 +46,7 @@ func (d *Data) FromJSON(r io.Reader) error {
 	return e.Decode(d)
 }
 
-func updateLayouts() error {
+func UpdateLayouts() error {
 	dbUser, dbPassword, dbName :=
 		os.Getenv("POSTGRES_USER"),
 		os.Getenv("POSTGRES_PASSWORD"),
@@ -69,4 +70,64 @@ func updateLayouts() error {
 	if err != nil {
 		return err
 	}
+
+	fmt.Println("test", len(prod.Layouts))
+	for i := 0; i < len(prod.Layouts); i++ {
+		arg := db.UpdateLayoutParams{
+			Area: sql.NullFloat64{
+				Float64: prod.Layouts[i].Area,
+				Valid:   true,
+			},
+			CitchenArea: sql.NullFloat64{
+				Float64: prod.Layouts[i].CitchenArea,
+				Valid:   true,
+			},
+			Door: sql.NullInt32{
+				Int32: prod.Layouts[i].Door,
+				Valid: true,
+			},
+			Floor: sql.NullInt32{
+				Int32: prod.Layouts[i].Floor,
+				Valid: true,
+			},
+			BitrixID: sql.NullInt32{
+				Int32: int32(prod.Layouts[i].BitrixID),
+				Valid: true,
+			},
+			LivingArea: sql.NullFloat64{
+				Float64: prod.Layouts[i].LivingArea,
+				Valid:   true,
+			},
+			Num: sql.NullString{
+				String: prod.Layouts[i].Num,
+				Valid:  true,
+			},
+			Price: sql.NullInt32{
+				Int32: prod.Layouts[i].Price,
+				Valid: true,
+			},
+			Room: sql.NullInt32{
+				Int32: prod.Layouts[i].Room,
+				Valid: true,
+			},
+			Status: sql.NullInt32{
+				Int32: prod.Layouts[i].Status,
+				Valid: true,
+			},
+			LayoutsUrl: sql.NullString{
+				String: prod.Layouts[i].LayoutsURL,
+				Valid:  true,
+			},
+			Type: sql.NullInt32{
+				Int32: prod.Layouts[i].Type,
+				Valid: true,
+			},
+		}
+
+		_, err := store.UpdateLayout(context.Background(), arg)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
