@@ -1,10 +1,16 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
+	"log"
+	"os"
 
 	_ "github.com/jackc/pgx/v4/stdlib"
+	"github.com/layouts/api"
 	"github.com/layouts/cronFunc"
+	db "github.com/layouts/db/sqlc"
+	"github.com/robfig/cron/v3"
 )
 
 const (
@@ -15,34 +21,32 @@ const (
 )
 
 func main() {
-	err := cronFunc.UpdateLayouts()
+	c := cron.New()
+	c.AddFunc("@hourly", func() {
+		err := cronFunc.UpdateLayouts()
+		if err != nil {
+			fmt.Println(err)
+		}
+	})
+	c.Start()
 
-	fmt.Println("Let's a go!")
+	dbUser, dbPassword, dbName :=
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"),
+		os.Getenv("POSTGRES_DB")
+	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		HOST, PORT, dbUser, dbPassword, dbName)
+
+	conn, err := sql.Open(dbDriver, dsn)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal("cannot connect to db: ", err)
 	}
+	store := db.NewStore(conn)
+	server := api.NewServer(store)
 
-	// c := cron.New()
-	// c.AddFunc("@every 1m", func() { cronFunc.UpdateLayouts() })
-	// c.Start()
-
-	// dbUser, dbPassword, dbName :=
-	// 	os.Getenv("POSTGRES_USER"),
-	// 	os.Getenv("POSTGRES_PASSWORD"),
-	// 	os.Getenv("POSTGRES_DB")
-	// dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-	// 	HOST, PORT, dbUser, dbPassword, dbName)
-
-	// conn, err := sql.Open(dbDriver, dsn)
-	// if err != nil {
-	// 	log.Fatal("cannot connect to db: ", err)
-	// }
-	// store := db.NewStore(conn)
-	// server := api.NewServer(store)
-
-	// err = server.Start(serverAdress)
-	// if err != nil {
-	// 	log.Fatal("cannot start server: ", err)
-	// }
+	err = server.Start(serverAdress)
+	if err != nil {
+		log.Fatal("cannot start server: ", err)
+	}
 
 }

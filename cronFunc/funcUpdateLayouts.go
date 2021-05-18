@@ -2,6 +2,7 @@ package cronFunc
 
 import (
 	"context"
+	"crypto/tls"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -39,6 +40,7 @@ const (
 	serverAdress = "0.0.0.0:8100"
 	HOST         = "database"
 	PORT         = 5432
+	LINK         = "https://bitrix.1dogma.ru/shahmatki/json.php"
 )
 
 func (d *Data) FromJSON(r io.Reader) error {
@@ -59,7 +61,11 @@ func UpdateLayouts() error {
 	if err != nil {
 		return err
 	}
-	resp, err := http.Get("https://bitrix.1dogma.ru/shahmatki/json.php")
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	client := &http.Client{Transport: tr}
+	resp, err := client.Get(LINK)
 	if err != nil {
 		return err
 	}
@@ -71,7 +77,6 @@ func UpdateLayouts() error {
 		return err
 	}
 
-	fmt.Println("test", len(prod.Layouts))
 	for i := 0; i < len(prod.Layouts); i++ {
 		arg := db.UpdateLayoutParams{
 			Area: sql.NullFloat64{
