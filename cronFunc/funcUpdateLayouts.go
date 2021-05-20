@@ -131,6 +131,9 @@ func UpdateLayouts() error {
 
 		_, err := store.UpdateLayout(context.Background(), arg)
 		if err != nil {
+			if err == sql.ErrNoRows {
+				continue
+			}
 			return err
 		}
 	}
