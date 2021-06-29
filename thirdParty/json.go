@@ -4,11 +4,11 @@ import (
 	"context"
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
-	"strconv"
-	"fmt"
 	"os"
+	"strconv"
 
 	_ "github.com/jackc/pgx/v4/stdlib"
 	db "github.com/layouts/db/sqlc"
@@ -65,9 +65,9 @@ func (d *Data) FromJSON(r io.Reader) error {
 
 func GetLayouts() error {
 	dbUser, dbPassword, dbName :=
-	os.Getenv("POSTGRES_USER"),
-	os.Getenv("POSTGRES_PASSWORD"),
-	os.Getenv("POSTGRES_DB")
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"),
+		os.Getenv("POSTGRES_DB")
 	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
 		HOST, PORT, dbUser, dbPassword, dbName)
 
@@ -77,23 +77,11 @@ func GetLayouts() error {
 		return err
 	}
 
+	complexes, err := store.GetListAllComplexes(context.Background())
 	litters, err := store.GetListAllLitters(context.Background())
 	staStatuse, err := store.GetListAllStaStatuse(context.Background())
 	staRoom, err := store.GetListAllStaRoom(context.Background())
 	staType, err := store.GetListAllStaType(context.Background())
-
-	// for i := 0; i < len(litters); i++ {
-	// 	fmt.Printf("Литер: %v \n", litters[i])
-	// }
-	// for i := 0; i < len(staRoom); i++ {
-	// 	fmt.Printf("Литер: %v \n", staRoom[i])
-	// }
-	// for i := 0; i < len(staStatuse); i++ {
-	// 	fmt.Printf("Литер: %v \n", staStatuse[i])
-	// }
-	// for i := 0; i < len(staType); i++ {
-	// 	fmt.Printf("Литер: %v \n", staType[i])
-	// }
 
 	resp, err := http.Get("https://bitrix.1dogma.ru/shahmatki/json.php")
 	if err != nil {
