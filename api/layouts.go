@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/layouts/cronFunc"
 	db "github.com/layouts/db/sqlc"
 	thirdparty "github.com/layouts/thirdParty"
 )
@@ -248,6 +249,13 @@ func (server *Server) GetLayout(ctx *gin.Context) {
 
 func (servver *Server) LoadNewLayouts(ctx *gin.Context) {
 	err := thirdparty.GetLayouts()
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+}
+func (servver *Server) UpdateAllLayouts(ctx *gin.Context) {
+	err := cronFunc.UpdateLayouts()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
