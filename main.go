@@ -21,6 +21,19 @@ const (
 )
 
 func main() {
+	err := cronFunc.UpdateLayouts()
+	if err != nil {
+		fmt.Println(err)
+	}
+	c := cron.New()
+	c.AddFunc("@daily", func() {
+		err := cronFunc.UpdateLayouts()
+		if err != nil {
+			fmt.Println(err)
+		}
+	})
+	c.Start()
+
 	dbUser, dbPassword, dbName :=
 		os.Getenv("POSTGRES_USER"),
 		os.Getenv("POSTGRES_PASSWORD"),
@@ -40,16 +53,4 @@ func main() {
 		log.Fatal("cannot start server: ", err)
 	}
 
-	err = cronFunc.UpdateLayouts()
-	if err != nil {
-		fmt.Println(err)
-	}
-	c := cron.New()
-	c.AddFunc("@daily", func() {
-		err := cronFunc.UpdateLayouts()
-		if err != nil {
-			fmt.Println(err)
-		}
-	})
-	c.Start()
 }
