@@ -128,6 +128,7 @@ func UpdateLayouts() error {
 				Valid: true,
 			},
 		}
+		fmt.Printf("%+v\n", arg)
 
 		_, err := store.UpdateLayout(context.Background(), arg)
 		if err != nil {
