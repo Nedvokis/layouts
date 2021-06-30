@@ -2,6 +2,7 @@ package thirdparty
 
 import (
 	"context"
+	"crypto/tls"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -46,9 +47,13 @@ type Room struct {
 }
 
 type itemsStatuses struct {
-	StaRooms    map[string]interface{} `json:"ROOMS"`
+	StaRooms    []StaRooms             `json:"ROOMS"`
 	StaStatuses map[string]interface{} `json:"STATUSES"`
 	StaTypes    []string               `json:"TYPES"`
+}
+type StaRooms struct {
+	BitrixID int64  `json:"id" form:"id"`
+	TypeName string `json:"value" form:"value"`
 }
 
 type Data struct {
@@ -79,11 +84,16 @@ func GetLayouts() error {
 
 	complexes, err := store.GetListAllComplexes(context.Background())
 	litters, err := store.GetListAllLitters(context.Background())
-	staStatuse, err := store.GetListAllStaStatuse(context.Background())
-	staRoom, err := store.GetListAllStaRoom(context.Background())
-	staType, err := store.GetListAllStaType(context.Background())
+	layouts, err := store.GetAllListLayouts(context.Background())
+	// staStatuse, err := store.GetListAllStaStatuse(context.Background())
+	// staRoom, err := store.GetListAllStaRoom(context.Background())
+	// staType, err := store.GetListAllStaType(context.Background())
 
-	resp, err := http.Get("https://bitrix.1dogma.ru/shahmatki/json.php")
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	client := &http.Client{Transport: tr}
+	resp, err := client.Get("https://bitrix.1dogma.ru/shahmatki/json.php")
 	if err != nil {
 		return err
 	}
@@ -95,15 +105,11 @@ func GetLayouts() error {
 		return err
 	}
 
-	for i, v := range prod.StaRooms {
-		key, err := strconv.Atoi(i)
-		if err != nil {
-			return err
-		}
+	for _, v := range prod.StaRooms {
 		arg := db.CreateStaRoomParams{
-			BitrixID: int64(key),
+			BitrixID: v.BitrixID,
 			TypeName: sql.NullString{
-				String: v.(string),
+				String: v.TypeName,
 				Valid:  true,
 			},
 		}
@@ -140,124 +146,123 @@ func GetLayouts() error {
 		// fmt.Printf("key: %v, value: %v \n", i, v)
 	}
 
-	for i := 0; i < len(prod.Builds); i++ {
+	mComplex := make(map[int64]bool)
+	cComplex := []Build{}
+
+	for _, item := range complexes {
+		mComplex[item.BitrixID] = true
+	}
+	for _, item := range prod.Builds {
+		if _, ok := mComplex[item.BitrixID]; !ok {
+			cComplex = append(cComplex, item)
+		}
+	}
+	for _, newComplex := range cComplex {
 		arg := db.CreateComplexParams{
-			BitrixID: prod.Builds[i].BitrixID,
+			BitrixID: newComplex.BitrixID,
 			Name: sql.NullString{
-				String: prod.Builds[i].Name,
+				String: newComplex.Name,
 				Valid:  true,
 			},
 		}
-		store.CreateComplex(context.Background(), arg)
-	}
-	for i := 0; i < len(prod.Litters); i++ {
-		arg := db.CreateLitterParams{
-			BitrixID: prod.Litters[i].BitrixID,
-			Name: sql.NullString{
-				String: prod.Litters[i].Name,
-				Valid:  true,
-			},
-			Parent: prod.Litters[i].Parent,
-		}
-		store.CreateLitter(context.Background(), arg)
-	}
-
-	for i := 0; i < len(prod.Layouts); i++ {
-		litterExist := false
-		for litterKey := 0; litterKey < len(litters); litterKey++ {
-			if litters[litterKey].BitrixID == prod.Layouts[i].Parent {
-				litterExist = true
-			}
-		}
-		staStatuseExist := false
-		for k := 0; k < len(staStatuse); k++ {
-			if staStatuse[k].BitrixID == int64(prod.Layouts[i].Status) {
-				staStatuseExist = true
-			}
-		}
-		staRoomExist := false
-		for k := 0; k < len(staRoom); k++ {
-			if staRoom[k].BitrixID == int64(prod.Layouts[i].Room) {
-				staRoomExist = true
-			}
-		}
-		staTypeExist := false
-		for k := 0; k < len(staType); k++ {
-			if staType[k].BitrixID == int64(prod.Layouts[i].Type) {
-				staTypeExist = true
-			}
-		}
-
-		arg := db.CreateLayoutParams{
-			Parent: prod.Layouts[i].Parent,
-			Area: sql.NullFloat64{
-				Float64: prod.Layouts[i].Area,
-				Valid:   true,
-			},
-			CitchenArea: sql.NullFloat64{
-				Float64: prod.Layouts[i].CitchenArea,
-				Valid:   true,
-			},
-			Door: sql.NullInt32{
-				Int32: prod.Layouts[i].Door,
-				Valid: true,
-			},
-			Floor: sql.NullInt32{
-				Int32: prod.Layouts[i].Floor,
-				Valid: true,
-			},
-			BitrixID: sql.NullInt32{
-				Int32: int32(prod.Layouts[i].BitrixID),
-				Valid: true,
-			},
-			LayoutID: sql.NullInt32{
-				Int32: prod.Layouts[i].LayoutID,
-				Valid: true,
-			},
-			LivingArea: sql.NullFloat64{
-				Float64: prod.Layouts[i].LivingArea,
-				Valid:   true,
-			},
-			Num: sql.NullString{
-				String: prod.Layouts[i].Num,
-				Valid:  true,
-			},
-			Price: sql.NullInt32{
-				Int32: prod.Layouts[i].Price,
-				Valid: true,
-			},
-			Room: sql.NullInt32{
-				Int32: prod.Layouts[i].Room,
-				Valid: true,
-			},
-			Status: sql.NullInt32{
-				Int32: prod.Layouts[i].Status,
-				Valid: true,
-			},
-			LayoutsUrl: sql.NullString{
-				String: prod.Layouts[i].LayoutsURL,
-				Valid:  true,
-			},
-			SvgPath: sql.NullString{
-				String: prod.Layouts[i].SvgPath,
-				Valid:  false,
-			},
-			Type: sql.NullInt32{
-				Int32: prod.Layouts[i].Type,
-				Valid: true,
-			},
-		}
-
-		// fmt.Printf("WaT:%v, %v, %v, %v", !litterExist, !staStatuseExist, !staRoomExist, !staTypeExist)
-		if !litterExist || !staStatuseExist || !staRoomExist || !staTypeExist {
-			continue
-		}
-
-		_, err := store.CreateLayout(context.Background(), arg)
+		_, err = store.CreateComplex(context.Background(), arg)
 		if err != nil {
 			return err
 		}
-		// fmt.Printf("Success %v \n", complex)
 	}
+
+	mLitters := make(map[int64]bool)
+	cLitters := []Litter{}
+
+	for _, item := range litters {
+		mLitters[item.BitrixID] = true
+	}
+	for _, item := range prod.Litters {
+		if _, ok := mLitters[item.BitrixID]; !ok {
+			cLitters = append(cLitters, item)
+		}
+	}
+	for _, newLitter := range cLitters {
+		arg := db.CreateLitterParams{
+			BitrixID: newLitter.BitrixID,
+			Name: sql.NullString{
+				String: newLitter.Name,
+				Valid:  true,
+			},
+			Parent: newLitter.Parent,
+		}
+		_, err := store.CreateLitter(context.Background(), arg)
+		if err != nil {
+			return err
+		}
+	}
+
+	mLayouts := make(map[int64]bool)
+	cLayouts := []Layout{}
+
+	for _, item := range layouts {
+		mLayouts[int64(item.BitrixID.Int32)] = true
+	}
+	for _, item := range prod.Layouts {
+		if _, ok := mLayouts[item.BitrixID]; !ok {
+			cLayouts = append(cLayouts, item)
+		}
+	}
+	for _, newLayout := range cLayouts {
+		arg := db.CreateLayoutParams{
+			Parent: newLayout.Parent,
+			Area: sql.NullFloat64{
+				Float64: newLayout.Area,
+				Valid:   true,
+			},
+			CitchenArea: sql.NullFloat64{
+				Float64: newLayout.CitchenArea,
+				Valid:   true,
+			},
+			Door: sql.NullInt32{
+				Int32: newLayout.Door,
+				Valid: true,
+			},
+			Floor: sql.NullInt32{
+				Int32: newLayout.Floor,
+				Valid: true,
+			},
+			BitrixID: sql.NullInt32{
+				Int32: int32(newLayout.BitrixID),
+				Valid: true,
+			},
+			LayoutID: sql.NullInt32{
+				Int32: newLayout.LayoutID,
+				Valid: true,
+			},
+			LivingArea: sql.NullFloat64{
+				Float64: newLayout.LivingArea,
+				Valid:   true,
+			},
+			Num: sql.NullString{
+				String: newLayout.Num,
+				Valid:  true,
+			},
+			Price: sql.NullInt32{
+				Int32: newLayout.Price,
+				Valid: true,
+			},
+			Room: sql.NullInt32{
+				Int32: newLayout.Room,
+				Valid: true,
+			},
+			Status: sql.NullInt32{
+				Int32: newLayout.Status,
+				Valid: true,
+			},
+		}
+		if newLayout.Status != 0 {
+			_, err := store.CreateLayout(context.Background(), arg)
+			if err != nil {
+				return err
+			}
+		}
+	}
+
 	return nil
 }

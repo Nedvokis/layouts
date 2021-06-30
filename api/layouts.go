@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	db "github.com/layouts/db/sqlc"
+	thirdparty "github.com/layouts/thirdParty"
 )
 
 const (
@@ -243,4 +244,12 @@ func (server *Server) GetLayout(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, data)
+}
+
+func (servver *Server) LoadNewLayouts(ctx *gin.Context) {
+	err := thirdparty.GetLayouts()
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
 }

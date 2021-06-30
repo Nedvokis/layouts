@@ -39,6 +39,8 @@ func NewServer(store *db.Store) *Server {
 	router.GET("/api2/setDb", server.SetDb)
 	router.GET("/api2/setSvg", server.SetSvg)
 
+	router.GET("/api2/addNewLayouts", server.LoadNewLayouts)
+
 	server.router = router
 	return server
 }
