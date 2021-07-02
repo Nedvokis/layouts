@@ -36,7 +36,7 @@ type Appartment struct {
 
 type Numbers struct {
 	StartNumber int `json:"start_number"`
-	Endnumber   int `json:"end_number"`
+	EndNumber   int `json:"end_number"`
 	Step        int `json:"step"`
 }
 
@@ -81,11 +81,11 @@ func AddPathAndCreateSvgData() error {
 		return err
 	}
 
-	for i := 0; i < len(litters); i++ {
+	for _, litter := range litters {
 		arg := db.GetLayoutByLitterAndDoorParams{
-			Parent: litters[i].ID,
+			Parent: litter.ID,
 			Door: sql.NullInt32{
-				Int32: litters[i].Entrance,
+				Int32: litter.Entrance,
 				Valid: true,
 			},
 		}
@@ -94,44 +94,48 @@ func AddPathAndCreateSvgData() error {
 		if err != nil {
 			return err
 		}
-		// fmt.Printf("Length of layouts array: %v \n", litters[i].ID)
-		for fK := 0; fK < len(litters[i].Floors); fK++ {
-			for floorItt := litters[i].Floors[fK].FloorNumber[0]; floorItt <= litters[i].Floors[fK].FloorNumber[len(litters[i].Floors[fK].FloorNumber)-1]; floorItt++ {
-				for appartmentItt := 0; appartmentItt < len(litters[i].Floors[fK].Appartments); appartmentItt++ {
-					if (litters[i].ID == 65 || litters[i].ID == 67 || litters[i].ID == 68 || litters[i].ID == 69 || litters[i].ID == 70) && litters[i].Floors[fK].Appartments[appartmentItt].Number != 0 {
-						fmt.Printf("one number: %v \n", litters[i].Floors[fK].Appartments[appartmentItt].Number)
-						number := litters[i].Floors[fK].Appartments[appartmentItt].Number
+		if litter.ID == 137 {
+			fmt.Println(arg)
+			fmt.Println(dbLayouts)
+		}
+		for _, floor := range litter.Floors {
+			for floorItt := floor.FloorNumber[0]; floorItt <= floor.FloorNumber[len(floor.FloorNumber)-1]; floorItt++ {
+				for _, appartmentItt := range floor.Appartments {
+					if appartmentItt.Number != 0 {
+						number := appartmentItt.Number
 						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
+							fmt.Println(int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number))
 							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
 								fmt.Printf("dbLayoutsID: %v \n", dbLayouts[dbLayoutItt].ID)
 								arr := db.UpdateSvgPathParams{
 									ID: dbLayouts[dbLayoutItt].ID,
 									SvgPath: sql.NullString{
-										String: litters[i].Floors[fK].Appartments[appartmentItt].Path,
+										String: appartmentItt.Path,
 										Valid:  true,
 									},
 								}
 								err = store.UpdateSvgPath(context.Background(), arr)
 								if err != nil {
-									fmt.Printf("Error ocured: %v", err)
+									return err
 								}
 							}
 						}
 						continue
 					}
-					for number := litters[i].Floors[fK].Appartments[appartmentItt].Numbers.StartNumber; number < litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Endnumber; number += litters[i].Floors[fK].Appartments[appartmentItt].Numbers.Step {
-						for dbLayoutItt := 0; dbLayoutItt < len(dbLayouts); dbLayoutItt++ {
-							if int(dbLayouts[dbLayoutItt].Floor.Int32) == floorItt && dbLayouts[dbLayoutItt].Num.String == strconv.Itoa(number) {
+
+					for number := appartmentItt.Numbers.StartNumber; number <= appartmentItt.Numbers.EndNumber; number += appartmentItt.Numbers.Step {
+						for _, dbLayout := range dbLayouts {
+							if int(dbLayout.Floor.Int32) == floorItt && dbLayout.Num.String == strconv.Itoa(number) {
 								arr := db.UpdateSvgPathParams{
-									ID: dbLayouts[dbLayoutItt].ID,
+									ID: dbLayout.ID,
 									SvgPath: sql.NullString{
-										String: litters[i].Floors[fK].Appartments[appartmentItt].Path,
+										String: appartmentItt.Path,
 										Valid:  true,
 									},
 								}
 								err = store.UpdateSvgPath(context.Background(), arr)
 								if err != nil {
-									fmt.Printf("Error ocured: %v", err)
+									return err
 								}
 							}
 						}

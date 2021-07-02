@@ -25,7 +25,7 @@ func (server *Server) SetDb(ctx *gin.Context) {
 func (server *Server) SetSvg(ctx *gin.Context) {
 	err := thirdparty.AddPathAndCreateSvgData()
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 

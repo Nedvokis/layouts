@@ -467,8 +467,6 @@ const getLayoutByLitter = `-- name: GetLayoutByLitter :many
 SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 FROM layouts
 WHERE parent = $1
-	AND type = 1
-	AND status = 2
 LIMIT 12
 `
 
@@ -517,8 +515,6 @@ SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living
 FROM layouts
 WHERE parent = $1
 	AND door = $2
-	AND type = 1
-	AND status = 2
 `
 
 type GetLayoutByLitterAndDoorParams struct {

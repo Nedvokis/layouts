@@ -43,16 +43,12 @@ LIMIT 1;
 SELECT *
 FROM layouts
 WHERE parent = $1
-	AND type = 1
-	AND status = 2
 LIMIT 12;
 -- name: GetLayoutByLitterAndDoor :many
 SELECT *
 FROM layouts
-WHERE parent = $1
-	AND door = $2
-	AND type = 1
-	AND status = 2;
+WHERE parent = @parent
+	AND door = @door;
 -- name: GetListLayouts :many
 SELECT *
 FROM layouts
