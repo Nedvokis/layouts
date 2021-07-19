@@ -6629,521 +6629,2565 @@
     ]
   },
   {
-    "id": null,
-    "entrance": null,
+    "id": 90,
+    "entrance": 3,
     "floors": [
       {
         "floor_number": [2],
         "height_for_svg": 600,
-        "width_for_svg": null,
+        "width_for_svg": 330.491,
         "appartaments": [
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 346,
+              "end_number": 346,
               "step": 12
             },
-            "path": ""
+            "path": "M 271.6875,259.125 H 148.25 v -56.5 h 123.41797 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 347,
+              "end_number": 347,
               "step": 12
             },
-            "path": ""
+            "path": "M 253.03375,415.95556 H 148.22726 V 325.0625 H 253.0247 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 348,
+              "end_number": 348,
               "step": 12
             },
-            "path": ""
+            "path": "M 253.05584,507.87944 H 148.22726 v -91.92388 h 104.80649 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 349,
+              "end_number": 349,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.00271,523.5 H 101 v 29.8125 H 17.0625 v 44.54628 H 253.05584 V 507.87944 H 148.22726 v 8.48529 h -26.22924 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 350,
+              "end_number": 350,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.00234,462.27106 H 2.3864854 c 0,0 1.1135146,27.41644 14.6760146,41.79144 v 49.25 H 101 V 523.5 h 21.00271 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 351,
+              "end_number": 351,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.01459,369.72846 H 17.589281 v 50.64652 c 0,0 -13.0814753,12.99309 -15.2027956,41.89608 H 122.00234 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 352,
+              "end_number": 352,
               "step": 12
             },
-            "path": ""
+            "path": "M 121.9871,232.54974 H 17.589281 V 369.72846 H 122.01459 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 353,
+              "end_number": 353,
               "step": 12
             },
-            "path": ""
+            "path": "M 121.97592,172.976 H 4.1542523 c 0,0 4.7729708,35.53211 13.4350287,54.80077 v 4.77297 H 121.9871 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 354,
+              "end_number": 354,
               "step": 12
             },
-            "path": ""
+            "path": "M 3.7123106,116.49584 H 121.97592 V 172.976 H 4.1542523 c 0,0 -3.88908724,-40.21671 -0.4419417,-56.48016 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 355,
+              "end_number": 355,
               "step": 12
             },
-            "path": ""
+            "path": "M 148.05048,1.8561553 V 116.49584 H 3.7123106 c 0,0 6.3639614,-36.150832 13.5234174,-54.270443 V 1.8395824 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 356,
+              "end_number": 356,
               "step": 12
             },
-            "path": ""
+            "path": "m 328.80465,104.74019 h -79.46112 v 11.75565 H 201.61382 148.05048 V 1.8561553 h 180.74313 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 357,
+              "end_number": 357,
               "step": 12
             },
-            "path": ""
+            "path": "M 271.66797,202.625 H 216.905 v -59.17071 h -15.29118 v -26.95845 h 47.72971 v -11.75565 h 79.46112 v 101.29305 h -57.13701 z"
           }
         ]
       },
       {
         "floor_number": [3, 9],
         "height_for_svg": 600,
-        "width_for_svg": null,
+        "width_for_svg": 330.491,
         "appartaments": [
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 358,
+              "end_number": 430,
               "step": 12
             },
-            "path": ""
+            "path": "m 271.88256,259.24302 h -123.6553 v -57.01048 h 123.6553 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 359,
+              "end_number": 431,
               "step": 12
             },
-            "path": ""
+            "path": "M 253.13281,416.25 H 148.22726 v -91.3125 h 104.91727 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 360,
+              "end_number": 432,
               "step": 12
             },
-            "path": ""
+            "path": "m 253.14423,507.87944 c -0.58173,0.43306 -104.91697,0 -104.91697,0 V 416.25 h 104.90555 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 361,
+              "end_number": 433,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.20364,523.5 H 101.25 v 29.6875 h -84 v 45.11322 H 253.14423 V 507.87944 H 148.22726 v 7.86657 h -26.0259 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 362,
+              "end_number": 434,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.19922,462.1875 H 2.3125 c 0,0 0.75,26.125 14.9375,41.875 v 49.125 h 84 V 523.5 h 20.95364 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 363,
+              "end_number": 435,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.18731,369.90523 H 16.970563 v 50.15727 c 0,0 -14.783063,18.6875 -14.658063,42.125 h 119.88672 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 364,
+              "end_number": 436,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.19023,232.46135 H 16.970563 V 369.90523 H 122.18731 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 365,
+              "end_number": 437,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.1875,173.1875 H 4 c 0,0 5.6343299,41.68457 12.970563,54.58927 v 4.68458 H 122.19023 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 366,
+              "end_number": 438,
               "step": 12
             },
-            "path": ""
+            "path": "M 3.7123106,116.1875 H 122.1875 v 57 H 4 c 0,0 -3.26287879,-32.5 -0.2876894,-57 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 367,
+              "end_number": 439,
               "step": 12
             },
-            "path": ""
+            "path": "M 148.05048,1.8561553 V 116.1875 H 3.7123106 c 0,0 4.2426407,-30.62758 13.5234174,-53.962103 V 1.8340582 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 368,
+              "end_number": 440,
               "step": 12
             },
-            "path": ""
+            "path": "m 328.625,104.3125 h -79.5625 v 11.875 h -47.625 -53.38702 V 1.8561553 h 180.5553 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 369,
+              "end_number": 441,
               "step": 12
             },
-            "path": ""
+            "path": "M 271.88256,202.23254 H 216.1875 V 143.375 h -14.75 v -27.1875 h 47.625 v -11.875 H 328.625 V 206.125 h -56.75 z"
           }
         ]
       },
       {
         "floor_number": [10, 14],
         "height_for_svg": 600,
-        "width_for_svg": null,
+        "width_for_svg": 330.404,
         "appartaments": [
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 442,
+              "end_number": 490,
               "step": 12
             },
-            "path": ""
+            "path": "M 271.875,259.1875 H 148.5625 V 203 h 123.31348 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 443,
+              "end_number": 491,
               "step": 12
             },
-            "path": ""
+            "path": "M 252.88399,415.875 H 148.22726 v -90.78266 h 104.66285 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 444,
+              "end_number": 492,
               "step": 12
             },
-            "path": ""
+            "path": "M 252.87906,507.87944 H 148.22726 V 415.875 h 104.65673 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 445,
+              "end_number": 493,
               "step": 12
             },
-            "path": ""
+            "path": "M 100.32077,553.57622 H 17.412504 v 44.45934 H 252.87906 v -90.15612 h -104.6518 v 8.57367 l -25.98065,0 -0.0149,6.54074 h -21.91097 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 446,
+              "end_number": 494,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.24009,462.27106 H 2.1213203 c 0,0 -2.65165038,16.61701 15.2911837,41.80769 v 49.49747 h 82.908266 v -30.58237 h 21.91097 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 447,
+              "end_number": 495,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.23556,369.64007 H 17.766058 v 50.11619 c 0,0 -16.2634561,19.7106 -15.6447377,42.5148 H 122.24009 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 448,
+              "end_number": 496,
               "step": 12
             },
-            "path": ""
+            "path": "M 122.24108,232.54974 H 17.766058 V 369.64007 H 122.23556 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 449,
+              "end_number": 497,
               "step": 12
             },
-            "path": ""
+            "path": "m 122.24108,173.32955 v 59.22019 H 17.766058 v -4.59619 c 0,0 -10.8717669,-25.89779 -13.8769707,-54.624 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 450,
+              "end_number": 498,
               "step": 12
             },
-            "path": ""
+            "path": "M 3.3587572,116.76101 H 122.24108 v 56.56854 H 3.8890873 c 0,0 -2.91681548,-38.36054 -0.5303301,-56.56854 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 451,
+              "end_number": 499,
               "step": 12
             },
-            "path": ""
+            "path": "M 147.60854,1.7677669 V 116.76101 H 3.3587572 c 0,0 3.8890873,-27.223614 13.5234168,-54.358837 V 1.7565837 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 452,
+              "end_number": 500,
               "step": 12
             },
-            "path": ""
+            "path": "m 328.62788,103.67953 h -79.28435 v 13.08148 H 201.17188 147.60854 V 1.7677669 h 181.01934 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 453,
+              "end_number": 501,
               "step": 12
             },
-            "path": ""
+            "path": "m 271.87598,203 h -55.94325 v -60.16443 h -14.76085 v -26.07456 h 48.17165 v -13.08148 h 79.28435 v 102.88404 h -56.72875 z"
           }
         ]
       },
       {
         "floor_number": [15],
         "height_for_svg": 600,
-        "width_for_svg": null,
+        "width_for_svg": 334.530,
         "appartaments": [
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 502,
+              "end_number": 502,
               "step": 12
             },
-            "path": ""
+            "path": "M 275.77164,259.33141 H 152.64668 v -56.48015 h 123.05465 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 503,
+              "end_number": 503,
               "step": 12
             },
-            "path": ""
+            "path": "M 257,416.22073 H 152.34836 v -91.65872 h 104.64628 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 504,
+              "end_number": 504,
               "step": 12
             },
-            "path": ""
+            "path": "M 152.375,508.625 H 257 V 416.22073 H 152.34836 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 505,
+              "end_number": 505,
               "step": 12
             },
-            "path": ""
+            "path": "M 126.13291,523.0625 H 104.875 v 30.25 H 20.9375 v 44.625 H 257 V 508.625 H 152.375 v 7.75 l -26.22273,0.125 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 506,
+              "end_number": 506,
               "step": 12
             },
-            "path": ""
+            "path": "M 126.11913,462.00589 H 6.6291261 c 0,0 0.7458739,27.18161 14.3083739,42.18161 v 49.125 h 83.9375 v -30.25 h 21.25791 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 507,
+              "end_number": 507,
               "step": 12
             },
-            "path": ""
+            "path": "M 126.11501,369.55168 H 21.743533 v 50.73491 c 0,0 -15.379572,19.35705 -15.1144069,41.7193 H 126.11913 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 508,
+              "end_number": 508,
               "step": 12
             },
-            "path": ""
+            "path": "M 126.12464,232.28458 H 21.743533 v 137.2671 H 126.11501 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 509,
+              "end_number": 509,
               "step": 12
             },
-            "path": ""
+            "path": "M 126.13017,173.06438 H 8.662058 c 0,0 5.922019,45.87356 13.081475,55.77305 v 3.44715 H 126.12464 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 510,
+              "end_number": 510,
               "step": 12
             },
-            "path": ""
+            "path": "M 8.640625,116.55078 H 126.13017 v 56.5136 H 8.662058 c 0,0 -4.2855067,-31.62154 -0.021433,-56.5136 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 511,
+              "end_number": 511,
               "step": 12
             },
-            "path": ""
+            "path": "M 152.02796,1.2374369 H 20.75 V 61.875 c 0,0 -9.609375,31.113281 -12.109375,54.67578 l 143.387335,0.0334 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 512,
+              "end_number": 512,
               "step": 12
             },
-            "path": ""
+            "path": "m 332.51696,103.9447 h -80.25662 v 12.63953 H 152.02796 V 1.2374369 h 180.52906 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 513,
+              "end_number": 513,
               "step": 12
             },
-            "path": ""
+            "path": "m 275.70133,202.85126 h -55.43757 v -59.75053 h -15.20279 v -26.5165 h 47.19937 V 103.9447 h 80.25662 v 102.3537 h -56.81173 z"
           }
         ]
       },
       {
         "floor_number": [16],
         "height_for_svg": 600,
-        "width_for_svg": null,
+        "width_for_svg": 341.439,
         "appartaments": [
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 514,
+              "end_number": 514,
               "step": 12
             },
-            "path": ""
+            "path": "M 278.51168,261.54112 H 155.4751 v -56.30338 h 123.03321 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 515,
+              "end_number": 515,
               "step": 12
             },
-            "path": ""
+            "path": "M 156.375,417.125 H 260.25391 V 326.6875 H 156.35388 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 516,
+              "end_number": 516,
               "step": 12
             },
-            "path": ""
+            "path": "M 260.25,509.125 H 156.375 v -92 h 103.87891 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 517,
+              "end_number": 517,
               "step": 12
             },
-            "path": ""
+            "path": "m 130.00821,524.05451 h -20.93699 v 29.96365 H 26.251339 V 598.4775 H 260.25 V 509.125 H 156.375 v 7.125 h -26.35574 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 518,
+              "end_number": 518,
               "step": 12
             },
-            "path": ""
+            "path": "M 130.02556,463.4375 H 11.875 c 0,0 -1.621952,23.14035 14.376339,41.25996 v 49.3207 h 82.819881 v -29.96365 h 20.93699 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 519,
+              "end_number": 519,
               "step": 12
             },
-            "path": ""
+            "path": "M 130.00821,371.31945 H 25.897786 v 49.61805 c 0,0 -14.647786,22.625 -14.022786,42.5 h 118.15056 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 520,
+              "end_number": 520,
               "step": 12
             },
-            "path": ""
+            "path": "M 130.03031,234.75945 H 25.897786 v 136.56 H 130.00821 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 521,
+              "end_number": 521,
               "step": 12
             },
-            "path": ""
+            "path": "M 130.01926,176.33475 H 12.551145 c 0,0 4.949748,34.11791 13.346641,54.624 v 3.8007 H 130.03031 Z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 522,
+              "end_number": 522,
               "step": 12
             },
-            "path": ""
+            "path": "m 13.25,120.82799 h 116.76926 v 55.50676 H 12.551145 c 0,0 -1.961048,-35.61826 0.698855,-55.50676 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 523,
+              "end_number": 523,
               "step": 12
             },
-            "path": ""
+            "path": "M 155.375,120.82687 V 6.375 H 26 V 65.75 c 0,0 -12.375,43.57799 -12.75,55.07799 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 524,
+              "end_number": 524,
               "step": 12
             },
-            "path": ""
+            "path": "m 335.43378,107.83378 h -79.37274 v 12.99309 H 209.03844 155.375 V 6.375 h 180.06629 z"
           },
           {
             "numbers": {
-              "start_number": null,
-              "end_number": null,
+              "start_number": 525,
+              "end_number": 525,
               "step": 12
             },
-            "path": ""
+            "path": "m 278.50831,205.23774 h -55.15096 v -58.60147 h -14.31891 v -25.8094 h 47.0226 v -12.99309 h 79.37274 v 101.6466 h -56.92762 z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "entrance": 1,
+    "floors": [
+      {
+        "floor_number": [2],
+        "height_for_svg": 600,
+        "width_for_svg": 330.385,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 1,
+              "end_number": 1,
+              "step": 12
+            },
+            "path": "m 328.53949,496.03541 h -79.90307 v -12.77212 h -46.66905 v -26.47231 h 14.76086 V 397.4824 h 32.88046 v -3.53554 h 78.89765 z"
+          },
+          {
+            "numbers": {
+              "start_number": 2,
+              "end_number": 2,
+              "step": 12
+            },
+            "path": "M 148.40404,483.26152 V 598.03556 H 328.53949 V 496.03541 h -79.90307 v -12.77212 z"
+          },
+          {
+            "numbers": {
+              "start_number": 3,
+              "end_number": 3,
+              "step": 12
+            },
+            "path": "M 121.99249,483.25 H 4.1875 c 0,0 6.125,41.875 12.9375,54.5 v 60.28556 H 148.40404 V 483.26152 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 4,
+              "end_number": 4,
+              "step": 12
+            },
+            "path": "M 121.98978,427.18088 H 4.331029 c 0,0 -3.956029,32.56912 -0.143529,56.06912 h 117.80499 z"
+          },
+          {
+            "numbers": {
+              "start_number": 5,
+              "end_number": 5,
+              "step": 12
+            },
+            "path": "M 121.98828,367.75 H 17.375 v 4.01139 c 0,0 -12.3368642,33.85274 -13.043971,55.41949 H 121.98978 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 6,
+              "end_number": 6,
+              "step": 12
+            },
+            "path": "M 121.95267,230.875 H 17.375 V 367.75 h 104.61328 z"
+          },
+          {
+            "numbers": {
+              "start_number": 7,
+              "end_number": 7,
+              "step": 12
+            },
+            "path": "M 121.97592,137.8125 H 2.4375 c 0,0 1.75,29.3125 14.9375,41.6875 v 51.375 h 104.57767 z"
+          },
+          {
+            "numbers": {
+              "start_number": 8,
+              "end_number": 8,
+              "step": 12
+            },
+            "path": "M 17.147339,47.022601 H 100.8511 v 29.96365 h 21.12482 V 137.8125 H 2.4375 c 0,0 -0.5078125,-26.5625 14.679688,-42.1875 z"
+          },
+          {
+            "numbers": {
+              "start_number": 9,
+              "end_number": 9,
+              "step": 12
+            },
+            "path": "M 252.42188,91.375 H 148 V 83.880542 H 121.97592 V 76.986251 H 100.8511 V 47.022601 H 17.147339 V 1.9445436 l 235.309391,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 10,
+              "end_number": 10,
+              "step": 12
+            },
+            "path": "M 252.44531,184.375 H 148 v -93 h 104.42188 z"
+          },
+          {
+            "numbers": {
+              "start_number": 11,
+              "end_number": 11,
+              "step": 12
+            },
+            "path": "M 252.375,274.875 H 148 v -90.5 h 104.44531 z"
+          },
+          {
+            "numbers": {
+              "start_number": 12,
+              "end_number": 12,
+              "step": 12
+            },
+            "path": "m 249.60869,393.94686 v 3.53554 H 216.72823 148.375 v -57.5449 h 123.25 v 54 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [3, 9],
+        "height_for_svg": 600,
+        "width_for_svg": 330.385,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 13,
+              "end_number": 85,
+              "step": 12
+            },
+            "path": "m 328.18593,495.94702 h -79.19596 v -12.87744 h -47.11098 v -25.92505 h 14.76085 v -59.39697 h 32.88046 v -4.41941 l 78.65108,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 14,
+              "end_number": 86,
+              "step": 12
+            },
+            "path": "m 148.31565,483.04676 v 114.9888 H 328.18593 V 495.94702 h -79.19596 v -12.87744 z"
+          },
+          {
+            "numbers": {
+              "start_number": 15,
+              "end_number": 87,
+              "step": 12
+            },
+            "path": "M 121.48438,483.0625 H 3.8125 c 0,0 5.4682765,38.87069 13.334839,54.86898 v 60.10408 H 148.31565 v -114.9888 z"
+          },
+          {
+            "numbers": {
+              "start_number": 16,
+              "end_number": 88,
+              "step": 12
+            },
+            "path": "M 121.49338,426.625 H 3.875 c 0,0 -3.25,37.0625 -0.0625,56.4375 h 117.67188 z"
+          },
+          {
+            "numbers": {
+              "start_number": 17,
+              "end_number": 89,
+              "step": 12
+            },
+            "path": "M 121.51172,368.125 H 17.5625 v 3.75 c 0,0 -14.6875,40.1875 -13.6875,54.75 h 117.61838 z"
+          },
+          {
+            "numbers": {
+              "start_number": 18,
+              "end_number": 90,
+              "step": 12
+            },
+            "path": "M 121.492,230.51681 H 17.5625 V 368.125 h 103.94922 z"
+          },
+          {
+            "numbers": {
+              "start_number": 19,
+              "end_number": 91,
+              "step": 12
+            },
+            "path": "M 121.5,137.5 H 2.375 c 0,0 1.6875,30.375 15.1875,42.125 v 50.89181 l 103.9295,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 20,
+              "end_number": 92,
+              "step": 12
+            },
+            "path": "m 121.5,77.125 h -20.625 v -29 H 17.5 v 47.6875 c 0,0 -16,21.625 -15.125,41.6875 H 121.5 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 21,
+              "end_number": 93,
+              "step": 12
+            },
+            "path": "M 252.375,91.625 H 148.31565 V 84 H 121.5 v -6.875 h -20.625 v -29 H 17.5 V 2.5 h 234.87041 z"
+          },
+          {
+            "numbers": {
+              "start_number": 22,
+              "end_number": 94,
+              "step": 12
+            },
+            "path": "M 252.37635,184.2897 H 148.31565 V 91.625 H 252.375 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 23,
+              "end_number": 95,
+              "step": 12
+            },
+            "path": "M 252.34873,275.41809 H 148.31565 V 184.2897 l 104.0607,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 24,
+              "end_number": 96,
+              "step": 12
+            },
+            "path": "m 249.5203,393.32815 v 4.41941 H 216.63984 148.375 V 340.5 h 123.25 v 52.81641 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [10, 14],
+        "height_for_svg": 600,
+        "width_for_svg": 330.385,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 97,
+              "end_number": 145,
+              "step": 12
+            },
+            "path": "m 328.36271,495.77024 h -79.19596 v -12.58928 h -47.28776 v -26.2132 h 14.93763 V 396.6869 h 32.88046 v -2.82842 h 78.66011 z"
+          },
+          {
+            "numbers": {
+              "start_number": 98,
+              "end_number": 146,
+              "step": 12
+            },
+            "path": "M 147.96209,483.1749 V 598.21234 H 328.36271 V 495.77024 H 249.16675 V 483.18096 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 99,
+              "end_number": 147,
+              "step": 12
+            },
+            "path": "M 121.74942,483.1875 H 3.875 c 0,0 6.731602,41.7509 13.449116,54.92076 v 60.10408 H 147.96209 l 0,-115.03744 z"
+          },
+          {
+            "numbers": {
+              "start_number": 100,
+              "end_number": 148,
+              "step": 12
+            },
+            "path": "M 121.76896,426.6875 H 3.75 c 0,0 -2.625,38.3125 0.125,56.5 h 117.87442 z"
+          },
+          {
+            "numbers": {
+              "start_number": 101,
+              "end_number": 149,
+              "step": 12
+            },
+            "path": "M 121.74219,368 H 16.875 v 4 c 0,0 -13.0625,39.6875 -13.125,54.6875 v 0 0 h 118.01896 z"
+          },
+          {
+            "numbers": {
+              "start_number": 102,
+              "end_number": 150,
+              "step": 12
+            },
+            "path": "M 121.75108,230.5625 H 16.875 V 368 h 104.86719 z"
+          },
+          {
+            "numbers": {
+              "start_number": 103,
+              "end_number": 151,
+              "step": 12
+            },
+            "path": "m 121.75108,137.75 v 92.8125 H 16.875 V 179.875 c 0,0 -15.3125,-20.375 -14.75,-42.125 z"
+          },
+          {
+            "numbers": {
+              "start_number": 104,
+              "end_number": 152,
+              "step": 12
+            },
+            "path": "M 121.71075,84.057318 V 77.074639 H 100.93949 V 46.934212 H 17.235728 V 95.9375 c 0,0 -17.048228,20.0625 -15.110728,41.8125 h 119.62608 z"
+          },
+          {
+            "numbers": {
+              "start_number": 105,
+              "end_number": 153,
+              "step": 12
+            },
+            "path": "M 253.25888,91.3125 H 147.87371 V 84.057318 H 121.71075 V 77.074639 H 100.93949 V 46.934212 H 17.235728 V 2.9168155 H 253.23814 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 106,
+              "end_number": 154,
+              "step": 12
+            },
+            "path": "M 253.2497,184.46648 H 147.87371 V 91.3125 h 105.38517 z"
+          },
+          {
+            "numbers": {
+              "start_number": 107,
+              "end_number": 155,
+              "step": 12
+            },
+            "path": "M 253.23262,274.88776 H 147.87371 V 184.46648 H 253.2497 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 108,
+              "end_number": 156,
+              "step": 12
+            },
+            "path": "m 249.69708,393.85848 v 2.82842 H 216.81662 148.375 V 340.5 h 105.4375 17.8125 v 53.375 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [15],
+        "height_for_svg": 600,
+        "width_for_svg": 334.423,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 157,
+              "end_number": 157,
+              "step": 12
+            },
+            "path": "M 332.375,495.5 H 252.74648 V 483.59786 H 205.5625 V 456.8125 H 220.5 v -59.5 h 32.9375 v -3.4375 h 78.93403 z"
+          },
+          {
+            "numbers": {
+              "start_number": 158,
+              "end_number": 158,
+              "step": 12
+            },
+            "path": "M 152.11635,483.67208 V 598.4775 H 332.375 V 495.5 h -79.62852 v -11.90214 z"
+          },
+          {
+            "numbers": {
+              "start_number": 159,
+              "end_number": 159,
+              "step": 12
+            },
+            "path": "M 8.75,483.67208 H 152.11635 V 598.4775 H 22.45064 v -60.01569 c 0,0 -14.4965815,-36.57069 -13.70064,-54.78973 z"
+          },
+          {
+            "numbers": {
+              "start_number": 160,
+              "end_number": 160,
+              "step": 12
+            },
+            "path": "M 125.52344,426.875 H 8.625 c 0,0 -3.9375,32.53167 0.125,56.79708 h 116.78125 z"
+          },
+          {
+            "numbers": {
+              "start_number": 161,
+              "end_number": 161,
+              "step": 12
+            },
+            "path": "M 125.54423,368.40263 H 21.625 V 372.5 c 0,0 -11.5625,32.0625 -13,54.375 h 116.89844 z"
+          },
+          {
+            "numbers": {
+              "start_number": 162,
+              "end_number": 162,
+              "step": 12
+            },
+            "path": "M 125.5,230.5 H 21.625 v 137.90263 l 103.91923,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 163,
+              "end_number": 163,
+              "step": 12
+            },
+            "path": "M 6.875,137.25 H 125.5 V 230.5 H 21.625 v -51 c 0,0 -14.375,-15.8125 -14.75,-42.25 z"
+          },
+          {
+            "numbers": {
+              "start_number": 164,
+              "end_number": 164,
+              "step": 12
+            },
+            "path": "m 21.5,47.75 h 83.75 v 30 h 20.25 v 59.5 H 6.875 c 0,0 -0.1843592,-22.5625 14.628141,-41.3125 z"
+          },
+          {
+            "numbers": {
+              "start_number": 165,
+              "end_number": 165,
+              "step": 12
+            },
+            "path": "M 256.76815,91.48194 H 152.59091 V 83.25 H 125.5 v -5.5 h -20.25 v -30 H 21.5 V 3.125 h 234.77097 z"
+          },
+          {
+            "numbers": {
+              "start_number": 166,
+              "end_number": 166,
+              "step": 12
+            },
+            "path": "M 256.76815,184.11293 H 152.59091 V 91.48194 h 104.17724 z"
+          },
+          {
+            "numbers": {
+              "start_number": 167,
+              "end_number": 167,
+              "step": 12
+            },
+            "path": "M 152.64668,274.97615 H 256.76815 V 184.11293 H 152.59091 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 168,
+              "end_number": 168,
+              "step": 12
+            },
+            "path": "m 253.4375,393.875 v 3.4375 H 220.5 153 v -57.375 h 122.5 v 53.90338 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [16],
+        "height_for_svg": 600,
+        "width_for_svg": 341.330,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 169,
+              "end_number": 169,
+              "step": 12
+            },
+            "path": "m 335,491.625 h -78.625 v -12.07812 h -47.5 V 453.375 h 14.5625 v -59.5 h 33.125 v -3 h 78.43479 z"
+          },
+          {
+            "numbers": {
+              "start_number": 170,
+              "end_number": 170,
+              "step": 12
+            },
+            "path": "M 156.71254,479.51783 V 593.79292 H 335 V 491.625 h -78.625 v -12.07812 z"
+          },
+          {
+            "numbers": {
+              "start_number": 171,
+              "end_number": 171,
+              "step": 12
+            },
+            "path": "M 130.01373,479.59517 H 13.258252 c 0,0 5.656854,40.74703 12.993087,54.27045 v 59.9273 H 156.71254 V 479.51783 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 172,
+              "end_number": 172,
+              "step": 12
+            },
+            "path": "M 130.04135,423.73374 H 13.435029 c 0,0 -4.0658642,34.64823 -0.176777,55.86143 H 130.01373 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 173,
+              "end_number": 173,
+              "step": 12
+            },
+            "path": "M 130.03031,364.8671 H 25.378504 v 4.81716 c 0,0 -11.766698,40.08412 -11.943475,54.04948 H 130.04135 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 174,
+              "end_number": 174,
+              "step": 12
+            },
+            "path": "M 25.367456,229.36776 H 130.03031 V 364.8671 H 25.378504 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 175,
+              "end_number": 175,
+              "step": 12
+            },
+            "path": "M 130.01926,137.35549 H 11.667262 c 0,0 0.265165,24.57196 13.700194,40.83542 v 51.17685 l 104.662854,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 176,
+              "end_number": 176,
+              "step": 12
+            },
+            "path": "m 109.125,46.875 h -83.75 v 48.584415 c 0,0 -13.442573,20.682875 -13.707738,41.896075 H 130.01926 V 76.986251 h -20.87574 z"
+          },
+          {
+            "numbers": {
+              "start_number": 177,
+              "end_number": 177,
+              "step": 12
+            },
+            "path": "M 156.09382,89.979338 H 259.71484 V 2.5 H 25.375 v 44.375 h 83.75 v 30.25 h 46.98828 z"
+          },
+          {
+            "numbers": {
+              "start_number": 178,
+              "end_number": 178,
+              "step": 12
+            },
+            "path": "M 259.6479,182.69871 H 156.09382 V 89.979338 l 103.62102,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 179,
+              "end_number": 179,
+              "step": 12
+            },
+            "path": "M 259.6479,182.69871 H 156.09382 v 90.68645 h 103.67953 z"
+          },
+          {
+            "numbers": {
+              "start_number": 180,
+              "end_number": 180,
+              "step": 12
+            },
+            "path": "m 256.5625,390.875 h 21.3125 v -52.9375 h -122.25 l 0,55.93869 67.8125,-0.001 h 33.125 z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "entrance": 2,
+    "floors": [
+      {
+        "floor_number": [2],
+        "height_for_svg": 600,
+        "width_for_svg": 289.226,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 181,
+              "end_number": 181,
+              "step": 12
+            },
+            "path": "M 126.1875,311 H 230.75 V 263.25 H 211.5 V 238.5 h -27.625 v 23.8125 h -57.72346 z"
+          },
+          {
+            "numbers": {
+              "start_number": 182,
+              "end_number": 182,
+              "step": 12
+            },
+            "path": "m 214.69508,443.625 h -89.02895 v -76.9375 h 89.0014 z"
+          },
+          {
+            "numbers": {
+              "start_number": 183,
+              "end_number": 183,
+              "step": 12
+            },
+            "path": "M 214.6953,522.37513 H 125.66613 V 443.625 h 89.02895 z"
+          },
+          {
+            "numbers": {
+              "start_number": 184,
+              "end_number": 184,
+              "step": 12
+            },
+            "path": "M 103,534.5 H 85.5 v 25.875 H 14.987349 v 37.83734 H 214.6953 v -75.83721 h -89.02917 v 2.82843 h -22.62475 z"
+          },
+          {
+            "numbers": {
+              "start_number": 185,
+              "end_number": 185,
+              "step": 12
+            },
+            "path": "M 102.99219,483.625 H 1.9375 c 0,0 -0.2753019,20.6875 13.049849,34.8125 V 560.375 H 85.5 V 534.5 H 103 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 186,
+              "end_number": 186,
+              "step": 12
+            },
+            "path": "M 102.99902,404.5625 H 14.480469 v 42.875 c 0,0 -12.417969,18.125 -12.542969,36.1875 l 101.05469,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 187,
+              "end_number": 187,
+              "step": 12
+            },
+            "path": "m 14.5,288.0625 h 88.49902 v 116.5 H 14.480469 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 188,
+              "end_number": 188,
+              "step": 12
+            },
+            "path": "M 102.98667,237.4111 H 3.2703685 c 0,0 5.2921315,32.9639 11.2296315,46.5264 v 4.125 h 88.49902 z"
+          },
+          {
+            "numbers": {
+              "start_number": 189,
+              "end_number": 189,
+              "step": 12
+            },
+            "path": "M 102.97242,189.32784 H 3.1819805 c 0,0 -2.1213203,34.38307 0.088388,48.08326 l 99.7163015,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 190,
+              "end_number": 190,
+              "step": 12
+            },
+            "path": "M 125.66613,2.3273398 15.75,2.3320278 V 142.5704 c 0,0 -11.2421943,31.02431 -12.5680195,46.75744 H 125.66613 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 191,
+              "end_number": 191,
+              "step": 12
+            },
+            "path": "m 211.5,2.375 v 163.25 h 23 v 24 H 170.625 125.66613 V 2.3273398 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 192,
+              "end_number": 192,
+              "step": 12
+            },
+            "path": "M 183.875,238.5 H 211.5 v 24.75 h 19.25 56.5625 V 2.375 H 211.5 v 163.25 h 23 v 24 h -63.875 v 22.5 h 13.27177 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [3, 9],
+        "height_for_svg": 600,
+        "width_for_svg": 340.385,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 193,
+              "end_number": 265,
+              "step": 12
+            },
+            "path": "M 271.34117,259.15463 H 148.05048 v -56.39176 h 68.41258 v -28.46105 h 32.52691 v 28.99138 h 22.36226 z"
+          },
+          {
+            "numbers": {
+              "start_number": 194,
+              "end_number": 266,
+              "step": 12
+            },
+            "path": "M 252.87879,416 H 148 v -91.5 h 104.88074 z"
+          },
+          {
+            "numbers": {
+              "start_number": 195,
+              "end_number": 267,
+              "step": 12
+            },
+            "path": "M 252.875,508 H 148 v -92 h 104.87879 z"
+          },
+          {
+            "numbers": {
+              "start_number": 196,
+              "end_number": 268,
+              "step": 12
+            },
+            "path": "M 121.65782,522.8125 H 100.9375 v 30.25 h -83.625 v 44.79628 H 252.875 V 508 H 148 v 3.625 h -26.33594 z"
+          },
+          {
+            "numbers": {
+              "start_number": 197,
+              "end_number": 269,
+              "step": 12
+            },
+            "path": "M 121.6875,462 H 2.5 c 0,0 -1.5625,23.0625 14.8125,41.8125 v 49.25 h 83.625 v -30.25 h 20.72032 z"
+          },
+          {
+            "numbers": {
+              "start_number": 198,
+              "end_number": 270,
+              "step": 12
+            },
+            "path": "M 121.68865,369.90523 H 17.375 V 420.125 c 0,0 -16.6875,23.0625 -14.875,41.875 h 119.1875 z"
+          },
+          {
+            "numbers": {
+              "start_number": 199,
+              "end_number": 271,
+              "step": 12
+            },
+            "path": "M 121.68403,232.4375 H 17.375 v 137.46773 l 104.31365,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 200,
+              "end_number": 272,
+              "step": 12
+            },
+            "path": "M 121.6875,172.8125 H 4.125 c 0,0 4.9375,40.9375 13.25,54.6875 v 4.9375 h 104.30903 z"
+          },
+          {
+            "numbers": {
+              "start_number": 201,
+              "end_number": 273,
+              "step": 12
+            },
+            "path": "m 4.065864,116.31435 c 0,0 -3.940864,35.74815 0.059136,56.49815 h 117.5625 v -56.51377 z"
+          },
+          {
+            "numbers": {
+              "start_number": 202,
+              "end_number": 274,
+              "step": 12
+            },
+            "path": "M 148.125,1.5 H 17.854446 v 60.195067 c 0,0 -11.1369316,31.660409 -13.788582,54.619283 L 148.125,116.2708 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 203,
+              "end_number": 275,
+              "step": 12
+            },
+            "path": "M 200.25,116.25 H 275.5 V 88.375 H 249.125 V 1.5 h -101 v 114.7708 z"
+          },
+          {
+            "numbers": {
+              "start_number": 204,
+              "end_number": 276,
+              "step": 12
+            },
+            "path": "M 271.35223,203.2932 H 248.98997 V 174.30182 H 216.46306 V 143.375 H 200.25 V 116.25 H 275.5 V 88.375 H 249.125 V 1.5 h 89 v 201.76408 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [10, 14],
+        "height_for_svg": 600,
+        "width_for_svg": 340.385,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 277,
+              "end_number": 325,
+              "step": 12
+            },
+            "path": "M 271.529,259.15463 H 148.13887 v -56.56854 h 68.32419 v -28.46105 h 32.52691 v 28.81461 h 22.50588 z"
+          },
+          {
+            "numbers": {
+              "start_number": 278,
+              "end_number": 326,
+              "step": 12
+            },
+            "path": "M 252.72266,416.4375 H 148.13887 v -91.7871 h 103.56905 z"
+          },
+          {
+            "numbers": {
+              "start_number": 279,
+              "end_number": 327,
+              "step": 12
+            },
+            "path": "M 252.70229,507.70267 H 148.13887 V 416.4375 h 104.58379 z"
+          },
+          {
+            "numbers": {
+              "start_number": 280,
+              "end_number": 328,
+              "step": 12
+            },
+            "path": "M 122.03125,523.625 H 101.875 v 29.4375 H 17.75 c 0,0 -1.340382,45.4206 0,45.06145 1.340382,-0.35916 234.95229,0 234.95229,0 V 507.70267 H 148.13887 v 4.15425 h -26.12472 z"
+          },
+          {
+            "numbers": {
+              "start_number": 281,
+              "end_number": 329,
+              "step": 12
+            },
+            "path": "m 122.03125,462 v 61.625 H 101.875 v 29.4375 H 17.75 v -48.75 c 0,0 -15.625,-19.625 -15.625,-42.3125 z"
+          },
+          {
+            "numbers": {
+              "start_number": 282,
+              "end_number": 330,
+              "step": 12
+            },
+            "path": "M 122.04729,369.46329 H 17.412504 v 51.47421 c 0,0 -17.787504,24.3125 -15.287504,41.0625 h 119.90625 z"
+          },
+          {
+            "numbers": {
+              "start_number": 283,
+              "end_number": 331,
+              "step": 12
+            },
+            "path": "M 122.03153,232.63813 H 17.412504 V 369.46329 H 122.04729 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 284,
+              "end_number": 332,
+              "step": 12
+            },
+            "path": "M 122.06431,173.06438 H 4.065864 c 0,0 6.894291,45.07806 13.34664,54.35884 v 5.21491 H 122.03153 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 285,
+              "end_number": 333,
+              "step": 12
+            },
+            "path": "M 3.5355339,116.40745 H 122.06431 v 56.65693 H 4.065864 c 0,0 -3.71231061,-35.17857 -0.5303301,-56.65693 z"
+          },
+          {
+            "numbers": {
+              "start_number": 286,
+              "end_number": 334,
+              "step": 12
+            },
+            "path": "M 147.69693,1.923097 V 116.40745 H 3.5355339 c 0,0 2.298097,-24.837122 13.5234171,-53.740112 V 1.9390193 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 287,
+              "end_number": 335,
+              "step": 12
+            },
+            "path": "M 248.72481,1.9445436 V 88.476736 h 26.87006 V 116.40745 H 200.9951 147.69693 V 1.923097 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 288,
+              "end_number": 336,
+              "step": 12
+            },
+            "path": "M 271.49585,202.93965 H 248.98997 V 174.12504 H 216.46306 V 142.92396 H 200.9951 v -26.51651 h 74.59977 V 88.476736 H 248.72481 V 1.9445436 h 89.27223 V 202.92984 Z"
+          }
+        ]
+      },
+      {
+        "floor_number": [15],
+        "height_for_svg": 600,
+        "width_for_svg": 344.615,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 337,
+              "end_number": 337,
+              "step": 12
+            },
+            "path": "m 275.4375,204.125 v 55.0625 h -123 V 202.375 h 67.9375 v -28 h 33.1875 v 29.76953 z"
+          },
+          {
+            "numbers": {
+              "start_number": 338,
+              "end_number": 338,
+              "step": 12
+            },
+            "path": "M 256.99379,416.22073 H 152 v -91.21678 h 104.97173 z"
+          },
+          {
+            "numbers": {
+              "start_number": 339,
+              "end_number": 339,
+              "step": 12
+            },
+            "path": "M 257,508.25 H 152 v -92.02927 l 104.99379,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 340,
+              "end_number": 340,
+              "step": 12
+            },
+            "path": "M 125.76562,522.875 H 104.625 v 30.25 h -82.75 v 44.82217 H 257 V 508.25 H 152 v 3.875 h -26.21967 z"
+          },
+          {
+            "numbers": {
+              "start_number": 341,
+              "end_number": 341,
+              "step": 12
+            },
+            "path": "M 125.75781,462.0625 H 6.9375 c 0,0 0.3125,25.0625 14.9375,42.0625 v 49 h 82.75 v -30.25 h 21.14062 z"
+          },
+          {
+            "numbers": {
+              "start_number": 342,
+              "end_number": 342,
+              "step": 12
+            },
+            "path": "M 125.75,369.28652 H 21.743533 v 51.02598 c 0,0 -15.806033,19.75 -14.806033,41.75 l 118.82031,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 343,
+              "end_number": 343,
+              "step": 12
+            },
+            "path": "M 125.76557,232.63813 H 21.743533 V 369.28652 H 125.75 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 344,
+              "end_number": 344,
+              "step": 12
+            },
+            "path": "M 125.77662,172.71083 H 8.7504464 c 0,0 3.5355336,31.37786 12.9930866,55.59627 v 4.33103 H 125.76557 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 345,
+              "end_number": 345,
+              "step": 12
+            },
+            "path": "m 8.25,116.60633 c 0,0 -3.8305826,38.07328 0.5004464,56.1045 H 125.77662 l 0,-56.11708 z"
+          },
+          {
+            "numbers": {
+              "start_number": 346,
+              "end_number": 346,
+              "step": 12
+            },
+            "path": "m 152.38151,2.25003 v 114.3563 H 8.25 c 0,0 2.875,-25.98133 13.5,-54.85633 V 2.2575825 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 347,
+              "end_number": 347,
+              "step": 12
+            },
+            "path": "M 253,2.25003 H 152.38151 v 114.3563 L 205,116.625 h 75.25 V 88.5 H 253 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 348,
+              "end_number": 348,
+              "step": 12
+            },
+            "path": "m 220.375,174.375 h 33.1875 v 29.76953 l 21.875,-0.0195 H 341.75 c 0,0 0.76226,-201.6707532 0,-201.875 -0.76226,-0.2042468 -88.75,0 -88.75,0 V 88.5 h 27.25 v 28.125 H 205 V 143 h 15.36536 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [16],
+        "height_for_svg": 600,
+        "width_for_svg": 346.866,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 349,
+              "end_number": 349,
+              "step": 12
+            },
+            "path": "M 155.68359,205.6875 H 223.875 v -27.75 h 32.6875 v 28.125 h 21.125 v 55.625 h -122 z"
+          },
+          {
+            "numbers": {
+              "start_number": 350,
+              "end_number": 350,
+              "step": 12
+            },
+            "path": "M 259.68858,417.375 H 156.75 v -90.4375 h 102.93496 z"
+          },
+          {
+            "numbers": {
+              "start_number": 351,
+              "end_number": 351,
+              "step": 12
+            },
+            "path": "M 259.68496,509.875 H 156.75 v -92.5 h 102.93858 z"
+          },
+          {
+            "numbers": {
+              "start_number": 352,
+              "end_number": 352,
+              "step": 12
+            },
+            "path": "M 129.81641,523.5625 H 109 V 553.375 H 25.9375 v 44.74895 H 259.68496 V 509.875 H 156.75 v 3 h -26.92187 z"
+          },
+          {
+            "numbers": {
+              "start_number": 353,
+              "end_number": 353,
+              "step": 12
+            },
+            "path": "M 129.8146,463.59688 H 11.402097 c 0,0 0.535403,25.40312 14.535403,41.59062 V 553.375 H 109 v -29.8125 h 20.81641 z"
+          },
+          {
+            "numbers": {
+              "start_number": 354,
+              "end_number": 354,
+              "step": 12
+            },
+            "path": "M 129.81641,371.375 H 26.375 v 50.14903 c 0,0 -14.61935,18.29639 -14.972903,42.07285 l 118.412503,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 355,
+              "end_number": 355,
+              "step": 12
+            },
+            "path": "M 129.8125,235.375 H 26.375 v 136 h 103.44141 z"
+          },
+          {
+            "numbers": {
+              "start_number": 356,
+              "end_number": 356,
+              "step": 12
+            },
+            "path": "M 13,176.4375 H 129.8125 V 235.375 H 26.375 v -4.5625 c 0,0 -13.125,-37.9375 -13.375,-54.375 z"
+          },
+          {
+            "numbers": {
+              "start_number": 357,
+              "end_number": 357,
+              "step": 12
+            },
+            "path": "M 13.435029,120.27509 H 129.8125 V 176.4375 H 13 c 0,0 -3.129942,-41.76232 0.435029,-56.16241 z"
+          },
+          {
+            "numbers": {
+              "start_number": 358,
+              "end_number": 358,
+              "step": 12
+            },
+            "path": "M 156.2706,5.75 V 120.27509 H 13.435029 c 0,0 5.038136,-30.030587 12.551145,-54.51416 V 5.7540506 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 359,
+              "end_number": 359,
+              "step": 12
+            },
+            "path": "M 255.625,5.75 H 156.2706 V 120.27509 L 208.75,120.25 H 282.5 V 92.375 h -26.875 z"
+          },
+          {
+            "numbers": {
+              "start_number": 360,
+              "end_number": 360,
+              "step": 12
+            },
+            "path": "m 223.875,177.9375 h 32.6875 v 28.125 h 21.125 v 3.3125 H 344.375 V 5.75 h -88.75 V 92.375 H 282.5 v 27.875 h -73.75 v 26.5 h 15.12109 z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "entrance": 3,
+    "floors": [
+      {
+        "floor_number": [2],
+        "height_for_svg": 600,
+        "width_for_svg": 355.312,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 361,
+              "end_number": 361,
+              "step": 11
+            },
+            "path": "m 336.375,418.25366 h -75.89454 v 14.76085 H 234.5039 V 368.1875 H 352.625 v 53.875 h -16.25 z"
+          },
+          {
+            "numbers": {
+              "start_number": 362,
+              "end_number": 362,
+              "step": 11
+            },
+            "path": "m 234.5,506.5 h 101.875 v -88.24634 h -75.89454 v 14.76085 H 234.5039 L 234.5,475.375 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 363,
+              "end_number": 363,
+              "step": 11
+            },
+            "path": "M 208.05859,506.55362 H 1.9445436 V 594.5 H 336.375 v -88 H 234.5 v -31.125 h -26.44032 z"
+          },
+          {
+            "numbers": {
+              "start_number": 364,
+              "end_number": 364,
+              "step": 11
+            },
+            "path": "M 208.0625,411.00582 H 1.9445436 v 95.5478 H 208.05859 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 365,
+              "end_number": 365,
+              "step": 11
+            },
+            "path": "M 208.05859,320.23098 H 1.9445436 v 90.77484 H 208.0625 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 366,
+              "end_number": 366,
+              "step": 11
+            },
+            "path": "M 208.06809,229.54454 H 1.9445436 v 90.68644 H 208.05859 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 367,
+              "end_number": 367,
+              "step": 11
+            },
+            "path": "M 208.06617,89.095454 H 1.9445436 V 229.54454 l 206.1235464,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 368,
+              "end_number": 368,
+              "step": 11
+            },
+            "path": "M 335.5,45.6875 V 2.298097 H 1.9445436 V 89.095454 H 208.06617 V 75.306872 h 25.35406 l 0.002,-29.619372 z"
+          },
+          {
+            "numbers": {
+              "start_number": 369,
+              "end_number": 369,
+              "step": 11
+            },
+            "path": "M 233.41905,133.8125 H 335.5 V 45.6875 H 233.42187 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 370,
+              "end_number": 370,
+              "step": 11
+            },
+            "path": "m 233.4229,207.35906 h 26.88078 v 14.67247 h 73.6275 v -2.47487 H 335.5 V 133.8125 H 233.41905 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 371,
+              "end_number": 371,
+              "step": 11
+            },
+            "path": "m 233.43363,272.76644 h 119.0591 v -53.20978 h -18.56155 v 2.47487 h -73.6275 V 207.35906 H 233.4229 Z"
+          }
+        ]
+      },
+      {
+        "floor_number": [3, 9],
+        "height_for_svg": 600,
+        "width_for_svg": 271.532,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 372,
+              "end_number": 438,
+              "step": 11
+            },
+            "path": "m 176.5625,418.5 v 14.25 h -27.51563 v -65.09867 h 119.12338 v 54.04948 H 251.7376 l 6.8e-4,-3.20081 z"
+          },
+          {
+            "numbers": {
+              "start_number": 373,
+              "end_number": 439,
+              "step": 11
+            },
+            "path": "M 251.75,506.25 H 149.04687 V 474.125 432.75 H 176.5625 V 418.5 h 75.17578 z"
+          },
+          {
+            "numbers": {
+              "start_number": 374,
+              "end_number": 440,
+              "step": 11
+            },
+            "path": "M 123.56185,505.875 H 2 c 0,0 0.298097,23.39442 13.998291,42.48631 h 5.745242 v 46.49227 H 251.75 V 506.25 H 149.04687 v -32.125 h -25.48428 z"
+          },
+          {
+            "numbers": {
+              "start_number": 375,
+              "end_number": 441,
+              "step": 11
+            },
+            "path": "M 123.5625,411.0625 H 16.086679 v 46.5625 c 0,0 -17.461679,26.8125 -14.086679,48.25 l 121.56185,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 376,
+              "end_number": 442,
+              "step": 11
+            },
+            "path": "M 123.5625,320.1875 H 16.086679 v 90.875 H 123.5625 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 377,
+              "end_number": 443,
+              "step": 11
+            },
+            "path": "M 123.57795,229.98648 H 16.086679 V 320.1875 H 123.5625 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 378,
+              "end_number": 444,
+              "step": 11
+            },
+            "path": "M 123.56691,89.714173 H 16.086679 V 229.98648 H 123.57795 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 379,
+              "end_number": 445,
+              "step": 11
+            },
+            "path": "M 149.54687,45.5625 H 251.5625 V 2.4748737 H 21.566757 V 49.143921 H 16.086679 V 89.714173 H 123.56691 V 75.041707 h 25.97162 z"
+          },
+          {
+            "numbers": {
+              "start_number": 380,
+              "end_number": 446,
+              "step": 11
+            },
+            "path": "M 149.55633,133.8125 H 251.5625 v -88.25 H 149.54687 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 381,
+              "end_number": 447,
+              "step": 11
+            },
+            "path": "M 149.55078,207.4375 H 176.5 v 14.6875 h 73 v -2.0625 h 2.0625 v -86.25 H 149.55633 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 382,
+              "end_number": 448,
+              "step": 11
+            },
+            "path": "m 149.5625,272.75 h 119 V 220.0625 H 249.5 v 2.0625 h -73 v -14.6875 h -26.94922 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [10, 14],
+        "height_for_svg": 600,
+        "width_for_svg": 271.500,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 449,
+              "end_number": 493,
+              "step": 11
+            },
+            "path": "M 251.11719,418.625 H 176.4375 v 14.25 H 149.5 v -65.26786 h 119.55413 v 53.91689 h -17.92522 z"
+          },
+          {
+            "numbers": {
+              "start_number": 450,
+              "end_number": 494,
+              "step": 11
+            },
+            "path": "M 251.11719,506.21094 H 149.5 V 474.625 432.875 h 26.9375 v -14.25 h 74.67969 z"
+          },
+          {
+            "numbers": {
+              "start_number": 451,
+              "end_number": 495,
+              "step": 11
+            },
+            "path": "m 124.0199,505.71393 -122.0753564,0.0344 c 0,0 0.8838835,28.02891 13.7885824,42.70138 h 7.247844 v 46.58064 H 251.11719 V 506.21094 H 149.5 V 474.625 h -25.47457 z"
+          },
+          {
+            "numbers": {
+              "start_number": 452,
+              "end_number": 496,
+              "step": 11
+            },
+            "path": "M 124.02344,410.9375 H 16.5 v 46.4722 c 0,0 -15.4393398,23.23633 -14.5554564,48.33862 L 124.0199,505.71393 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 453,
+              "end_number": 497,
+              "step": 11
+            },
+            "path": "M 124.02344,320.0625 H 16.5 v 90.875 h 107.52344 z"
+          },
+          {
+            "numbers": {
+              "start_number": 454,
+              "end_number": 498,
+              "step": 11
+            },
+            "path": "M 124.01713,229.63293 H 16.5 v 90.42957 h 107.52344 z"
+          },
+          {
+            "numbers": {
+              "start_number": 455,
+              "end_number": 499,
+              "step": 11
+            },
+            "path": "M 124,89.5 H 16.5 v 140.13293 h 107.51713 z"
+          },
+          {
+            "numbers": {
+              "start_number": 456,
+              "end_number": 500,
+              "step": 11
+            },
+            "path": "M 149.6875,46.1875 H 251.61328 V 2.6516504 H 21.875 V 49.25 H 16.5 V 89.5 H 124 V 75.625 h 25.69129 z"
+          },
+          {
+            "numbers": {
+              "start_number": 457,
+              "end_number": 501,
+              "step": 11
+            },
+            "path": "M 251.62109,133.5625 H 149.6875 v -87.375 h 101.92578 z"
+          },
+          {
+            "numbers": {
+              "start_number": 458,
+              "end_number": 502,
+              "step": 11
+            },
+            "path": "m 251.625,219.625 v 2.0625 H 176.5 v -14.125 h -26.8125 v -74 h 101.93359 z"
+          },
+          {
+            "numbers": {
+              "start_number": 459,
+              "end_number": 503,
+              "step": 11
+            },
+            "path": "m 268.6875,271.6875 h -119 v -64.125 H 176.5 v 14.125 h 75.125 v -2.0625 h 17.04687 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [15],
+        "height_for_svg": 600,
+        "width_for_svg": 271.500,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 504,
+              "end_number": 504,
+              "step": 11
+            },
+            "path": "M 149.24219,433.1875 H 176.5 v -14.5 h 74.35019 v 2.125 H 268.125 V 368 H 149.75 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 505,
+              "end_number": 505,
+              "step": 11
+            },
+            "path": "M 250.84613,506.81878 H 149.24219 V 474.64543 433.1875 H 176.5 v -14.5 h 74.35019 z"
+          },
+          {
+            "numbers": {
+              "start_number": 506,
+              "end_number": 506,
+              "step": 11
+            },
+            "path": "M 123.46343,506.90717 H 2.1213203 c 0,0 3.8802519,26.07457 14.0935237,40.57025 h 6.05902 v 47.72971 H 250.84613 V 506.81878 H 149.24219 v -32.17335 h -25.78025 z"
+          },
+          {
+            "numbers": {
+              "start_number": 507,
+              "end_number": 507,
+              "step": 11
+            },
+            "path": "m 16.75,410.75 h 106.71343 v 96.15717 H 2.1213203 c 0,0 -1.0418742,-27.22361 14.6072807,-47.99487 z"
+          },
+          {
+            "numbers": {
+              "start_number": 508,
+              "end_number": 508,
+              "step": 11
+            },
+            "path": "M 16.725924,320.31937 H 123.46343 V 410.75 H 16.75 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 509,
+              "end_number": 509,
+              "step": 11
+            },
+            "path": "M 16.705398,229.45615 H 123.46343 v 90.86322 H 16.725924 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 510,
+              "end_number": 510,
+              "step": 11
+            },
+            "path": "M 123.47852,89.802561 H 16.705398 V 229.45615 l 106.758032,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 511,
+              "end_number": 511,
+              "step": 11
+            },
+            "path": "M 149.74219,45.0625 H 251.375 V 2.032932 H 21.831922 V 49.409086 H 16.705398 V 89.802561 H 123.47852 V 75.130095 h 26.26551 z"
+          },
+          {
+            "numbers": {
+              "start_number": 512,
+              "end_number": 512,
+              "step": 11
+            },
+            "path": "M 149.74609,133.5625 H 251.375 v -88.5 H 149.74219 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 513,
+              "end_number": 513,
+              "step": 11
+            },
+            "path": "M 149.74209,207.5625 H 176.75 V 222 h 72.1875 v -1.875 h 2.4375 V 133.5625 H 149.74609 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 514,
+              "end_number": 514,
+              "step": 11
+            },
+            "path": "m 149.75,272.625 h 118.625 v -52.5 H 248.9375 V 222 H 176.75 v -14.4375 h -27.00791 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [16],
+        "height_for_svg": 600,
+        "width_for_svg": 282.188,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 515,
+              "end_number": 515,
+              "step": 11
+            },
+            "path": "m 187.47168,418.43044 v 14.14213 H 160.86335 V 367.625 H 278.75 v 52.8125 h -16.75036 v -2.00706 z"
+          },
+          {
+            "numbers": {
+              "start_number": 516,
+              "end_number": 516,
+              "step": 11
+            },
+            "path": "M 160.875,474.625 V 506 h 101.12464 v -87.56956 h -74.52796 v 14.14213 h -26.60833 z"
+          },
+          {
+            "numbers": {
+              "start_number": 517,
+              "end_number": 517,
+              "step": 11
+            },
+            "path": "M 134.33594,505.5 H 13 c 0,0 -2.375,15.25 14.375,41.9375 h 5.75 v 47.625 H 261.99964 V 506 H 160.875 v -31.375 h -26.52854 z"
+          },
+          {
+            "numbers": {
+              "start_number": 518,
+              "end_number": 518,
+              "step": 11
+            },
+            "path": "M 134.34375,411 H 27.400388 v 47.1875 c 0,0 -16.400388,22.25 -14.400388,47.3125 h 121.33594 z"
+          },
+          {
+            "numbers": {
+              "start_number": 519,
+              "end_number": 519,
+              "step": 11
+            },
+            "path": "M 134.3464,320 H 27.400388 v 91 l 106.943362,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 520,
+              "end_number": 520,
+              "step": 11
+            },
+            "path": "M 134.33665,229.54454 H 27.400388 V 320 H 134.3464 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 521,
+              "end_number": 521,
+              "step": 11
+            },
+            "path": "M 134.35029,89.802561 H 27.400388 V 229.54454 l 106.936262,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 522,
+              "end_number": 522,
+              "step": 11
+            },
+            "path": "M 160.35156,45.4375 H 262.5 V 1.9445436 H 32.261747 V 49.409086 H 27.400388 V 89.802561 H 134.35029 V 75.483649 l 26.00087,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 523,
+              "end_number": 523,
+              "step": 11
+            },
+            "path": "M 262.5,133.90835 H 160.35156 V 45.4375 H 262.5 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 524,
+              "end_number": 524,
+              "step": 11
+            },
+            "path": "m 160.375,207.4375 h 26.8125 V 221.75 H 262.5 V 133.90835 H 160.35156 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 525,
+              "end_number": 525,
+              "step": 11
+            },
+            "path": "m 160.375,225.625 v -18.1875 h 26.8125 V 221.75 H 262.5 v -2 h 16.375 V 272 H 160.35702 Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "entrance": 4,
+    "floors": [
+      {
+        "floor_number": [2],
+        "height_for_svg": 600,
+        "width_for_svg": 330.026,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 526,
+              "end_number": 526,
+              "step": 12
+            },
+            "path": "m 217.25856,390.125 h 94.22581 v -54.95639 h -94.23339 z"
+          },
+          {
+            "numbers": {
+              "start_number": 527,
+              "end_number": 527,
+              "step": 12
+            },
+            "path": "M 311.47908,473.54057 H 217.25856 V 390.125 h 94.22581 z"
+          },
+          {
+            "numbers": {
+              "start_number": 528,
+              "end_number": 528,
+              "step": 12
+            },
+            "path": "m 311.48054,517.23204 h -94.22198 v -43.69147 l 94.22052,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 529,
+              "end_number": 529,
+              "step": 12
+            },
+            "path": "M 192.6915,517.24861 H 2.2980971 v 80.96373 H 311.48054 v -80.9803 z"
+          },
+          {
+            "numbers": {
+              "start_number": 530,
+              "end_number": 530,
+              "step": 12
+            },
+            "path": "M 2.2931001,393.15137 H 192.6915 V 517.24861 H 2.2980971 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 531,
+              "end_number": 531,
+              "step": 12
+            },
+            "path": "M 2.3063695,312.80636 H 192.6915 v 80.34501 H 2.2931001 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 532,
+              "end_number": 532,
+              "step": 12
+            },
+            "path": "M 192.6866,191.09561 H 2.3063695 V 312.80636 H 192.6915 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 533,
+              "end_number": 533,
+              "step": 12
+            },
+            "path": "M 2.298097,109.248 H 192.6866 v 81.84761 H 2.3063695 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 534,
+              "end_number": 534,
+              "step": 12
+            },
+            "path": "m 204.75,2.0625 v 60.75 H 192.6866 V 109.248 H 2.298097 l 0,-107.2135371 z"
+          },
+          {
+            "numbers": {
+              "start_number": 535,
+              "end_number": 535,
+              "step": 12
+            },
+            "path": "M 216.91772,109.15961 H 311.7899 V 2.0625 H 204.75 v 60.75 l 12.15625,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 536,
+              "end_number": 536,
+              "step": 12
+            },
+            "path": "M 216.91037,192.90757 H 311.7899 V 109.15961 H 216.91772 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 537,
+              "end_number": 537,
+              "step": 12
+            },
+            "path": "m 216.905,247.2664 h 94.8849 v -54.35883 h -94.87953 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [3, 9],
+        "height_for_svg": 600,
+        "width_for_svg": 251.349,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 538,
+              "end_number": 610,
+              "step": 12
+            },
+            "path": "M 137.60961,389.875 V 335.25 h 95.12753 l -0.004,54.625 z"
+          },
+          {
+            "numbers": {
+              "start_number": 539,
+              "end_number": 611,
+              "step": 12
+            },
+            "path": "M 232.73047,473.6875 H 137.60961 V 389.875 h 95.12363 z"
+          },
+          {
+            "numbers": {
+              "start_number": 540,
+              "end_number": 612,
+              "step": 12
+            },
+            "path": "M 232.72652,516.97027 H 137.60961 V 473.6875 h 95.12086 z"
+          },
+          {
+            "numbers": {
+              "start_number": 541,
+              "end_number": 613,
+              "step": 12
+            },
+            "path": "M 114.27344,517 H 20.248917 v 81.625 H 232.72652 v -81.65473 z"
+          },
+          {
+            "numbers": {
+              "start_number": 542,
+              "end_number": 614,
+              "step": 12
+            },
+            "path": "m 20.25,393.25 h 94.02344 V 517 H 20.248917 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 543,
+              "end_number": 615,
+              "step": 12
+            },
+            "path": "M 114.28613,312.45281 H 19.456485 V 316.5 c 0,0 -31.081485,36 0.793515,72 v 4.75 h 94.02344 z"
+          },
+          {
+            "numbers": {
+              "start_number": 544,
+              "end_number": 616,
+              "step": 12
+            },
+            "path": "M 19.460937,191.5 H 114.28613 V 312.45281 H 19.456485 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 545,
+              "end_number": 617,
+              "step": 12
+            },
+            "path": "M 19.445436,108.98283 H 114.28613 V 191.5 H 19.460937 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 546,
+              "end_number": 618,
+              "step": 12
+            },
+            "path": "M 126.48373,63.197668 V 2.5301215 H 19.445436 V 108.98283 h 94.840694 l 0,-45.79621 z"
+          },
+          {
+            "numbers": {
+              "start_number": 547,
+              "end_number": 619,
+              "step": 12
+            },
+            "path": "M 138.10937,109.1875 H 232.6875 V 2.5301215 H 126.48373 V 63.197668 h 11.64045 z"
+          },
+          {
+            "numbers": {
+              "start_number": 548,
+              "end_number": 620,
+              "step": 12
+            },
+            "path": "M 138.11081,192.625 H 232.6875 V 109.1875 H 138.10937 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 549,
+              "end_number": 621,
+              "step": 12
+            },
+            "path": "m 138.125,247.0625 h 94.5625 V 192.625 h -94.57669 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [10, 14],
+        "height_for_svg": 600,
+        "width_for_svg": 251.349,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 622,
+              "end_number": 670,
+              "step": 12
+            },
+            "path": "m 232.625,390.0625 h -94 v -54.0542 h 94.00209 z"
+          },
+          {
+            "numbers": {
+              "start_number": 623,
+              "end_number": 671,
+              "step": 12
+            },
+            "path": "M 232.63281,473.625 H 138.625 v -83.5625 h 94 z"
+          },
+          {
+            "numbers": {
+              "start_number": 624,
+              "end_number": 672,
+              "step": 12
+            },
+            "path": "M 232.63813,517.47808 H 138.625 V 473.625 l 94.00781,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 625,
+              "end_number": 673,
+              "step": 12
+            },
+            "path": "M 114.19531,517.42539 H 19.870757 v 80.345 H 232.63813 v -80.29231 z"
+          },
+          {
+            "numbers": {
+              "start_number": 626,
+              "end_number": 674,
+              "step": 12
+            },
+            "path": "m 19.875,393.125 h 94.32031 V 517.42539 H 19.870757 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 627,
+              "end_number": 675,
+              "step": 12
+            },
+            "path": "m 19.44107,312.45281 h 94.75424 V 393.125 H 19.875 v -4 c 0,0 -29.648212,-34.8645 -0.417969,-72.34116 z"
+          },
+          {
+            "numbers": {
+              "start_number": 628,
+              "end_number": 676,
+              "step": 12
+            },
+            "path": "M 19.445436,191.375 H 114.19531 V 312.45281 H 19.44107 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 629,
+              "end_number": 677,
+              "step": 12
+            },
+            "path": "M 114.19774,109.86672 H 19.445436 V 191.375 h 94.749874 z"
+          },
+          {
+            "numbers": {
+              "start_number": 630,
+              "end_number": 678,
+              "step": 12
+            },
+            "path": "M 126.04178,2.032932 H 19.445436 V 109.86672 h 94.752304 l 0,-47.054315 11.84404,0.03171 z"
+          },
+          {
+            "numbers": {
+              "start_number": 631,
+              "end_number": 679,
+              "step": 12
+            },
+            "path": "M 138.13713,108.9375 H 232.9375 V 2.032932 H 126.04178 v 60.811183 h 12.07949 z"
+          },
+          {
+            "numbers": {
+              "start_number": 632,
+              "end_number": 680,
+              "step": 12
+            },
+            "path": "m 138.13281,192.5625 h 94.80469 v -83.625 h -94.80037 z"
+          },
+          {
+            "numbers": {
+              "start_number": 633,
+              "end_number": 681,
+              "step": 12
+            },
+            "path": "m 138.125,247.25 h 94.8125 v -54.6875 h -94.80469 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [15],
+        "height_for_svg": 600,
+        "width_for_svg": 250.827,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 682,
+              "end_number": 682,
+              "step": 12
+            },
+            "path": "m 137.89062,389.9375 h 94.64567 v -55 h -94.63785 z"
+          },
+          {
+            "numbers": {
+              "start_number": 683,
+              "end_number": 683,
+              "step": 12
+            },
+            "path": "m 138.125,473.5625 h 94.41129 v -83.625 h -94.64567 z"
+          },
+          {
+            "numbers": {
+              "start_number": 684,
+              "end_number": 684,
+              "step": 12
+            },
+            "path": "M 232.54974,517.17127 H 138.125 V 473.5625 h 94.41129 z"
+          },
+          {
+            "numbers": {
+              "start_number": 685,
+              "end_number": 685,
+              "step": 12
+            },
+            "path": "M 113.65868,517.16022 H 19.091881 V 598.4775 H 232.54974 l 0,-81.30623 z"
+          },
+          {
+            "numbers": {
+              "start_number": 686,
+              "end_number": 686,
+              "step": 12
+            },
+            "path": "M 113.65918,393.15137 H 19.091881 v 124.00885 h 94.566799 z"
+          },
+          {
+            "numbers": {
+              "start_number": 687,
+              "end_number": 687,
+              "step": 12
+            },
+            "path": "M 113.65637,312.62958 H 19.180271 v 4.33103 c 0,0 -29.1681543,32.08497 -0.08839,72.1249 v 4.06586 h 94.567299 z"
+          },
+          {
+            "numbers": {
+              "start_number": 688,
+              "end_number": 688,
+              "step": 12
+            },
+            "path": "M 113.66367,191.5 H 19.180271 v 121.12958 h 94.476099 z"
+          },
+          {
+            "numbers": {
+              "start_number": 689,
+              "end_number": 689,
+              "step": 12
+            },
+            "path": "M 113.66741,109.15961 H 19.180271 V 191.5 h 94.483399 z"
+          },
+          {
+            "numbers": {
+              "start_number": 690,
+              "end_number": 690,
+              "step": 12
+            },
+            "path": "M 125.42307,2.298097 V 62.57895 h -11.75566 v 46.58066 H 19.180271 V 2.3036213 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 691,
+              "end_number": 691,
+              "step": 12
+            },
+            "path": "m 137.88228,108.75 h 94.57907 V 2.298097 H 125.42307 V 62.57895 l 12.46828,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 692,
+              "end_number": 692,
+              "step": 12
+            },
+            "path": "m 137.89687,192.95176 h 94.56448 V 108.75 h -94.57907 z"
+          },
+          {
+            "numbers": {
+              "start_number": 693,
+              "end_number": 693,
+              "step": 12
+            },
+            "path": "m 137.88582,246.86865 h 94.57553 v -53.91689 h -94.56448 z"
+          }
+        ]
+      },
+      {
+        "floor_number": [16],
+        "height_for_svg": 600,
+        "width_for_svg": 253.660,
+        "appartaments": [
+          {
+            "numbers": {
+              "start_number": 694,
+              "end_number": 694,
+              "step": 12
+            },
+            "path": "m 141.6875,391.375 h 93.70312 v -54.30604 l -93.67155,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 695,
+              "end_number": 695,
+              "step": 12
+            },
+            "path": "m 141.6875,474.1875 h 93.70312 V 391.375 H 141.6875 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 696,
+              "end_number": 696,
+              "step": 12
+            },
+            "path": "M 235.37817,517.71265 H 141.6875 V 474.1875 h 93.70312 z"
+          },
+          {
+            "numbers": {
+              "start_number": 697,
+              "end_number": 697,
+              "step": 12
+            },
+            "path": "M 117.09799,517.69055 H 23.688075 v 80.87534 H 235.37817 v -80.85324 z"
+          },
+          {
+            "numbers": {
+              "start_number": 698,
+              "end_number": 698,
+              "step": 12
+            },
+            "path": "M 117.10683,394.30042 H 23.688075 v 123.39013 h 93.409915 z"
+          },
+          {
+            "numbers": {
+              "start_number": 699,
+              "end_number": 699,
+              "step": 12
+            },
+            "path": "M 117.10828,314.66252 H 23.776465 v 3.88908 c 0,0 -30.4055911,35.26695 -0.08839,71.94812 v 3.8007 l 93.418755,0 z"
+          },
+          {
+            "numbers": {
+              "start_number": 700,
+              "end_number": 700,
+              "step": 12
+            },
+            "path": "M 117.10156,194.0625 H 23.776465 v 120.60002 h 93.331815 z"
+          },
+          {
+            "numbers": {
+              "start_number": 701,
+              "end_number": 701,
+              "step": 12
+            },
+            "path": "M 117.11456,112.51837 H 23.776465 v 81.54413 h 93.325095 z"
+          },
+          {
+            "numbers": {
+              "start_number": 702,
+              "end_number": 702,
+              "step": 12
+            },
+            "path": "M 129.48893,6.098796 H 23.776465 V 112.51837 h 93.338095 l 0,-45.972993 12.37437,0.01105 z"
+          },
+          {
+            "numbers": {
+              "start_number": 703,
+              "end_number": 703,
+              "step": 12
+            },
+            "path": "m 141.25,112.25 h 94.625 V 6.098796 H 129.48893 v 60.45763 h 11.7446 z"
+          },
+          {
+            "numbers": {
+              "start_number": 704,
+              "end_number": 704,
+              "step": 12
+            },
+            "path": "m 141.25,195.4375 h 94.625 V 112.25 H 141.25 Z"
+          },
+          {
+            "numbers": {
+              "start_number": 705,
+              "end_number": 705,
+              "step": 12
+            },
+            "path": "m 141.25,195.4375 h 94.625 v 54.4375 h -94.60938 z"
           }
         ]
       }
