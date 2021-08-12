@@ -68,6 +68,11 @@ WHERE type = 1
 	AND status = 2
 	AND (
 		CASE
+			WHEN bitrix_id = @bitrix_id::int THEN true
+		END
+	)
+	AND (
+		CASE
 			WHEN room = ANY(@room::int [])
 			OR 0 = ANY(@room::int [1]) THEN true
 		END
@@ -136,6 +141,11 @@ WHERE type = 1
 		CASE
 			WHEN room = ANY(@room::int [])
 			OR 0 = ANY(@room::int [1]) THEN true
+		END
+	)
+	AND (
+		CASE
+			WHEN bitrix_id = @bitrix_id::int THEN true
 		END
 	)
 	AND (

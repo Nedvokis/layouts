@@ -17,6 +17,7 @@ const (
 type GetLayoutsRequest struct {
 	AreaMin         float32 `form:"area_min"`
 	AreaMax         float32 `form:"area_max"`
+	BitrixID        int32   `form:"bitrix_id"`
 	LivingAreaMin   float32 `form:"living_area_min"`
 	LivingAreaMax   float32 `form:"living_area_max"`
 	CitchenAreaMin  float32 `form:"citching_area_min"`
@@ -72,6 +73,7 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 
 	arg := db.GetFilteredLayoutsParams{
 		AreaMax:         MAX_VALUE,
+		BitrixID:        req.BitrixID,
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
 		OffSet:          req.OffSet,
@@ -104,6 +106,7 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 		AreaMax:         MAX_VALUE,
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
+		BitrixID:        req.BitrixID,
 		Room:            req.Room,
 		Parent:          req.Parent,
 		CitchenAreaDesc: req.CitchenAreaDesc,
