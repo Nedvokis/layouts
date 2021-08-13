@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -15,9 +16,9 @@ const (
 )
 
 type GetLayoutsRequest struct {
+	BitrixID        int32   `form:"bitrix_id"`
 	AreaMin         float32 `form:"area_min"`
 	AreaMax         float32 `form:"area_max"`
-	BitrixID        int32   `form:"bitrix_id"`
 	LivingAreaMin   float32 `form:"living_area_min"`
 	LivingAreaMax   float32 `form:"living_area_max"`
 	CitchenAreaMin  float32 `form:"citching_area_min"`
@@ -62,6 +63,10 @@ type LayoutData struct {
 	Length  int      `json:"length"`
 }
 
+type GetLayoutByBxID struct {
+	BitrixID int32 `form:"bitrix_id" json:"bitrix_id"`
+}
+
 func (server *Server) GetLayoutsList(ctx *gin.Context) {
 	var req GetLayoutsRequest
 	err := ctx.ShouldBindQuery(&req)
@@ -72,8 +77,8 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 	}
 
 	arg := db.GetFilteredLayoutsParams{
-		AreaMax:         MAX_VALUE,
 		BitrixID:        req.BitrixID,
+		AreaMax:         MAX_VALUE,
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
 		OffSet:          req.OffSet,
@@ -103,10 +108,10 @@ func (server *Server) GetLayoutsList(ctx *gin.Context) {
 	}
 
 	argLength := db.GetFilteredLayoutsLengthParams{
+		BitrixID:        req.BitrixID,
 		AreaMax:         MAX_VALUE,
 		LivingAreaMax:   MAX_VALUE,
 		CitchenAreaMax:  MAX_VALUE,
-		BitrixID:        req.BitrixID,
 		Room:            req.Room,
 		Parent:          req.Parent,
 		CitchenAreaDesc: req.CitchenAreaDesc,
@@ -257,10 +262,53 @@ func (servver *Server) LoadNewLayouts(ctx *gin.Context) {
 		return
 	}
 }
-func (servver *Server) UpdateAllLayouts(ctx *gin.Context) {
+func (server *Server) UpdateAllLayouts(ctx *gin.Context) {
 	err := cronFunc.UpdateLayouts()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
+}
+
+func (server *Server) GetLayoutByBxID(ctx *gin.Context) {
+	var req GetLayoutByBxID
+	if err := ctx.ShouldBindQuery(&req); err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	fmt.Printf("%+v\n", req)
+
+	layout, err := server.store.GetLayoutByBitrixID(ctx, sql.NullInt32{
+		Int32: req.BitrixID,
+		Valid: true,
+	})
+
+	if err != nil {
+		if err == sql.ErrNoRows {
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
+			return
+		}
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, Layout{
+		ID:          layout.ID,
+		Parent:      layout.Parent,
+		Area:        layout.Area.Float64,
+		CitchenArea: layout.CitchenArea.Float64,
+		Door:        layout.Door.Int32,
+		Floor:       layout.Floor.Int32,
+		BitrixID:    layout.BitrixID.Int32,
+		LayoutID:    layout.LayoutID.Int32,
+		LivingArea:  layout.LivingArea.Float64,
+		Num:         layout.Num.String,
+		Price:       layout.Price.Int32,
+		Status:      layout.Status.Int32,
+		Type:        layout.Type.Int32,
+		Room:        layout.Room.Int32,
+		LayoutsUrl:  layout.LayoutsUrl.String,
+		SvgPath:     layout.SvgPath.String,
+	})
 }

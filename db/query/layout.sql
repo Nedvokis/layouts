@@ -219,3 +219,8 @@ SET area = @area,
 	type = @type
 WHERE bitrix_id = @bitrix_id
 RETURNING *;
+-- name: GetLayoutByBitrixID :one
+SELECT *
+FROM layouts
+WHERE bitrix_id = @bitrix_id
+LIMIT 1;

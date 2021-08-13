@@ -479,6 +479,37 @@ func (q *Queries) GetLayout(ctx context.Context, id int64) (Layout, error) {
 	return i, err
 }
 
+const getLayoutByBitrixID = `-- name: GetLayoutByBitrixID :one
+SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
+FROM layouts
+WHERE bitrix_id = $1
+LIMIT 1
+`
+
+func (q *Queries) GetLayoutByBitrixID(ctx context.Context, bitrixID sql.NullInt32) (Layout, error) {
+	row := q.db.QueryRowContext(ctx, getLayoutByBitrixID, bitrixID)
+	var i Layout
+	err := row.Scan(
+		&i.ID,
+		&i.Parent,
+		&i.Area,
+		&i.CitchenArea,
+		&i.Door,
+		&i.Floor,
+		&i.BitrixID,
+		&i.LayoutID,
+		&i.LivingArea,
+		&i.Num,
+		&i.Price,
+		&i.Status,
+		&i.Type,
+		&i.Room,
+		&i.LayoutsUrl,
+		&i.SvgPath,
+	)
+	return i, err
+}
+
 const getLayoutByLitter = `-- name: GetLayoutByLitter :many
 SELECT id, parent, area, citchen_area, door, floor, bitrix_id, layout_id, living_area, num, price, status, type, room, layouts_url, svg_path
 FROM layouts

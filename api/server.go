@@ -36,6 +36,7 @@ func NewServer(store *db.Store) *Server {
 	router.GET("/api2/litters/:id", server.GetLitter)
 	router.GET("/api2/layouts", server.GetLayoutsList)
 	router.GET("/api2/layouts/:id", server.GetLayout)
+	router.GET("/api2/layout/bxid", server.GetLayoutByBxID)
 	router.GET("/api2/setDb", server.SetDb)
 	router.GET("/api2/setSvg", server.SetSvg)
 
