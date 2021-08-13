@@ -69,7 +69,7 @@ WHERE type = 1
 	AND (
 		CASE
 			WHEN bitrix_id = @bitrix_id::int
-			OR 0 = ANY(@bitrix_id::int [1]) THEN true
+			OR 0 = @bitrix_id::int THEN true
 		END
 	)
 	AND (
@@ -147,7 +147,7 @@ WHERE type = 1
 	AND (
 		CASE
 			WHEN bitrix_id = @bitrix_id::int
-			OR 0 = ANY(@bitrix_id::int [1]) THEN true
+			OR 0 = @bitrix_id::int THEN true
 		END
 	)
 	AND (

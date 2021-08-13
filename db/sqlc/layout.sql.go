@@ -159,7 +159,7 @@ WHERE type = 1
 	AND (
 		CASE
 			WHEN bitrix_id = $1::int
-			OR 0 = ANY($1::int [1]) THEN true
+			OR 0 = $1::int THEN true
 		END
 	)
 	AND (
@@ -315,7 +315,7 @@ WHERE type = 1
 	AND (
 		CASE
 			WHEN bitrix_id = $2::int
-			OR 0 = ANY($2::int [1]) THEN true
+			OR 0 = $2::int THEN true
 		END
 	)
 	AND (
