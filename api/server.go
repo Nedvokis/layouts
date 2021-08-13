@@ -32,7 +32,9 @@ func NewServer(store *db.Store) *Server {
 	// add routes to router
 	router.GET("/api2/complexes", server.GetComplexesList)
 	router.GET("/api2/complexes/:id", server.GetComplex)
+	router.GET("/api2/complex/bxid", server.GetComplexByBxID)
 	router.GET("/api2/litters", server.GetLittersList)
+	router.GET("/api2/litter/bxid", server.GetLitterByBxID)
 	router.GET("/api2/litters/:id", server.GetLitter)
 	router.GET("/api2/layouts", server.GetLayoutsList)
 	router.GET("/api2/layouts/:id", server.GetLayout)

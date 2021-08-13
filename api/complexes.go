@@ -38,3 +38,27 @@ func (server *Server) GetComplex(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, complex)
 }
+
+type GetComplexByBxID struct {
+	BitrixID int64 `form:"bitrix_id" json:"bitrix_id"`
+}
+
+func (server *Server) GetComplexByBxID(ctx *gin.Context) {
+	var req GetComplexByBxID
+
+	if err := ctx.ShouldBindQuery(&req); err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+	}
+
+	litter, err := server.store.GetComplexByBxID(ctx, req.BitrixID)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
+			return
+		}
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, litter)
+}

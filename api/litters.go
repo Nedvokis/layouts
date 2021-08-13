@@ -56,3 +56,27 @@ func (server *Server) GetLitter(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, litter)
 }
+
+type GetLitterByBxID struct {
+	BitrixID int64 `form:"bitrix_id" json:"bitrix_id"`
+}
+
+func (server *Server) GetLitterByBxID(ctx *gin.Context) {
+	var req GetLitterByBxID
+
+	if err := ctx.ShouldBindQuery(&req); err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+	}
+
+	litter, err := server.store.GetLitterByBxID(ctx, req.BitrixID)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
+			return
+		}
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, litter)
+}

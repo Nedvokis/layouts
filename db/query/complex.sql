@@ -15,3 +15,8 @@ LIMIT $1 OFFSET $2;
 -- name: GetListAllComplexes :many
 SELECT *
 FROM complexes;
+-- name: GetComplexByBxID :one
+SELECT *
+FROM complexes
+WHERE bitrix_id = @bitrix_id
+LIMIT 1;

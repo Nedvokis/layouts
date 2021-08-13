@@ -152,3 +152,22 @@ func (q *Queries) GetLitter(ctx context.Context, id int64) (Litter, error) {
 	)
 	return i, err
 }
+
+const getLitterByBxID = `-- name: GetLitterByBxID :one
+SELECT id, parent, bitrix_id, name
+FROM litters
+WHERE bitrix_id = $1
+LIMIT 1
+`
+
+func (q *Queries) GetLitterByBxID(ctx context.Context, bitrixID int64) (Litter, error) {
+	row := q.db.QueryRowContext(ctx, getLitterByBxID, bitrixID)
+	var i Litter
+	err := row.Scan(
+		&i.ID,
+		&i.Parent,
+		&i.BitrixID,
+		&i.Name,
+	)
+	return i, err
+}

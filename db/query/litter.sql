@@ -19,3 +19,8 @@ SELECT *
 FROM litters
 WHERE parent = $1
 ORDER BY id;
+-- name: GetLitterByBxID :one
+SELECT *
+FROM litters
+WHERE bitrix_id = @bitrix_id
+LIMIT 1;

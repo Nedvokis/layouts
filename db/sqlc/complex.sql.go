@@ -40,6 +40,20 @@ func (q *Queries) GetComplex(ctx context.Context, id int64) (Complex, error) {
 	return i, err
 }
 
+const getComplexByBxID = `-- name: GetComplexByBxID :one
+SELECT id, bitrix_id, name
+FROM complexes
+WHERE bitrix_id = $1
+LIMIT 1
+`
+
+func (q *Queries) GetComplexByBxID(ctx context.Context, bitrixID int64) (Complex, error) {
+	row := q.db.QueryRowContext(ctx, getComplexByBxID, bitrixID)
+	var i Complex
+	err := row.Scan(&i.ID, &i.BitrixID, &i.Name)
+	return i, err
+}
+
 const getListAllComplexes = `-- name: GetListAllComplexes :many
 SELECT id, bitrix_id, name
 FROM complexes
